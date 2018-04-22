@@ -35,6 +35,8 @@
             - [Robot model](software/ros/advanced/model.md)
             - [Rviz](software/ros/advanced/rviz.md)
         - [ROS and Arduino](software/ros/rosserial.md)
+            - [Publisher](software/ros/arduino/publisher.md)
+            - [Subscriber](software/ros/arduino/subscriber.md)
         - [Useful packages](software/ros/packages/packages.md)
             - [Map Server](software/ros/packages/map.md)
             - [Navigation stack](software/ros/packages/nav.md)

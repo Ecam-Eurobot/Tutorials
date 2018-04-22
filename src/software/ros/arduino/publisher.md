@@ -29,7 +29,7 @@ where msg is the name of the object. And of course you can choose the type of th
 
 Then you have to choose if you want to create a publisher, a subscriber or even both.
 
-To create a publisher
+To create a publisher :
 ```
 ros::Publisher chatter("chatter", &msg);
 ```
@@ -55,7 +55,7 @@ void setup()
 ```
 To fill the message object with the data you just have to do this :
 ```
-msg.data = hello
+msg.data = hello;
 ```
 where hello is the data you put in your message and hello must have the same type as the msg variable.
 
@@ -68,7 +68,10 @@ void loop()
 }
 ```
 
-Finally you have to add a last line of code in the loop to will call all the callbacks waiting to be called at that point in time.
+Finally you have to add a last line of code in the loop that will call all the callbacks waiting to be called at that point in time :
+```
+nh.spinOnce();
+```
 
 Now that you know how each part of the code works you can test a «Hello World» example available on the wiki.ros.org website <http://wiki.ros.org/rosserial_arduino/Tutorials/Hello%20World> :
 ```
@@ -103,7 +106,7 @@ void loop()
   delay(1000);
 }
 ```
-You have to upload this code on the Arduino board before connecting it to the Raspberry starting the test on ROS.
+You have to upload this code on the Arduino board before connecting it to the Raspberry and before starting the test on ROS.
 
 
 # Test on a Raspberry #
