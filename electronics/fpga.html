@@ -136,7 +136,144 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <a class="header" href="electronics/fpga.html#fpga" id="fpga"><h1>FPGA</h1></a>
+<a class="header" href="electronics/fpga.html#a1-introduction" id="a1-introduction"><h2>1 INTRODUCTION</h2></a>
+<p>The protocol that we will use is called Serial Peripheral Interface (SPI). It is a synchronous full-duplex serial interface and is commonly used to communicate with on-board peripherals such as EEPROM, FLASH memory, A/D converters, temperature sensors, or in our case a Field Programmable Gate Array (FPGA).
+We assume a working knowledge of the VHDL hardware description language.</p>
+<a class="header" href="electronics/fpga.html#a2-hardware" id="a2-hardware"><h2>2 HARDWARE</h2></a>
+<p>SPI is a protocol, in which one device (the master) controls one or more other devices (the slaves). For the master we use an open-source microcontroller prototyping platform, such as the Arduino 101 or a modified Arduino UNO R3. In this document we use Arduino to refer to either platform.
+The slave can be a low-cost FPGA prototyping platforms, such as the Xilinx Spartan-6 Avnet LX9 or the Altera Cyclone-IV Terasic DE10-Lite . The repository  includes project files and pin assignments for both these boards. The code is written in VHDL and should work equally well on more powerful boards.</p>
+<a class="header" href="electronics/fpga.html#a21voltage-levels" id="a21voltage-levels"><h3>2.1.Voltage levels</h3></a>
+<p>It is very important that the I/O voltage levels of the devices match. Both FPGA boards support 3.3V levels, and are a good match for the Arduino 101. However, the Arduino UNO uses the traditional 5 Volt TTL levels. Instead of using a level shifter, such as the 74LVC245, we opt for converting the Arduino to 3.3V according to Adafruit’s instructions. Running a 16 MHz clock at 3.3V is out of spec. Is said to work, but should really program the fuses to get the frequency down to abt. 13 MHz .</p>
+<a class="header" href="electronics/fpga.html#a22signals" id="a22signals"><h3>2.2.Signals</h3></a>
+<p>The SPI interface is a 4 wire interface. The bus consists of 3 signals plus <em>a slave select</em> signal for each device.</p>
+<p><em>SCLK</em>: clock signal sent from the master to all slaves.</p>
+<p><em>MOSI</em>: serial data from the master to the slaves (Master Out-Slave In).</p>
+<p><em>MISO</em>: serial data from a slave to the master (Master In-Slave Out).</p>
+<p><em>SS</em>:  slave select signal for each slave.</p>
+<p>Once the Arduino runs at 3.3V, connecting the two devices becomes trivial.</p>
+<a class="header" href="electronics/fpga.html#a221-pin-outs" id="a221-pin-outs"><h3>2.2.1. Pin outs</h3></a>
+<p><img src="img/electronics/fpga/image1.png" alt="z" /></p>
+<a class="header" href="electronics/fpga.html#a222-the-physical-connections" id="a222-the-physical-connections"><h3>2.2.2. The physical connections</h3></a>
+<p><img src="img/electronics/fpga/image2.png" alt="z" /></p>
+<a class="header" href="electronics/fpga.html#a3-byte--protocol" id="a3-byte--protocol"><h2>3. BYTE – PROTOCOL</h2></a>
+<p>With the two devices physically connected, we need a protocol to transfer data. We chose the Serial Peripheral Interface (SPI), a lightweight protocol to connect one master to one or more slaves.</p>
+<a class="header" href="electronics/fpga.html#a31-masterslave" id="a31-masterslave"><h3>3.1 Master/slave</h3></a>
+<p>The SPI bus is controlled by a master device (typically a microcontroller) that orchestrates the bus access. The master generates the control signals and regulates the data flow. The illustration below shows a master with three slaves. The master uses the Slave Select (SS) signal to select the slave.</p>
+<p><img src="img/electronics/fpga/image3.png" alt="z" /></p>
+<a class="header" href="electronics/fpga.html#a32-parameters" id="a32-parameters"><h3>3.2 Parameters</h3></a>
+<p>SPI is also a protocol with many degrees of freedom. It is important that the master and slave agree on the voltage levels and maximum clock frequency. The SPI clock polarity (CPOL) and clock phase (CPHA) introduce four more degrees of freedom as shown in the table below.
+SPI parameters</p>
+<p><img src="img/electronics/fpga/image4.png" alt="z" /></p>
+<p>For this article we assume <em>mode 3</em>, where the clock is high when idle; data is driving following the falling edge of the clock and latched on the rising edge.</p>
+<a class="header" href="electronics/fpga.html#a33-operation" id="a33-operation"><h3>3.3. Operation</h3></a>
+<p>The protocol is easiest explained with shift registers as shown in the illustration below. The master generates the SPI Clock (<em>SCLK</em>) to initiate the information exchange. Data is shifted on one edge of this clock and is sampled on the opposite edge when the data is stable.</p>
+<p><img src="img/electronics/fpga/image5.png" alt="z" /></p>
+<p>In mode 3, at the falling edge of <em>SCLK</em>, both devices drive their most significant bit (<em>b7</em>) on their outgoing data line. On the rising edge, both devices clock in this bit into the least significant bit position (<em>b0</em>). After eight <em>SCLK</em> cycles, the master and slave have exchanged their values and each device processes the data received (e.g. writing it to memory). In case there is more data to be exchanged, the registers are loaded with new data and the process repeats itself. Once all data is transmitted, the master stops the <em>SCLK</em> clock.</p>
+<a class="header" href="electronics/fpga.html#a34-slave-select" id="a34-slave-select"><h3>3.4. Slave select</h3></a>
+<p>For a more complete picture, we need to include the effect of the <em>slave select</em> (<em>SS</em>*) signal that is used to address the slave devices.</p>
+<p><img src="img/electronics/fpga/image6.png" alt="z" /></p>
+<p>Slaves may only drive their output (<em>MISO</em>) line when <em>SS</em>* is active, otherwise they should tri-stated the output. The protocol can be broken down into the following steps:</p>
+<ol>
+<li>
+<p>The master initiates the communication by activating SS*</p>
+</li>
+</ol>
+<ul>
+<li>The slave responds by starting to drive its MISO output.</li>
+</ul>
+<ul>
+<li>
+<p>Meanwhile the master drives its MOSI output.</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p>The master makes SCLK low.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>On this falling edge, the master and slave drive their most significant bit position (b7) on respectively their MOSI and MISO outputs.</p>
+</li>
+</ul>
+<ol start="3">
+<li>
+<p>The master makes SCLK high.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>On this rising edge, the master and slave clock the input from their respectively MISO and MOSI inputs into the least significant bit position (b0).</p>
+</li>
+</ul>
+<ol start="4">
+<li>
+<p>Go back to step 2. Until the least significant bit position (b0) has been sent.</p>
+</li>
+<li>
+<p>When all bits are transmitted, the master deactivates SS*.</p>
+</li>
+</ol>
+<a class="header" href="electronics/fpga.html#a4-bytes-exchange-with-arduino-as-master" id="a4-bytes-exchange-with-arduino-as-master"><h2>4. BYTES EXCHANGE WITH ARDUINO AS MASTER</h2></a>
+<p>The Arduino is blessed with a support library for the serial peripheral interface. This greatly aids the implementation. For the slave we used an Altera or Xilinx based FPGA implementation . Refer to the first part of this article for details about the physical connection.</p>
+<a class="header" href="electronics/fpga.html#a5-byte-exchange-with-a-fpga-as-slave" id="a5-byte-exchange-with-a-fpga-as-slave"><h2>5. BYTE EXCHANGE WITH A FPGA AS SLAVE</h2></a>
+<p>Implementing the SPI Slave on an FPGA is like old school digital electronics. My key takeaway is to think hardware, not programming. Implementing the <a href="https://coertvonk.com/hw/logic/connecting-fpga-and-arduino-using-spi-13067/3">SPI protocol</a> on a FPGA is fairly straightforward for as long as we use a directly clocked sequential circuit while preventing clock domain crossings.</p>
+<a class="header" href="electronics/fpga.html#a51-sequential-circuit" id="a51-sequential-circuit"><h3>5.1. Sequential circuit</h3></a>
+<p>In real life, two signals going to a single gate will not arrive there at the same time due to wire delays. This causes the output to momentarily have an incorrect value. The problem compounds as the signal travels through more gates and wires.</p>
+<p>In Building Math Hardware we created elementary math operations using combinatorial circuits. That was OK, because we didn’t care about such output <em>glitches</em> caused by the input signals propagating to the outputs. From a demonstrator’s point of view it even made it more interesting. Talking to a real device, such as a SPI master is different, because it requires the outputs to be stable at certain times.</p>
+<p><img src="img/electronics/fpga/image7.png" alt="z" /></p>
+<p>The solution is to introduce a clock signal, and store the signals in a flip-flop (registers) at the rising edge of that clock signal. We then only need to ensure that the longest delay from one flip-flop to the next is less that the clock period. This greatly simplifies the design process, at the cost of introducing some delay.</p>
+<a class="header" href="electronics/fpga.html#a52-clock-domain" id="a52-clock-domain"><h3>5.2. Clock domain</h3></a>
+<p>Field programmable gate arrays thrive on synchronous designs, but they don’t do well with clock signals that are asynchronous with its system clock.</p>
+<p>We also need to avoid transferring data from a <a href="https://coertvonk.com/family/school/inquiries/computer-math-inquiry-4245">flip-flop</a> driven by one clock to a flip-flop driven by another clock. This is called a <em>clock domain crossing</em> and might manifest itself in <em>metastability</em>, data loss or incoherence .We prevent clock domain crossings, by synchronizing the input signals to the FPGA clock using a traditional two-stage shift register as illustrated above.</p>
+<ul>
+<li>
+<p>The first flip-flop creates a synchronous version of the inputs by clocking it with the system clock. The input signal could change within the flip-flop’s <em>setup and hold times</em> and may take longer than a system clock cycle to settle to a stable value (metastability). That’s why it is ran through a second flip-flop.</p>
+</li>
+<li>
+<p>The second flip-flop, makes it is very unlikely that this metastability propagates to the output.</p>
+</li>
+<li>
+<p>Adding a third flip-flop gives us access to the previous value. Using the current and previous values, we can generate rise and fall signals as sown below.</p>
+<p><img src="img/electronics/fpga/image8.png" alt="z" /></p>
+</li>
+</ul>
+<a class="header" href="electronics/fpga.html#a53-operation" id="a53-operation"><h3>5.3. Operation</h3></a>
+<p>The main data object is an 8-bit register called DATA.</p>
+<p>On a falling SCLK edge, the most significant bit from data is clocked into a register from where it is transmitted over its MISO output.</p>
+<p>On a rising SCLK edge, the MOSI input is shifted into the least significant bit of data.</p>
+<p>Once all eight bits are received, the byte is available as rx. This received byte rx should be read when rx Valid is active during a rising edge of the sysClk.</p>
+<a class="header" href="electronics/fpga.html#a6-message-exchange-protocol" id="a6-message-exchange-protocol"><h2>6. MESSAGE EXCHANGE PROTOCOL</h2></a>
+<p>The time has come to implement a status and register interface on top of the raw byte exchange. We define a few commands to retrieve the device status and access its 32-bit registers.</p>
+<a class="header" href="electronics/fpga.html#a61-commands" id="a61-commands"><h3>6.1. Commands</h3></a>
+<p>The first byte is defined as the command byte. The interpretation of the remaining bytes (if any) depends on this command. After the command is completed, a new command can be sent. The following commands will be supported:</p>
+<ul>
+<li><strong>Read status (0x00)</strong>: Reads the status byte.</li>
+</ul>
+<p>First the master sends 0x00, and ignores the value returned;</p>
+<p>the master then sends one dummy byte, to get the 8-bit status value in return.</p>
+<ul>
+<li><strong>Read register (0x80 to 0x8F)</strong>: Reads the value stored in one of the sixteen registers.</li>
+</ul>
+<p>The least significant four bits of the command indicate the register to read from.
+First the master sends this command, and ignores the value returned,then the master sends 4 dummy bytes to get the 32-bit register value. The first byte received is the most significant, the fourth is the least significant (network byte order).</p>
+<ul>
+<li>
+<p><strong>Write register (0xC0 to 0xCF)</strong>: Writes a value to one of the sixteen registers. The least significant four bits indicate the register to write to.</p>
+<ul>
+<li>First the master sends the command, and ignores the value returned;</li>
+<li>Then the master sends 4 bytes with the value to write. The most significant byte is sent first, the least significant last.</li>
+</ul>
+</li>
+</ul>
+<a class="header" href="electronics/fpga.html#a62-registers" id="a62-registers"><h3>6.2. Registers</h3></a>
+<p>The FPGA will implement two register types. The first 4 registers (0-3) are <em>read/write</em> and can be used to send information to the FPGA. The next 12 registers (4-15) are <em>read-only</em> to receive information from the FPGA. In the greater scheme, the <em>read/write</em> registers will be used to send math operands to the FPGA, and the read-only registers will be used to read the results from the FPGA.</p>
+<a class="header" href="electronics/fpga.html#a63-room-for-improvement" id="a63-room-for-improvement"><h3>6.3. Room for improvement</h3></a>
+<p>The protocol leaves some room for improvement. It can be made more efficient by implementing continuous commands. Here the master issues a <em>read</em> or <em>write register start</em> command, but keeps sending sets of 4-bytes until it has enough. Along similar lines one could implement commands to access attached memory.</p>
+<a class="header" href="electronics/fpga.html#a7-messages-exchange-with-arduino-as-master" id="a7-messages-exchange-with-arduino-as-master"><h2>7. MESSAGES EXCHANGE WITH ARDUINO AS MASTER</h2></a>
+<p>Again, we’ll use the support library for the serial peripheral interface. The code shown below was tested on a 3.3 Volt Arduino UNO R3 connected to FPGA implementation.</p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
