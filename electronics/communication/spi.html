@@ -136,11 +136,11 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>#Serial Peripheral Interface (SPI)</p>
+                        <a class="header" href="electronics/communication/spi.html#serial-peripheral-interface-spi" id="serial-peripheral-interface-spi"><h1>Serial Peripheral Interface (SPI)</h1></a>
 <blockquote>
 <p><em>last updated on April 22, 2018</em></p>
 </blockquote>
-<p>##Quick theoretical reminders</p>
+<a class="header" href="electronics/communication/spi.html#quick-theoretical-reminders" id="quick-theoretical-reminders"><h2>Quick theoretical reminders</h2></a>
 <p>The Serial Peripheral Interface bus (SPI) is a synchronous serial communication interface specification used for short distance communication, primarily in embedded systems.</p>
 <p>You can see on the picture below the topology of this communictaion interface and the pinout of the components:</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/363px-SPI_three_slaves.svg.png" alt="" /></p>
@@ -150,20 +150,20 @@
 It's a full duplex interface, The slave can push some data on his MISO (Master Input Slave Output) pin during the communication.</p>
 </blockquote>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/SPI_8-bit_circular_transfer.svg/500px-SPI_8-bit_circular_transfer.svg.png" alt="" /></p>
-<p>###advantages</p>
+<a class="header" href="electronics/communication/spi.html#advantages" id="advantages"><h3>advantages</h3></a>
 <ul>
 <li>Full duplex communication</li>
 <li>Flexibility of the number of bits to be transmitted as well as the protocol itself</li>
 <li>no possible collision</li>
 </ul>
-<p>###disadvantage</p>
+<a class="header" href="electronics/communication/spi.html#disadvantage" id="disadvantage"><h3>disadvantage</h3></a>
 <ul>
 <li>(3 + N*Slaves) pins are required on the master</li>
 <li>4 pins are required on each slaves</li>
 <li>Master can speak in a vacuum without knowing it</li>
 <li>Bus can only count one master</li>
 </ul>
-<p>##Use of our SPI</p>
+<a class="header" href="electronics/communication/spi.html#use-of-our-spi" id="use-of-our-spi"><h2>Use of our SPI</h2></a>
 <p>the communication frame we used to send data to the slave is:</p>
 <ol>
 <li>Register adress on 8 bits</li>
@@ -174,11 +174,11 @@ It's a full duplex interface, The slave can push some data on his MISO (Master I
 <p><strong>Note</strong> :
 to read some data from a slave's register, the master must just send the register adress. The slave push the data on his MISO (Master Input Slave Output) pin.</p>
 </blockquote>
-<p>###Our Master
-Create a SPI Master is really easy with a atmega328p and the arduino IDE. Indeed, we can find easily some libraries. We used the one provided directly by the arduino IDE in an object that we implemented : <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a></p>
+<a class="header" href="electronics/communication/spi.html#our-master" id="our-master"><h3>Our Master</h3></a>
+<p>Create a SPI Master is really easy with a atmega328p and the arduino IDE. Indeed, we can find easily some libraries. We used the one provided directly by the arduino IDE in an object that we implemented : <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a></p>
 <p>how to work with <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a> object will be illustrated at least code use for Cortex's engines control (Eurobot 2018) : <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/Ecam/examples/MotorControl/MotorBroker/MotorBroker.ino">MotorBroker</a></p>
-<p>#####1. Initialisation of the SPI communication
-The <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a> object must be seen as a communication channel with the slave. It will be necessary to instantiate one <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a> object by slave. When creating the object, use the number of the SS pin as an argument.</p>
+<a class="header" href="electronics/communication/spi.html#a1-initialisation-of-the-spi-communication" id="a1-initialisation-of-the-spi-communication"><h5>1. Initialisation of the SPI communication</h5></a>
+<p>The <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a> object must be seen as a communication channel with the slave. It will be necessary to instantiate one <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIManager.cpp">SPIManager</a> object by slave. When creating the object, use the number of the SS pin as an argument.</p>
 <pre><code class="language-c">//Define the SS pin for each slave
 #define FL_SS  9
 #define FR_SS  2
@@ -194,22 +194,22 @@ SPIManager connBR(BR_SS);
 <p>Use the <em>initialize()</em> method to activate the communication channel. This call should be placed in the <em>setup()</em> function of the arduino code.</p>
 <pre><code class="language-c">connFL.initialize();
 </code></pre>
-<p>#####2. Write data to a Slave's register
-as said above, to write a value in a register of the slave will first send the address of the register, then the size in number of byte and to finish, the message.</p>
+<a class="header" href="electronics/communication/spi.html#a2-write-data-to-a-slaves-register" id="a2-write-data-to-a-slaves-register"><h5>2. Write data to a Slave's register</h5></a>
+<p>as said above, to write a value in a register of the slave will first send the address of the register, then the size in number of byte and to finish, the message.</p>
 <p>The <em>writedata</em> function has been written to make its use as intuitive as possible.
 below, an example of use where we send to the register <strong>16</strong> (0x10), the message <strong>x.b</strong> whose size is <strong>4 bytes</strong>.</p>
 <pre><code class="language-c">connBR.writeData(0x10, 0x04, x.b);
 </code></pre>
-<p>#####3. Read data from a Slave's register
-There are two functions to read some data: the first,<em>readLongData</em> , will return a value of type <strong>long</strong> and the other ,<em>readData</em> , a value of type <strong>float32</strong></p>
+<a class="header" href="electronics/communication/spi.html#a3-read-data-from-a-slaves-register" id="a3-read-data-from-a-slaves-register"><h5>3. Read data from a Slave's register</h5></a>
+<p>There are two functions to read some data: the first,<em>readLongData</em> , will return a value of type <strong>long</strong> and the other ,<em>readData</em> , a value of type <strong>float32</strong></p>
 <p>below, an example of use where we get some data from th register <strong>81</strong> (0x51).</p>
 <pre><code class="language-c">encoders_msg.rear_left = connBL.readLongData(0x51);
 </code></pre>
 <blockquote>
 <p>from here the documentation is still being written</p>
 </blockquote>
-<p>###Our Slaves
-When using the Arduino IDE to program atmeg328p, the slave mode is not available. Two registers must be modified to <em>activate</em> this mode :</p>
+<a class="header" href="electronics/communication/spi.html#our-slaves" id="our-slaves"><h3>Our Slaves</h3></a>
+<p>When using the Arduino IDE to program atmeg328p, the slave mode is not available. Two registers must be modified to <em>activate</em> this mode :</p>
 <pre><code class="language-c">// turn on SPI in slave mode
 SPCR |= _BV(SPE);
 // turn on interrupts
@@ -229,7 +229,7 @@ SPCR |= _BV(SPIE);
 <li>msg</li>
 <li>endtrans</li>
 </ol>
-<p>#####1. Initialisation of the SPI communication</p>
+<a class="header" href="electronics/communication/spi.html#a1-initialisation-of-the-spi-communication-1" id="a1-initialisation-of-the-spi-communication-1"><h5>1. Initialisation of the SPI communication</h5></a>
 <pre><code class="language-c">SpiSlave mySPI;
 //SLK  : pin 13
 //MISO : pin 12
@@ -238,14 +238,14 @@ SPCR |= _BV(SPIE);
 </code></pre>
 <pre><code class="language-c">mySPI.begin();
 </code></pre>
-<p>#####2. Interruption</p>
+<a class="header" href="electronics/communication/spi.html#a2-interruption" id="a2-interruption"><h5>2. Interruption</h5></a>
 <pre><code class="language-c">//Interrupt needed by SPI Communication
 ISR (SPI_STC_vect) {
     mySPI.com(SPDR); 
     spiReg();//Function called at the end of the communication.   
 }
 </code></pre>
-<p>#####3. Registers</p>
+<a class="header" href="electronics/communication/spi.html#a3-registers" id="a3-registers"><h5>3. Registers</h5></a>
 <pre><code class="language-c">void spiReg(){  
 switch (mySPI.command) {
   case 0x10:
@@ -267,10 +267,10 @@ switch (mySPI.command) {
   } 
 }
 </code></pre>
-<p>###Troubleshooting</p>
-<p>#####1. Problem between serial port (ROSSERIAL) and SPI bus
-#####2. sometimes the slave update the value of a register with the value received previously
-#####3. Changing the values of a register when reading another register</p>
+<a class="header" href="electronics/communication/spi.html#troubleshooting" id="troubleshooting"><h3>Troubleshooting</h3></a>
+<a class="header" href="electronics/communication/spi.html#a1-problem-between-serial-port-rosserial-and-spi-bus" id="a1-problem-between-serial-port-rosserial-and-spi-bus"><h5>1. Problem between serial port (ROSSERIAL) and SPI bus</h5></a>
+<a class="header" href="electronics/communication/spi.html#a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously" id="a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously"><h5>2. sometimes the slave update the value of a register with the value received previously</h5></a>
+<a class="header" href="electronics/communication/spi.html#a3-changing-the-values-of-a-register-when-reading-another-register" id="a3-changing-the-values-of-a-register-when-reading-another-register"><h5>3. Changing the values of a register when reading another register</h5></a>
 <a class="header" href="electronics/communication/spi.html#references" id="references"><h1>References</h1></a>
 <p><a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus">https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus</a></p>
 
