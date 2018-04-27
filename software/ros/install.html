@@ -136,7 +136,76 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <a class="header" href="software/ros/install.html#installing-ros" id="installing-ros"><h1>Installing ROS</h1></a>
+<p>ROS is only officially supported on Ubuntu or Debian, with other platforms being experimental or unofficial. We recommend installing <a href="https://www.ubuntu.com/download/desktop">Ubuntu</a> for desktops or laptops and <a href="https://ubuntu-mate.org/raspberry-pi/">Ubuntu Mate</a> for the Raspberry Pi.</p>
+<a class="header" href="software/ros/install.html#installing-ros-on-a-raspberry-pi" id="installing-ros-on-a-raspberry-pi"><h2>Installing ROS on a Raspberry Pi</h2></a>
+<a class="header" href="software/ros/install.html#installing-ubuntu-mate" id="installing-ubuntu-mate"><h3>Installing Ubuntu Mate</h3></a>
+<p><a href="https://ubuntu-mate.org/download/">Download Ubuntu Mate</a> Xenial 16.04, choosing the Raspberry Pi architecture.</p>
+<p>The image is compressed. On Windows you can use a tool like 7-zip to decompress it. On Linux and MacOS you can use the following command:</p>
+<pre><code>xz -d filename.xz
+</code></pre>
+<a class="header" href="software/ros/install.html#writing-the-sd-card" id="writing-the-sd-card"><h4>Writing the SD card</h4></a>
+<p>Now we need to write the image file onto the microSD card.</p>
+<p>On <strong>Windows</strong> we can use <a href="https://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a>.</p>
+<p><img src="img/software/ros/win32diskimager01.png" alt="Win32DiskImager" /></p>
+<p>On <strong>Linux</strong> we use the <code>dd</code> command.</p>
+<p>First we need to find our SD card using the <code>lsblk</code> command. When you have found the name, you can unmount it.</p>
+<pre><code># Find the SD card
+lsblk
+
+# Unmount the SD card
+sudo umount /dev/sd&lt;?&gt;&lt;?&gt; 
+
+# Copy the image to the SD card
+sudo dd if=ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img of=/dev/sd&lt;?&gt; bs=4M
+</code></pre>
+<p>The <code>dd</code> command will take a long time to complete and does not give any feedback. Be patient...</p>
+<p>On <strong>MacOS</strong> we also use the <code>dd</code> command, but it is slightly different than for Linux.</p>
+<pre><code># Find the SD card
+diskutil list
+
+# Unmount the SD card
+sudo umount /dev/disk&lt;?&gt;s&lt;?&gt;
+
+# Copy the image to the SD card
+sudo dd if=ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img of=/dev/disk&lt;?&gt; bs=4m
+</code></pre>
+<p>Once the USB stick is made, boot onto the SD Card and follow the install procedure.
+Once Ubuntu is installed, continue with the instructions below.</p>
+<a class="header" href="software/ros/install.html#install-dependencies" id="install-dependencies"><h3>Install dependencies</h3></a>
+<p>Install Git.</p>
+<pre><code>sudo apt-get install git
+</code></pre>
+<a class="header" href="software/ros/install.html#configure-the-raspberry-pi" id="configure-the-raspberry-pi"><h3>Configure the Raspberry Pi</h3></a>
+<a class="header" href="software/ros/install.html#installing-ros-1" id="installing-ros-1"><h3>Installing ROS</h3></a>
+<p>Once Ubuntu is installed, we need to configure the sources to accept software from the ROS repositories:</p>
+<pre><code>sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+</code></pre>
+<p>After that, you can install ROS by issuing the following commands:</p>
+<pre><code>sudo apt-get update
+sudo apt-get install ros-kinetic-desktop-full
+</code></pre>
+<p>This may take a while...</p>
+<blockquote>
+<p><strong>Tip:</strong> To find available ROS packages you can use the following command:</p>
+<pre><code>apt-cache search ros-kinetic
+</code></pre>
+</blockquote>
+<a class="header" href="software/ros/install.html#setup-ros" id="setup-ros"><h3>Setup ROS</h3></a>
+<p>Initialize rosdep:</p>
+<pre><code>sudo rosdep init
+rosdep update
+</code></pre>
+<p>ROS needs to setup a lot of environment variables to work properly. It is easier if they are loaded automatically
+when you launch a terminal. To do this, we copy the setup code into our <code>.bashrc</code> file:</p>
+<pre><code>echo &quot;source /opt/ros/kinetic/setup.bash&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<a class="header" href="software/ros/install.html#install-dependencies-to-build-packages" id="install-dependencies-to-build-packages"><h3>Install dependencies to build packages</h3></a>
+<pre><code>sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
+</code></pre>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
