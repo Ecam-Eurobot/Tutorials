@@ -177,12 +177,20 @@ A good practice is to sort them into other repositories according to their relev
 <a class="header" href="mechanical/fusion.html#offset" id="offset"><h3>Offset</h3></a>
 <p>Offset is a very handy tool when it comes to draw parallel lines.
 <img src="img/mechanical/Offset1.png" alt="img" /></p>
-<p>The tools works only in sketch mode and you have to already have a reference line (or a shape). Type the &quot;o&quot;
-key to open the &quot;offset menu&quot;, you then have to select the reference line you want. You can either drag and drop the cursor with your mouse or type the value you wish the offset to be.
+<p>The tools works only in sketch mode and you have to already have a reference line (or a shape).
+Type the &quot;o&quot; key to open the &quot;offset menu&quot;, you then have to select the reference line you want.
+You can either drag and drop the cursor with your mouse or type the value you wish the offset to be.
 <img src="img/mechanical/Offset_drag.png" alt="img" /><img src="img/mechanical/OFFSET_VALUE.png" alt="img" />
 You'll end with the line/shape you selected offset as you wanted.
 <img src="img/mechanical/Offset_finish.png" alt="img" /></p>
 <a class="header" href="mechanical/fusion.html#sweep" id="sweep"><h3>Sweep</h3></a>
+<p>Another useful tool to make pipe, slide and so one is the &quot;sweep&quot;. Start by doing a sketch on one face. for us it will be two circle.
+<img src="img/mechanical/Sweep_1.png" alt="img" /></p>
+<p>Then stop your current sketch. Go to another face. Start a new sketch (&quot;s&quot; and then &quot;sketch&quot;). Use &quot;spine&quot; (&quot;s&quot; and then &quot;spine&quot;) and draw a line following as much point as you need.
+<img src="img/mechanical/Sweep_2.png" alt="img" /></p>
+<p>You'll be able now to use &quot;Sweep&quot;, select the space between the two circle as &quot;profile&quot;, select the line as &quot;path&quot; and you'll automatically make a beautiful pipe!
+<img src="img/mechanical/Sweep_3.png" alt="img" /></p>
+<p>We used it for example for the <a href="https://a360.co/2Jzo4oP">slide</a> in the 2018's ball mechanism.</p>
 <a class="header" href="mechanical/fusion.html#revolve" id="revolve"><h3>Revolve</h3></a>
 <p>Revolve allows you to create object as if you turned them on a lathe. It comes in handy to make wheels, cannons, ...
 To used it you have to first create a shape around an axis. When you create that shape, you have to imagine it round. So you only have to draw &quot;a half cut in your future object&quot;.
@@ -210,13 +218,20 @@ To apply rectangular patterns, select the desired shape and the amount of copies
 <p>Circular patterns work in a similar way accept the fact you have to choose a center point and you can choose to make a complete revolution around it you on a given angle.
 <img src="img/mechanical/circ_patt-full.png" alt="img" />
 <img src="img/mechanical/circ_patt_angle.png" alt="img" /></p>
-<a class="header" href="mechanical/fusion.html#on-path" id="on-path"><h4>On path</h4></a>
-<p>The 'On path pattern' tools allows you to create patterns that are nor circular, nor rectangular.
-It only works with volumes and you have to enable the display of the sketch your path is in.</p>
-<p><img src="img/mechanical/patt_onpath_start.png" alt="img" />
-<img src="img/mechanical/Patt_ontpath_last.png" alt="img" />
-<img src="img/mechanical/Patt_onpath_done.png" alt="img" /></p>
+<p><em>Note that it's also possible to draw a path and then follow it with our pattern.</em></p>
 <a class="header" href="mechanical/fusion.html#mirror" id="mirror"><h3>Mirror</h3></a>
+<p>Available in sketch and also in 3D, the &quot;Mirror&quot; tool is very useful to create quickly two times the same things symmetrically from a line or a plane.</p>
+<p>For the 3D, begin draw your piece, in this case, a notch to close a wall.
+<img src="img/mechanical/Mirror_1.png" alt="img" /></p>
+<p>Use the Mirror tool. Select the faces that you want to copy and then the plane.
+<img src="img/mechanical/Mirror_2.png" alt="img" />
+<em>Note that if you select only the top face of your notch you won't be able to copy it because the program doesn't allow you to create a new face in the empty space. You have to select all the three faces of your notch.</em>
+<img src="img/mechanical/Mirror_3.png" alt="img" /></p>
+<p>As We said, it's also available for Sketch mode. So if we want to make two holes symmetric. Just draw a circle (&quot;c&quot; key). Draw a construction line that we'll use as our center line. (&quot;x&quot; key and then &quot;l&quot; key). Chose the distance from the center line (&quot;d&quot; key).Then select &quot;Mirror&quot;, select the circle as &quot;Object&quot; and in the &quot;Mirror line&quot; select the construction line
+<img src="img/mechanical/Mirror_4.png" alt="img" />
+<img src="img/mechanical/Mirror_5.png" alt="img" /></p>
+<p>We can now make our two holes. Select the two of them (with &quot;ctrl&quot;) and then cut them (&quot;q&quot; key).
+<img src="img/mechanical/Mirror_6.png" alt="img" /></p>
 <a class="header" href="mechanical/fusion.html#fillet" id="fillet"><h3>Fillet</h3></a>
 <p>As you used it in Autocad or similars, Fillet allow you to joint two lines to make one curve.
 In Fusion 360, as a 3D software, you'll also find the possibility to &quot;curve&quot; your 3D model.
@@ -238,6 +253,59 @@ You'll also be able to do it with a curved ridge (the one made with fillet)
 <img src="img/mechanical/Chamfer_3.png" alt="img" />
 <img src="img/mechanical/Chamfer_4.png" alt="img" />
 <em>Note that in this case you'll be limited by the angle of the previous made fillet.</em></p>
+<p>Another option is to change the &quot;Chamfer type&quot; and select &quot;Distance and angle&quot; to make a chamfer with a selected angle.
+<img src="img/mechanical/Chamfer_5.png" alt="img" /></p>
+<a class="header" href="mechanical/fusion.html#join" id="join"><h3>Join</h3></a>
+<p>A joint is a link between two pieces that describes the way they move one on the other. Is comes in handy when describing actions to external people, or when modeling pieces in an assembly to avoid collisions due to design mistakes.
+To create joints, you have to first <strong>ground components</strong>. By grounding components you avoid them to move, and so you can use them as a static reference. Take <em>Cortex</em> for example, the base has been grounded and all the rest around him has been jointed.
+<img src="img/mechanical/cortex.png" alt="img" />
+This means you can not drag it around. The second thing you have to do is <strong>create rigid groups</strong>. By searching for &quot;rigid group&quot; when hitting the &quot;s&quot; key you will enter the &quot;rigid group&quot; menu. You can now select all the component that should move together. You'll still be able to drag them around, but only as one group and not separately anymore. This is for example the case for the mecanum wheels as you can not move is different pieces separately.
+After this is done, we can now <strong>join modules together</strong> ('j' key). To do so select the points of the modules that will touch after jointing starting with the one you want to be able to move.
+<img src="img/mechanical/joint_face1.png" alt="img" /><img src="img/mechanical/joint_face2.png" alt="img" /></p>
+<p>After this is done you can select the type of joint you want and the axis along which to movement will have to be.</p>
+<p><img src="img/mechanical/joint_type.png" alt="img" /><img src="img/mechanical/joint_defined.png" alt="img" />
+After confirming the settings, you can right-click on the joint to edit the joints limits and inverse the natural rotation.
+<img src="img/mechanical/joint_limit.png" alt="img" /></p>
+<p>To learn more about jointing component click on the link to Lars's video about that topic <a href=" https://www.youtube.com/watch?v=KQNgIfjMr84">  Fusion 360 Tutorial — How to get a handle on Assembly and Joints in Fusion</a>.</p>
+<!--
+<a class="header" href="mechanical/fusion.html#a3-importance-dif-bodies-vs-components-------puiss" id="a3-importance-dif-bodies-vs-components-------puiss"><h2>3. Importance: dif bodies vs components       PUISS</h2></a>
+<pre><code>  attention séléction du bon compo quand nouveau sketch
+  link d'un dessin vers un autre
+</code></pre>
+<a class="header" href="mechanical/fusion.html#a4-modification-de-fichier--stl-vers-3d------puiss" id="a4-modification-de-fichier--stl-vers-3d------puiss"><h2>4. modification de fichier + stl vers 3D      PUISS</h2></a>
+<p>--&gt;</p>
+<a class="header" href="mechanical/fusion.html#a6-3d-design-export-to-plan-or-3d-slicer-----will--puiss---" id="a6-3d-design-export-to-plan-or-3d-slicer-----will--puiss---"><h1>6. 3D Design export to plan or 3D Slicer  <!-- WILL + PUISS --></h1></a>
+<a class="header" href="mechanical/fusion.html#a61-design-export-as-drawing" id="a61-design-export-as-drawing"><h2>6.1. Design export as drawing</h2></a>
+<p>One of the main reason you have to make a 3D model before starting the actual build of your project is the ease you get to make 2D plan you can send to a manufacture or use to build the pieces your own. Making this plans will save you a lot of time and material because all the testing of designs is made virtually and not with physical materials you have to buy, cut, test, re-cut , etc... To extract the plans of the design you made right-click on the component you want and select &quot;create drawing&quot;.
+<img src="img/mechanical/drawing_start.png" alt="img" /></p>
+<p>A window pops up to specify the parts you want to include in the drawing and the format of the destination sheet (<strong>be careful on that</strong>) select the piece and click &quot;ok&quot;.
+<img src="img/mechanical/drawing_drop.png" alt="img" /></p>
+<p>A widget is automatically created and the component is now attached to your mouse. Notice that in the small window that comes with the widget you can select the view and scale you want to use. After dropping the component and clicking &quot;ok&quot; on the small window your drawing is fully generated and you can start editing it.
+<img src="img/mechanical/drawing_dimension.png" alt="img" /></p>
+<p>By hitting the &quot;d&quot; key you can start indicating the dimensions you want to specify. Save to PDF and your done.</p>
+<a class="header" href="mechanical/fusion.html#a62-export-3d-design--3d-printing" id="a62-export-3d-design--3d-printing"><h2>6.2. Export 3D design  (3D printing)</h2></a>
+<p>Now comes the fun part: 3D printing your own designs. You'll see that it is really satisfying to see something you designed your own &quot;come to live&quot; in the printer and to do so you will have to export you design as an '.stl' file.</p>
+<p>First start by hitting the &quot;make&quot; icon in the top bar.
+<img src="img/mechanical/make_icon.png" alt="img" />
+It will open a window asking you to select the component you want to print and where you want to send the stl file. As you might expect you have to click on the body or component you want to print. As most printers have a accuracy only as good as their nozzle diameter, an assembly will always be printed a one bloc! For that reason we recommend to only select bodies when printing an assembly. It takes more time to print, but is the pieces have to move their is no other way to avoid monolithic prints.</p>
+<p>Now comes the moment you have to choose between send you design to a facility (and generating an stl file) or print it from your computer and so send it to a slicer software (up studio for the small printer in ECAM's electronic lab, Ultimaker Cura, Repetier-host, etc...).
+<img src="img/mechanical/3Dprint_select_body.png" alt="img" /></p>
+<p>To <strong>create an stl file</strong> unselect &quot;Send to 3D print utility&quot; and select ok.</p>
+<p>To <strong>3D print it from your computer</strong> select &quot;Send to 3D print utility&quot; and link you slicer software by clicking on the folder icon. When the slicer is linked click &quot;ok&quot; and launch the print form your slicer that will have been open and loaded with the design by Fusion360.</p>
+<!--
+## 7. spécificité pour impression 3D     PUISS
+              sens de fibres
+              penser support et nettoyage de support
+              penser face sur le bed
+              combine de dif elem pour impression monobloc
+<a class="header" href="mechanical/fusion.html#a8-parametre-dimpression-et-défaut-dimpression------puiss" id="a8-parametre-dimpression-et-défaut-dimpression------puiss"><h2>8. parametre d'impression et défaut d'impression      PUISS</h2></a>
+<a class="header" href="mechanical/fusion.html#a9-tour-de-marché-sur-les-différentes-imprimantes-sur-le-marché------puiss--will" id="a9-tour-de-marché-sur-les-différentes-imprimantes-sur-le-marché------puiss--will"><h2>9. tour de marché sur les différentes imprimantes sur le marché      PUISS + WILL</h2></a>
+<p>--&gt;</p>
+<a class="header" href="mechanical/fusion.html#contributors" id="contributors"><h2>Contributors</h2></a>
+<ul>
+<li>Puissant Baeyens Victor, 12098, <a href="https://github.com/MisterTarock">MisterTarock</a></li>
+<li>De Decker William, 14130, <a href="https://github.com/WilliamHdd">WilliamHdd</a></li>
+</ul>
 
                     </main>
 
