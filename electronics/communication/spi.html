@@ -138,13 +138,15 @@
                     <main>
                         <a class="header" href="electronics/communication/spi.html#serial-peripheral-interface-spi" id="serial-peripheral-interface-spi"><h1>Serial Peripheral Interface (SPI)</h1></a>
 <blockquote>
-<p><em>last updated on April 22, 2018</em></p>
+<p><em>last updated on May 10, 2018</em></p>
 </blockquote>
 <a class="header" href="electronics/communication/spi.html#quick-theoretical-reminders" id="quick-theoretical-reminders"><h2>Quick theoretical reminders</h2></a>
 <p>The Serial Peripheral Interface bus (SPI) is a synchronous serial communication interface specification used for short distance communication, primarily in embedded systems.</p>
 <p>You can see on the picture below the topology of this communictaion interface and the pinout of the components:</p>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/SPI_three_slaves.svg/363px-SPI_three_slaves.svg.png" alt="" /></p>
-<p>To begin a communication with a <em>Slave</em>, the <em>Master</em> must fix the Slave Select pin (SS) to <strong>LOW</strong> state. After that, the master can put somme bit into the shift register throught the MOSI  (Master Output Slave Input) pin. There isn't any standard communiction protocol but the communiction frame is often writen for the use. When the communication is done, it's the master who must put back the SS to <strong>HIGH</strong> State.</p>
+<p>SPI only defines the physical and data link layer of OSI network model. The connection and media between the devices indicates the physical layer. Data link layer defines the way in which the devices are connected. The connections include the input and output lines such as clock, data in and data out. Data link layer in SPI is implied in the connection itself and no provision is made for location or address information.</p>
+<p>The communiction frame is writen for the use (Layer three on OSI Model). To begin a communication with a <em>Slave</em>, the <em>Master</em> must fix the Slave Select pin (SS) to <strong>LOW</strong> state. After that, the master can put some bits into the shift register throught the MOSI  (Master Output Slave Input) pin.
+When the communication is done, it's the master who must put back the SS to <strong>HIGH</strong> State.</p>
 <blockquote>
 <p><strong>Note</strong> :
 It's a full duplex interface, The slave can push some data on his MISO (Master Input Slave Output) pin during the communication.</p>
@@ -205,9 +207,6 @@ below, an example of use where we send to the register <strong>16</strong> (0x10
 <p>below, an example of use where we get some data from th register <strong>81</strong> (0x51).</p>
 <pre><code class="language-c">encoders_msg.rear_left = connBL.readLongData(0x51);
 </code></pre>
-<blockquote>
-<p>from here the documentation is still being written</p>
-</blockquote>
 <a class="header" href="electronics/communication/spi.html#our-slaves" id="our-slaves"><h3>Our Slaves</h3></a>
 <p>When using the Arduino IDE to program atmeg328p, the slave mode is not available. Two registers must be modified to <em>activate</em> this mode :</p>
 <pre><code class="language-c">// turn on SPI in slave mode
@@ -218,34 +217,53 @@ SPCR |= _BV(SPIE);
 <p>So that these manipulations are transparent for the user we also create an object for the SPI bus slaves : <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIslave.cpp">SPISlave</a></p>
 <p>this object has several methods :</p>
 <ol>
-<li>begin()</li>
-<li>reset()</li>
-<li>com()</li>
+<li><strong>begin()</strong> : change the two registers cited above and declaring the MISO pin as an output.</li>
+<li><strong>reset()</strong> : reset private object variables.</li>
+<li><strong>com()</strong>: manage the communication by putting the incoming data in the right variables.</li>
 </ol>
 <p>and some properties :</p>
 <ol>
-<li>command</li>
-<li>dataSize</li>
-<li>msg</li>
-<li>endtrans</li>
+<li><strong>command</strong> : return the register address.</li>
+<li><strong>dataSize</strong> : return the size of the incoming message.</li>
+<li><strong>msg</strong> : return the message (maximum 64 bits).</li>
+<li><strong>endtrans</strong> : boolean that returns <strong>true</strong> if communication is complete.</li>
 </ol>
 <a class="header" href="electronics/communication/spi.html#a1-initialisation-of-the-spi-communication-1" id="a1-initialisation-of-the-spi-communication-1"><h5>1. Initialisation of the SPI communication</h5></a>
+<p>The MOSI, MISO and SLK pin are always the same on arduino. If you want you can change the SS pin number we agree to use pin 10 as pin SS for the slave.</p>
+<blockquote>
+<p><strong>Note</strong> :
+SS is a reserved name used for the SPI communication.</p>
+</blockquote>
+<p>On the begin of our script we create a SPI object and define the SS pin number as it's done in the following code :</p>
 <pre><code class="language-c">SpiSlave mySPI;
+
 //SLK  : pin 13
 //MISO : pin 12
 //MOSI : pin 11 
 #define SS 10
 </code></pre>
-<pre><code class="language-c">mySPI.begin();
+<p>to enable the communication, use the <em>begin()</em> method of the SPISlave object in the <em>setup()</em> function of the atemega :</p>
+<pre><code class="language-c">void setup()
+{
+    mySPI.begin();
+}
 </code></pre>
 <a class="header" href="electronics/communication/spi.html#a2-interruption" id="a2-interruption"><h5>2. Interruption</h5></a>
+<p>An incoming call performed by the master to the slave triggers an interrupt. In most cases, the method in which the interrupt routine will be placed will be: <strong>ISR (name _of _a _register)</strong>. in our case the register will be <strong>SPI _VTC _vect</strong>. As we work whith an atemega328p the shift register is called : <strong>SPDR</strong>.</p>
+<p>This way of working is illustrated in the following code :</p>
 <pre><code class="language-c">//Interrupt needed by SPI Communication
 ISR (SPI_STC_vect) {
-    mySPI.com(SPDR); 
-    spiReg();//Function called at the end of the communication.   
+    //manage the communication by putting the incoming data in the right variables.
+    mySPI.com(SPDR);
+    //Method containing the registers of the Slave. 
+    spiReg();   
 }
 </code></pre>
 <a class="header" href="electronics/communication/spi.html#a3-registers" id="a3-registers"><h5>3. Registers</h5></a>
+<p>A <strong>SWITCH</strong> is commonly used to define the registers. In our case of use, it is the <em>command</em> property of the <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/arduino/SPIslave.cpp">SPISlave</a> object which is used as parameter of the <strong>SWITCH</strong>.</p>
+<p>the writing in a register will be done once the communication is finished (thanks to the property <em>endTrans</em>). This method of work has the advantage of not having inconsistent values during the communication.</p>
+<p>The reading of a registers uses the full-duplex channel provided by the SPI. The data are pushed through the channel during the communication using the <strong>SPDR</strong> register.</p>
+<p>Here is an example of a function that contains the registers of a slave:</p>
 <pre><code class="language-c">void spiReg(){  
 switch (mySPI.command) {
   case 0x10:
