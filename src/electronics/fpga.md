@@ -1,5 +1,42 @@
 # FPGA #
  
+ ## 8.FPGA: What is it? ##
+**Field Programmable Gate Array** - Programmable Gate System These are programmable (or rather reconfigurable) integrated circuits
+many times and more and more dynamically! 
+**They allow**
+Either to emulate a circuit to validate it before silicon etching
+Either to implement a complete system, System on Chip (SoC)
+By using dynamic reconfiguration, this system can become adaptive as needed (acceleration of selected features).
+
+### 8.1. Introduction:###
+FPGAs consist of a matrix of programmable logic blocks surrounded by programmable output input blocks. The whole is connected by a programmable interconnection network.
+FPGAs are distinct from other programmable circuit families while offering the highest level of logical integration.
+
+There are 4 main categories available commercially:
+
+Symmetrical table.
+In column.
+Seas of doors.
+Hierarchical PLDs.
+
+                     The different classes of FPGAs.img
+  ### 8.2.FPGA structure  ###                  
+  
+ The specifications of an FPGA often include the number of configurable logic blocks, the number of logic blocks of frozen functions such as multipliers and the size of the memory resources such as the embedded RAM block. An FPGA integrated circuit is composed of several other elements, but these are typically the most important when it comes to choosing and comparing FPGAs for a specific application.
+
+Configurable logic blocks (CLBs) are the basic logical unit of an FPGA. Sometimes called "slices" or "logical cells", logical blocks consist of two parts: flip-flops and correspondence tables (LUTs). The way flip-flops and LUT lookup tables are assembled differs depending on the types of FPGAs, so it's important to understand their features.    
+                                        fpga_logic_blocks_interconnects.img 
+### 8.4. FPGAs: CLBs - Logic Blocks (Re) Configurable - but not only! ###     
+                                              capture__n
+### 8.3.The Possibilities ###
+   With an FPGA you are able to create the actual circuit, so it is up to you to decide what pins the serial port connects to. That also means you can create as many serial ports as you want. The only limitations you really have are the number of physical I/O pins and the size of the FPGA.
+
+Just like microcontrollers that have a set amount of memory for your program, FPGAs can only emulate a circuit so large.
+
+One of the very interesting things about FPGAs is that while you are designing the hardware, you can design the hardware to be a processor that you then can write software for! In fact, companies that design digital circuits, like Intel or nVidia, often use FPGAs to prototype their chips before creating them.      
+3. Résumé
+ FPGA continues to dominate as the evolution of high-level tools allows engineers and scientists to enjoy the benefits of reprogrammable circuits, regardless of their level of experience. For more information on using FPGAs in different industries and applications    
+ 
 ## 1 INTRODUCTION ## 
 The protocol that we will use is called Serial Peripheral Interface (SPI). It is a synchronous full-duplex serial interface and is commonly used to communicate with on-board peripherals such as EEPROM, FLASH memory, A/D converters, temperature sensors, or in our case a Field Programmable Gate Array (FPGA).
 We assume a working knowledge of the VHDL hardware description language. 
@@ -151,3 +188,9 @@ The protocol leaves some room for improvement. It can be made more efficient by 
 Again, we’ll use the support library for the serial peripheral interface. The code shown below was tested on a 3.3 Volt Arduino UNO R3 connected to FPGA implementation. 
 
 
+
+                                        
+                                        
+                                        
+                                        
+                                        
