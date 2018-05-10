@@ -1,7 +1,37 @@
-
 # Sonar #
 
-This is a draft of the tutorial, not the last version so all the instructions are not here yet.
+A sonar is a sensor allowing you to measure the distance to an obstacle thanks to high frequency waves. To keep correct measured values it is better to use the sensor we chose between 2cm and 400cm. The model of our sonar is HC-SR04. There are 4 pins on this sensor : TRIG, ECHO, VCC and GND (as you can see on the picture below).
+
+![img](img/electronics/sonar/HCSR04.png)
+
+It contains a transmitter and a receiver.
+The distance measure is pretty simple. Firstly, you have to send a signal on the TRIG pin so the sonar emits a wave of 8 pulses at 40kHz. Then the ECHO pin is set to the «HIGH» level until the emitted signal goes to the obstacle and comes back to the sensor (as you can see on the following picture).
+
+![img](img/electronics/sonar/ultrasonic_waves.png)
+
+Of course, you have to connect the sensor to a microcontroller. You can connect the VCC to the 5V pin of your board, the GND to the ground pin and the TRIG and ECHO to digital pins of your controller as illustrated on the picture below.
+
+![img](img/electronics/sonar/sonar_pins.png)
+
+Finally it is also important to know that the measuring angle with the HC-SR04 sonar is 30 degrees.
+
+All these information are also explained in the following websites :
+
+<https://www.gotronic.fr/pj2-hc-sr04-utilisation-avec-picaxe-1343.pdf>
+
+<https://wiki.mchobby.be/index.php?title=HC-SR04>
+
+<http://web.eece.maine.edu/~zhu/book/lab/HC-SR04%20User%20Manual.pdf>
+
+Images references :
+
+<http://geii.iut-troyes.univ-reims.fr/wikigeii/index.php?title=Fichier:Working-of-HC-SR04-Ultrasonic-Sensor.jpg>
+
+<http://www.instructables.com/id/HC-SR04-Ultrasonic-Sensor-With-Raspberry-Pi-2/>
+
+<https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/>
+
+# Tutorial #
 
 This tutorial explains the code to use and transfer sonar sensors information with ROS.
 
@@ -54,7 +84,10 @@ We can then publish that information about the distance (you can again refer to 
 pub_range4.publish(&range_msg_right);
 ```
 Here is the whole code for four ultrasound sensors based on the one presented in this link :
-<https://www.youtube.com/watch?v=gm3e-51ohgQ>
+<https://www.youtube.com/watch?v=gm3e-51ohgQ>  
+Moreover the code below is available in the Github repo of Ecam Eurobot : <https://github.com/Ecam-Eurobot/Eurobot-2018/blob/ultrasound/arduino/sonar.ino>  
+
+You can find the tutorial in the Software chapter, ROS and Arduino part to test if you succesfully receive information from the sonar with rosserial.
 
 ```cpp
 #include <ros.h>
