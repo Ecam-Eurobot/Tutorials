@@ -442,7 +442,40 @@ If we look from the top view, the rollers should all point to the center of the 
 <p><img src="mechanical/2018/bigrobot_render.PNG" alt="alt text" /></p>
 <a class="header" href="print.html#fusion-360" id="fusion-360"><h2>Fusion 360</h2></a>
 <p>The entire robot is designed in Fusion 360 and is available on the Eurobot cloud. The final version is called <strong>SHARK FINAL V17</strong></p>
-<a class="header" href="print.html#parts" id="parts"><h2>Parts</h2></a>
+<p>Here is the link to download de fusion projet : <a href="https://a360.co/2wA0er0">BigRobotModel</a></p>
+<a class="header" href="print.html#the-goal-of-the-2018-edition" id="the-goal-of-the-2018-edition"><h2>The goal of the 2018 edition</h2></a>
+<p><img src="mechanical/2018/bigRobotSrc/plan_arene.PNG" alt="alt text" /></p>
+<p>The robot starts from the inital surface (<strong>number 1</strong>).</p>
+<p>The robot has to collect the cubes and to build a tower of 5 cubes maximum in the construction zone (<strong>number 4</strong>).
+The team earns a lot a point if it respects the construction plan shown on the wall (<strong>number 7</strong>).</p>
+<a class="header" href="print.html#sections--how-does-it-work-" id="sections--how-does-it-work-"><h2>Sections ( How does it work ?)</h2></a>
+<p>This paragraph explains the differents conceptions's steps and all the parts needed to build a tower. Here is the general flow diagram :</p>
+<p><img src="mechanical/2018/bigRobotSrc/flow_diagram.PNG" alt="alt text" /></p>
+<p>The system doesn't need any color detection because all the stars of cubes are always in the same order in the same direction.</p>
+<a class="header" href="print.html#the-base" id="the-base"><h3>The base</h3></a>
+<p><img src="mechanical/2018/bigRobotSrc/base_render.jpg" alt="alt text" /></p>
+<p>This is the firt thing I'm going to talk about but it was the last designed part. Indeed, every part had to be designed to know the constraints and dimensions. Thoses informations where essentials to design the base.</p>
+<p>After the design in Fusion 360 in the model environment, the design was imported to the CAM environment still in Fusion.</p>
+<p><img src="mechanical/2018/bigRobotSrc/base_cam.PNG" alt="alt text" /></p>
+<p>It was then machined with a CNC :</p>
+<p><img src="mechanical/2018/bigRobotSrc/base_machining.jpg" alt="alt text" /></p>
+<a class="header" href="print.html#the-entry" id="the-entry"><h3>The entry</h3></a>
+<p>To swallow the cubes, an entry was designed. It uses simple DC motor with paint roller bought at the <em>Brico</em>.</p>
+<p><img src="mechanical/2018/bigRobotSrc/entry.PNG" alt="alt text" /></p>
+<p>The entry swallows the first 3 cubes and then select the fourth cube between the 2 last by pushing it with the toothed rack. After that the robot do the same step with the last cube. The rack moves with a rail available on <em>RS component</em> :</p>
+<p><strong>IGUS rail</strong>:</p>
+<ul>
+<li><em>Rail</em> :Igus N Series, NS-01-17-300, Linear Guide Rail 17mm width 300mm length</li>
+<li><em>Carriage</em> : Igus Linear Guide Carriage NW-02-17, N</li>
+</ul>
+<p>To detect when the cube is in the lift, the robot uses a limit switch available on <em>RS Component</em> :</p>
+<p><strong>Limit switch</strong> : Snap Action Limit Switch, Roller Lever, Thermoplastic, NC, 125V.</p>
+<a class="header" href="print.html#the-lift" id="the-lift"><h3>The lift</h3></a>
+<a class="header" href="print.html#the-cage" id="the-cage"><h3>The cage</h3></a>
+<p><img src="mechanical/2018/bigRobotSrc/cage.jpg" alt="alt text" /></p>
+<p>The floors can rotate thanks to a dynamixel and a bearing wheel. To place the bearing wheel on the rotating axis we insert the last floor into the others floors with the bearing wheel between them as shown in the next figure :</p>
+<p><img src="mechanical/2018/bigRobotSrc/cage_assembly.PNG" alt="alt text" /></p>
+<a class="header" href="print.html#external-parts" id="external-parts"><h2>External parts</h2></a>
 <p>Most of the part are home made (CNC, 3D printing) but some parts a bought on the market :</p>
 <ul>
 <li>
@@ -475,6 +508,8 @@ If we look from the top view, the rollers should all point to the center of the 
 <ul>
 <li>Snap Action Limit Switch, Roller Lever, Thermoplastic, NC, 125V</li>
 </ul>
+<a class="header" href="print.html#author" id="author"><h1>Author</h1></a>
+<p>Crappe Martin</p>
 </li>
 </ul>
 <a class="header" href="print.html#ball-mechanism" id="ball-mechanism"><h1>Ball mechanism</h1></a>
@@ -2178,6 +2213,13 @@ roslaunch image-processing test.launch
 <li><strong>Brussels</strong> : Open Sans</li>
 <li><strong>ENGINEERING SCHOOL</strong> : Open Sans Bold</li>
 </ul>
+<a class="header" href="print.html#the-polo" id="the-polo"><h2>The polo</h2></a>
+<p>The polo were manufactured by <em>4eme dimensions</em> : http://www.4dimension.be/.</p>
+<p>The vector file is available here : XXX</p>
+<a class="header" href="print.html#the-poster" id="the-poster"><h2>The poster</h2></a>
+<p><img src="graphic/poster_rendu.png" alt="alt text" /></p>
+<p>The poster was printed by <em>Graphoprint-services-europe</em>  in A0.</p>
+<p>The vector file is available here :</p>
 <a class="header" href="print.html#files" id="files"><h2>Files</h2></a>
 <p>The Adobde Illustrator files of the polo and the poster are available on the github.</p>
 
