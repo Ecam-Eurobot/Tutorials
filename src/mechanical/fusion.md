@@ -1,10 +1,14 @@
 # 1. Getting in touch with Fusion360
 Fusion360 is a 3D modeling software used by many professionals and hobbyists to create pieces. You can directly send your models to slicers in order to print them or export the 2D plans to build it your own. The following chapters should give you a global overview of how Fusion360 works and what you can use it for. We'll try to orient our writing to learn your to design in order to print your models later and will end with some tips about the printing them.
 
-To complete your learning we strongly recommend you subscribe to <a href="https://www.youtube.com/channel/UCo29kn3d9ziFUZGZ50VKvWA">Lars Christensen's Youtube channel</a>. He's a master in the use of Fusion360 and has very well made videos about every problem or question you might have.
+To complete your learning we strongly recommend you subscribe to
+[Lars Christensen's Youtube channel](https://www.youtube.com/channel/UCo29kn3d9ziFUZGZ50VKvWA).
+He's a master in the use of Fusion360 and has very well made videos about every problem or question you might have.
 
 3 videos in particular should hold your attention to get started:
-<a href="https://www.youtube.com/watch?v=A5bc9c3S12g"> Fusion 360 Tutorial for Absolute Beginners— Part 1</a> and of course <a href="https://www.youtube.com/watch?v=HXRMzJWo0-Q"> Fusion 360 Tutorial for Absolute Beginners— Part 2</a>  and <a href="https://www.youtube.com/watch?v=zS8dYA_Iluc&t=614s"> Fusion 360 Tutorial for Absolute Beginners— Part 3</a>.  
+[Fusion 360 Tutorial for Absolute Beginners— Part 1](https://www.youtube.com/watch?v=A5bc9c3S12g) and of course
+[Fusion 360 Tutorial for Absolute Beginners— Part 2](https://www.youtube.com/watch?v=HXRMzJWo0-Q) and
+[Fusion 360 Tutorial for Absolute Beginners— Part 3](https://www.youtube.com/watch?v=zS8dYA_Iluc&t=614s).  
 
 ## Fusion360 environment
 The first window you get when opening Fusion360 should be this.
@@ -54,9 +58,12 @@ Offset is a very handy tool when it comes to drawing parallel lines.
 The tools works only in sketch mode and you have to already have a reference line (or a shape).
 Type the "o" key to open the "offset menu", you then have to select the reference line you want.
 You can either drag and drop the cursor with your mouse or type the value you wish the offset to be.
-![img](img/mechanical/fusion/Offset_drag.png)![img](img/mechanical/fusion/OFFSET_VALUE.png)
+![img](img/mechanical/fusion/Offset_drag.png)
+![img](img/mechanical/fusion/OFFSET_VALUE.png)
+
 You'll end with the line/shape you selected offset as you wanted.
 ![img](img/mechanical/fusion/Offset_finish.png)
+
 ### Sweep
 Another useful tool to make pipe, slide and so on is the "sweep" function. Start by drawing a sketch on a
 face. In our example it's going to be a double circle.
@@ -74,6 +81,7 @@ We used it for example for the [slide](https://a360.co/2Jzo4oP) in the 2018's ba
 Revolve allows you to create objects as if you turned them on a lathe. It comes in handy to make wheels, cannons, ...
 To used it you have to first create a shape around an axis. When you create that shape, you have to imagine it round. So you only have to draw "a half cut of your future object".
 ![img](img/mechanical/fusion/Vase_shape.png)
+
 Type "s" to access the "search menu" and enter "revolve" to find the tool. You'll have to select the shape and the axis you want and press "enter".
 ![img](img/mechanical/fusion/vase_glass.png)
 
@@ -88,14 +96,18 @@ Appearance is really easy to use. Type "a", choose the look you like and drag-dr
 Real time savior, "Pattern" allows you to duplicate sketches, bodies and components on a given distance.
 Multiple pattern tools exists. To see then go into the "search menu" and type "Pattern".
 ![img](img/mechanical/fusion/multiple_patterns.png)
+
 As you can see in the above picture, you can create a circular, rectangular or "free style" pattern.
 For both rectangular and circular patterns the ones with white square create patterns in sketches. The grey ones create patterns of volumes (bodies, components). We'll only present the sketch pattern, but the volumes work in a similar way.
+
 #### Rectangular pattern
 ![img](img/mechanical/fusion/Pattern_open.png)
+
 To apply rectangular patterns, select the desired shape and the amount of copies you want in the 2 directions. You can then enter (or drag-drop) the distance on which you want to copy that shape for both directions and click "ok".
 ![img](img/mechanical/fusion/Rect_patt_1side.png)
 ![img](img/mechanical/fusion/Rect_patt_2side.png)
 ![img](img/mechanical/fusion/Rect_pattern_done.png)
+
 #### Circular pattern
 Circular patterns work in a similar way accept the fact you have to choose a center point and you can choose to make a complete revolution around it, or on a given angle.
 ![img](img/mechanical/fusion/circ_patt-full.png)
@@ -112,6 +124,7 @@ For the 3D tools, start by drawing your piece, in this case a notch to close a w
 Use the Mirror tool, select the faces that you want to copy and then the plane.
 ![img](img/mechanical/fusion/Mirror_2.PNG)
 *Note that if you select only the top face of your notch you won't be able to copy it because the program doesn't allow you to create a new face in the empty space. You have to select all the three faces of your notch.*
+
 ![img](img/mechanical/fusion/Mirror_3.PNG)
 
 As we said, it's also available in sketch mode. So if you want to make two holes symmetrically. Just draw a circle. Draw a construction line that we'll use as our center line. Chose the distance from the center line, then select "Mirror". Select the circle as "Object" and in the "Mirror line" select the construction line
@@ -126,7 +139,7 @@ As you used it in Autocad or similars, fillet allows you to joint two lines to m
 In Fusion 360, as a 3D software, you'll also find the possibility to "curve" your 3D body.
 ![img](img/mechanical/fusion/Fillet_1.PNG)
 <figure>
-  <figcaption>Fig. - First Fillet is for sketck and the second one for 3D model.</figcaption>
+  <figcaption>Fig. - First Fillet is for sketch and the second one for 3D model.</figcaption>
 </figure>
 
 To use the sketch fillet, just select it and then click on the two lines to join.
@@ -154,17 +167,21 @@ Another option is to change the "Chamfer type" and select "Distance and angle" t
 A joint is a link between two pieces that describes the way they move one on the other. It comes in handy when describing actions to external people, or when modeling pieces in an assembly to avoid collisions due to design mistakes.
 To create joints, you have to first **ground components**. By grounding components you avoid them to move, and so you can use them as a static reference. Take *Cortex* for example, the base has been grounded and all the rest around him has been jointed.
 ![img](img/mechanical/fusion/cortex.png)
+
 This means you can not drag it around. The second thing you have to do is **create rigid groups**. By searching for "rigid group" when hitting the "s" key you will enter the "rigid group" menu. You can now select all the component that should move together. You'll still be able to drag them around, but only as one group and not separately anymore. This is for example the case for the mecanum wheels as you can not move their different pieces separately.
 After this is done, we can now **join modules together** ('j' key). To do so select the points of the modules that will touch after jointing starting with the one you want to be able to move.
-![img](img/mechanical/fusion/joint_face1.png)![img](img/mechanical/fusion/joint_face2.png)
+![img](img/mechanical/fusion/joint_face1.png)
+![img](img/mechanical/fusion/joint_face2.png)
 
 After this is done you can select the type of joint you want and the axis along which to movement will have to be.
+![img](img/mechanical/fusion/joint_type.png)
+![img](img/mechanical/fusion/joint_defined.png)
 
-![img](img/mechanical/fusion/joint_type.png)![img](img/mechanical/fusion/joint_defined.png)
 After confirming the settings, you can right-click on the joint to edit the joints limits and inverse the natural movement.
 ![img](img/mechanical/fusion/joint_limit.png)
 
- To learn more about jointing component click on the link to Lars's video about that topic <a href=" https://www.youtube.com/watch?v=KQNgIfjMr84">  Fusion 360 Tutorial — How to get a handle on Assembly and Joints in Fusion</a>.
+ To learn more about jointing component click on the link to Lars's video about that topic
+ [Fusion 360 Tutorial — How to get a handle on Assembly and Joints in Fusion](https://www.youtube.com/watch?v=KQNgIfjMr84).
 
 # 3. 3D Design export to plan or 3D Slicer  
 
@@ -185,6 +202,7 @@ Now comes the fun part: 3D printing your own designs. You'll see that it is real
 
 First start by hitting the "make" icon in the top bar.
 ![img](img/mechanical/fusion/make_icon.png)
+
 It will open a window asking you to select the component you want to print and where you want to send the stl file. As you might expect you have to click on the body or component you want to print (**One at the time!**). As most printers have an accuracy only as good as their nozzle diameter, an assembly will always be printed as one bloc! For that reason we recommend to only select bodies when printing an assembly. It takes more time to print, but if the pieces have to move their is no other way to avoid monolithic prints.
 
 
