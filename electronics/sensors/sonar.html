@@ -149,11 +149,56 @@ The distance measure is pretty simple. Firstly, you have to send a signal on the
 <p><a href="https://www.gotronic.fr/pj2-hc-sr04-utilisation-avec-picaxe-1343.pdf">https://www.gotronic.fr/pj2-hc-sr04-utilisation-avec-picaxe-1343.pdf</a></p>
 <p><a href="https://wiki.mchobby.be/index.php?title=HC-SR04">https://wiki.mchobby.be/index.php?title=HC-SR04</a></p>
 <p><a href="http://web.eece.maine.edu/%7Ezhu/book/lab/HC-SR04%20User%20Manual.pdf">http://web.eece.maine.edu/~zhu/book/lab/HC-SR04%20User%20Manual.pdf</a></p>
+<p>Here is an online store where you can buy this sensor :</p>
+<p><a href="https://shop.mchobby.be/proximite/561-senseur-ultrason-hc-sr04-3232100005617.html">https://shop.mchobby.be/proximite/561-senseur-ultrason-hc-sr04-3232100005617.html</a></p>
 <p>Images references :</p>
 <p><a href="http://geii.iut-troyes.univ-reims.fr/wikigeii/index.php?title=Fichier:Working-of-HC-SR04-Ultrasonic-Sensor.jpg">http://geii.iut-troyes.univ-reims.fr/wikigeii/index.php?title=Fichier:Working-of-HC-SR04-Ultrasonic-Sensor.jpg</a></p>
 <p><a href="http://www.instructables.com/id/HC-SR04-Ultrasonic-Sensor-With-Raspberry-Pi-2/">http://www.instructables.com/id/HC-SR04-Ultrasonic-Sensor-With-Raspberry-Pi-2/</a></p>
 <p><a href="https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/">https://randomnerdtutorials.com/complete-guide-for-ultrasonic-sensor-hc-sr04/</a></p>
 <a class="header" href="electronics/sensors/sonar.html#tutorial" id="tutorial"><h1>Tutorial</h1></a>
+<a class="header" href="electronics/sensors/sonar.html#simple-arduino-code" id="simple-arduino-code"><h2>Simple Arduino code</h2></a>
+<p>To be able to test the simple code showed in this part you have to connect the sonar sensor to your Arduino Uno board as showed on the third picture hereinabove. You also have to connect the TRIGG pin of the sonar to the pin 12 on your Arduino board and the ECHO pin of the sonar to the pin 13 on the Arduino board. Of course you can change these values on the following code if needed.<br />
+You are now ready to upload the code :</p>
+<pre><code class="language-cpp">
+#define TRIGG 12 // Broche TRIGGER
+#define ECHO 13    // Broche ECHO
+                                               // definition du Timeout
+const long TIMEOUT = 25000UL; // 25ms = ~8m à 340m/s
+
+float son= 340.0 / 1000; //vitesse du son dans l'air (mm/µs)
+
+void setup() {
+
+  pinMode(TRIGG, OUTPUT);  //Configuration des broches
+  digitalWrite(TRIGG, LOW); // La broche TRIGGER doit être à LOW au repos
+  pinMode(ECHO, INPUT);
+
+  Serial.begin(9600); //Démarrage de la liaison série
+}
+ 
+void loop() {
+  
+  digitalWrite(TRIGG, HIGH); // Lance une mesure de distance en envoyant 
+  delayMicroseconds(10);  //une impulsion HIGH de 10µs sur la broche TRIGGER
+  digitalWrite(TRIGG, LOW);
+  
+  int mesure = pulseIn(ECHO, HIGH, TIMEOUT); // Mesure le temps entre 
+                                          // l'envoi de l'ultrason et sa réception
+
+  float distance_mm = mesure / 2.0 * son; //calcul de la distance grâce au temps
+                                      //on divise par 2 car le son fait un aller-retour
+   
+  Serial.print(&quot;Distance: &quot;); //Affichage des résultats
+  Serial.print(distance_mm);
+  Serial.println(&quot;mm&quot;);
+
+  delay(500); //temps entre chaque mesure (ms)
+}
+
+</code></pre>
+<p>To verifiy if everything is working correctly after uploading the code you can click on the Serial monitor icon on the Arduino IDE (as shown on the picture below) to see what distance the sonar returns in milimeters.</p>
+<p><img src="img/electronics/sonar/serial_monitor.png" alt="img" /></p>
+<a class="header" href="electronics/sensors/sonar.html#arduino-ros-code" id="arduino-ros-code"><h2>Arduino ROS code</h2></a>
 <p>This tutorial explains the code to use and transfer sonar sensors information with ROS.</p>
 <p>For the «Cortex» robot we used four sensors, one on each side so that’s what the final code presented at the end of this tutorial is based on.</p>
 <p>Firstly, in this code we are going to include the same libraries as shown in the Arduino Publisher Tutorial so you can refer to that part for the explanations.
