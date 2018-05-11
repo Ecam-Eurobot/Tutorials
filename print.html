@@ -3302,6 +3302,10 @@ roslaunch image-processing test.launch
 <a class="header" href="print.html#a2018-1" id="a2018-1"><h1>2018</h1></a>
 <a class="header" href="print.html#minus" id="minus"><h1>Minus</h1></a>
 <a class="header" href="print.html#architecture" id="architecture"><h1>Architecture</h1></a>
+<p><img src="/img/robots/architecture.png" alt="Architecture" /></p>
+<p>There is a raspberry master who talks to the arduinos via the serial port thanks to the <code>rosserial</code> library.</p>
+<p>The arduinos who control the motors return the values of the encoders to the rapsberry and the raspberry returns them the speeds to apply.</p>
+<p>An arduino takes care of the control of the elevator, the collection of the blocks and sends the values of the ultrasound sensors to the raspberry.</p>
 <a class="header" href="print.html#packages" id="packages"><h1>Packages</h1></a>
 <a class="header" href="print.html#differential-drive" id="differential-drive"><h2>Differential-drive</h2></a>
 <p>Having no time to implement ourselves, a library to manage the differential navigation, we look for an existing library compatible with ROS.</p>
