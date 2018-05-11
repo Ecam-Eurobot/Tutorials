@@ -136,7 +136,101 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <a class="header" href="mechanical/3d-print.html#a1-how-to-think-3d-printing" id="a1-how-to-think-3d-printing"><h1>1. How to think 3D printing</h1></a>
+<p>Now that you know how to design in 3D and export your file to a slicer, we'll take you straight to the world of the 3D printing. We'll see his amazing abilities but also his limitations.</p>
+<a class="header" href="mechanical/3d-print.html#a11-think-mechanical-properties" id="a11-think-mechanical-properties"><h2>1.1. Think &quot;mechanical properties&quot;</h2></a>
+<p>When you'll have to create a mechanical piece for your robot, you have to think about the way you'll use it.
+For example, if it's a piece that will be in contact with water, a lot of people will have the tendency to say: &quot;You have to use ABS!&quot;
+Right now there are other possibilities as the PETG that have similar properties but has less warping. Each one of them have their advantages and their defaults.
+It's true that the ABS will have better mechanical resistance against wear and tear than PLA but you'll have to pay more attention at the temperature variation and the wrapping problems.
+That's only the top of the iceberg for the materials, if you're interested by knowing more about it, you can still find a lot on the web on divers site like: <a href="http://www.primante3d.com/materiaux/">Primant3D</a>.</p>
+<p>Another simple tip is to think about the way the fibers during the use of the pieces.
+As you can see on this piece, a Pelton wheel , at first the shaft and the wheel were design as in one piece.
+<img src="img/mechanical/3d-print/Pelton_wheel_1.png" alt="img" /></p>
+<p>After thought, as the shaft will have to oppose strength in the radial way, it's way more efficient to print it horizontaly than verticaly (where the layers would detache).
+For the wheel, it's the opposite. The spoons have to go against strength in the perpendicular way, so it had to be printed also horizontal, laying on the bed.
+It was then decided to print them in two pieces.
+<img src="img/mechanical/3d-print/Pelton_wheel_2.png" alt="img" /></p>
+<a class="header" href="mechanical/3d-print.html#a12-think-about-the-supports" id="a12-think-about-the-supports"><h2>1.2. Think about the supports</h2></a>
+<p>As you'll see in the point <strong>3. Printer Configuration</strong>, there are a lot of different parameters to take into account. In this point, we'll speak about the supports, their necessity and their troubles.
+As you can see on the picture below, there a lots of support placed to help the printer. As the print is done layer by layer, it needs supports to help the extrusion of part on empty space.
+<img src="img/mechanical/3d-print/Support_1.png" alt="img" />
+<em>Note that you'll have to be in layer view to see them (Top-Right Corner)</em></p>
+<p>The most used to tune your print is the <strong>Overhang Angle</strong>, it will allow you to control the amount and place of the supports.
+<img src="img/mechanical/3d-print/Support_2.png" alt="img" /></p>
+<p>The use of limiting the amount of support is to reduce waste, reduce printing time (in this case 1h45) but also cleaning time as you'll have to cut or tear them apart by hand. There is a possibility with dual extrusion to print them with PVA (water soluble filament) but it requires a more expensive printer.</p>
+<p>However, I recommend to try the parameters shown on the picture because they make the removing of supports way easier than the default one.</p>
+<!--fin de relecture-->
+## 1.3. Think about the face laying on the heat bed
+As said before, the printer will often need support, but the orientation of the piece on the bed will also help a lot to reduce them.
+In this piece, simply by laying it on one face, you'll remove all the need for support.
+![img](img/mechanical/3d-print/Bed_1.png)
+![img](img/mechanical/3d-print/Bed_2.png)
+<p>In this case, it would be absurd to put it on the other face as it will require a lot of support and their will be very complex to remove.
+<img src="img/mechanical/3d-print/Bed_3.png" alt="img" /></p>
+<p>On this final picture, imagine many of this cubes needing to be plugged one in another and that have to be printed on their left face.
+You can use two different design:</p>
+<ul>
+<li>In the first design (the two top cube) the top-left one will require support.</li>
+<li>In the second design (the two cube below) the low-left one can be printed easily.</li>
+</ul>
+<p>More, in the second design, all the cube are the same so you can print a lot of them really fast.
+<img src="img/mechanical/3d-print/Bed_4.png" alt="img" /></p>
+<a class="header" href="mechanical/3d-print.html#a2-what-printer-to-choose" id="a2-what-printer-to-choose"><h1>2. What printer to choose?</h1></a>
+<p>The offer in mater of 3D printers is enormous and can be confusing to an unexperimented printer.
+And even if you know what you are looking for, you can find the same looking printer for at least 10 different prices and brands.
+As a matter of fact a lot of companies copy the &quot;big ones&quot; and sale these copies a lot cheaper.
+These copies can be a very good investment for non-professional work and can save you quite a few euros, but can also be a real nightmare.</p>
+<p>A general advice is to read as many reviews as possible and to try to choses a printer that a lot of people have. Isolated brands are often isolated for a very good reason (quality issues for example) and you'll struggle finding informations on settings, performances and things like parts to print to upgrade you printer.</p>
+<p>The Anet company for example is very popular brand that sells versions of open source printers.
+The are close to the cheapest you can find, but have very decent quality and high liability.
+Hereby lots of people have one and you can find tones of parts on <a href="https://www.thingiverse.com/search/page:1?q=Anet+A8&amp;sa=&amp;dwh=525af4b8e015a6f">Thingiverse AnetA8</a> to upgrade their models.</p>
+<p>Other companies like FLSUN sale some of the same open source models (prusa i3) a like more expensive but are less reliable and upgrade parts are pretty difficult to find.</p>
+<p>So what to chose ?</p>
+<p>Well we are not going to give you a list of printers to buy or not to buy, but we'll try to give you guidelines to follow when comparing what the market offers.</p>
+<a class="header" href="mechanical/3d-print.html#a21-technologies" id="a21-technologies"><h2>2.1. Technologies</h2></a>
+<p>Men have developed different ways to 3D print stuff, each and every one of it with its own advantages.
+The cheapest and thus most used is the extrusion of molten plastic, but others like resin printing (where a laser hits a bath of liquid resin hardening it instantly) or metal printing (same idea as for resin but with a bath of metal powder), are starting to emerge. These however are really expensive (2 000$ up to hundreds of thousands of dollars for the machine only) for the moment and won't be discussed any further.</p>
+<p>The rest of this document will so only speak about plastic extrusion printing.</p>
+<a class="header" href="mechanical/3d-print.html#a22-structure-of-the-printer" id="a22-structure-of-the-printer"><h2>2.2. Structure of the printer</h2></a>
+<p>You'll find two main types of structures: cartesian and delta.
+<img src="img/mechanical/3d-print/Cartesian-3D-printer.jpg" alt="img" /></p>
+<p>Delta 3D printers were designed for speed, but they also have the distinction to have a print bed that never moves, which may come in handy for certain print jobs.
+In the other hand, their speed comes with a certain weakness for details and a lack in precision.</p>
+<p>Cartesian printers are better for details and easier to build and maintain, but slower.</p>
+<a class="header" href="mechanical/3d-print.html#a23-precision" id="a23-precision"><h2>2.3. Precision</h2></a>
+<p>As you might expect, cheap printers (100€-400€) don't have the same accuracy as semi-professional ones that cost about 2000€-5000€ (Ultimakers for example).
+This can be scaring at first, but think about it this way: do you really need to print at a resolution of 20 microns (an aluminum sheet is about 16 microns )?
+For most of the prints you'll make a precision of 0,2mm and a little bit of sanding is more than enough.
+You can find more than decent printers for around 200€ (Anet A6) for medium bed sizes.
+Larger bed printers will cost about 300€ (Creality3D CR - 10).
+Note that these printers are DIY printers so you'll have to assemble them your own.
+This might take a few days, but is a piece of cake with the manual and will save you a few hundred euros.</p>
+<a class="header" href="mechanical/3d-print.html#a24-links" id="a24-links"><h2>2.4. Links</h2></a>
+<p>To close the subject, here are some links you could find handy in your search of a 3Dprinter to acquire or to improve.</p>
+<ul>
+<li><a href="https://www.thingiverse.com/search/page:1?q=Anet+A8&amp;sa=&amp;dwh=525af4b8e015a6f">Thingiverse AnetA8</a></li>
+<li><a href="http://www.instructables.com/id/Transform-a-chinese-3D-printer-in-a-high-precision/">Instructables improvement</a></li>
+<li><a href="http://www.fabbaloo.com/blog/2015/11/11/bowden-or-direct-a-primer-on-extruder-styles">Choose between a Bowden or Direct extruder</a></li>
+<li><a href="https://pevly.com/anet-a8-vs-a6/">Anet A8 vs A6</a></li>
+<li><a href="http://www.instructables.com/id/2000-Quality-Prints-From-a-200-Printer-an-Upgrade-/">Anet A8 improvement</a></li>
+</ul>
+<!-- si tu veux rajouter des liens -->
+<a class="header" href="mechanical/3d-print.html#a3-printer-configuration" id="a3-printer-configuration"><h1>3. Printer Configuration</h1></a>
+<p>There are tons of different parameters that will influence the quality of your print.
+It would be out of the topic to list them all but we encourage you to read the following document to calibrate your printer as good as possible.</p>
+<ul>
+<li><a href="mechanical/References/A6_Parameters_Cura.pdf">Cura's parameters for Anet A6</a></li>
+<li><a href="mechanical/References/Print_Quality_Troobleshooting_Guide-Anet.pdf">Print Quality Troobleshooting Guide Anet</a></li>
+<li><a href="http://www.primante3d.com/curling-29082016/">Warpping problems</a></li>
+</ul>
+<hr />
+<a class="header" href="mechanical/3d-print.html#contributors" id="contributors"><h2>Contributors</h2></a>
+<ul>
+<li>Puissant Baeyens Victor, 12098, <a href="https://github.com/MisterTarock">MisterTarock</a></li>
+<li>De Decker William, 14130, <a href="https://github.com/WilliamHdd">WilliamHdd</a></li>
+</ul>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
