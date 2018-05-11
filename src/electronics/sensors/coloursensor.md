@@ -11,7 +11,7 @@ On board circuitry includes:
 * An IR blocking filter, localized to the color sensing photodiodes, minimizes the IR spectral component of the incoming light and allows colour measurements to be made more 
 accurately
 
-![alt text](electronics/actuators/Dynamixels_SRC/flora.png )
+![alt text](electronics/sensors/ColorSensor/Flora.png )
 
 
 More information on this colour sensor can be found here
