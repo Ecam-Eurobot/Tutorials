@@ -1,6 +1,6 @@
 # The Cortex (small) Robot
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg ) 
+![alt text](mechanical/2018/BallGun_SRC/Cortex.png ) 
 
 This year, the Eurobot task was water purification. As water is not practical around prototype electronics, they used balls to represent water. The balls of the
 same colour that is assigned to you during a match will represent clean/purified water whereas balls of the same colour as your opponents represent dirty water
@@ -13,7 +13,7 @@ send balls during each match for Eurobot 2018.
 
 # Ball Mechanism
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg )
+![alt text](mechanical/2018/BallGun_SRC/BallSeparationMech.png )
 
 ## Introduction
 
@@ -36,19 +36,19 @@ effect which we hoped would gain us time.
 
 ## The outer case and colour sensor
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg )
+![alt text](mechanical/2018/BallGun_SRC/OuterCase.png )
 
 As you can see here we have the entry point and the colour sensor. How the colour sensor works and its corresponding code can be found in the sensors section.
 
 ## The mobile plate
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg )
+![alt text](mechanical/2018/BallGun_SRC/purifier.png )
 
 Control of the mobile plate was done with a dynamixel AX-12A. 
 
 ## The "pusher"
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg )
+![alt text](mechanical/2018/BallGun_SRC/Pusher.png )
 
 The pusher as well as the colour detector were eventually excluded from initial prototyping for the Cortex robot because of time constraints and on the basis 
 of a strategic decision to simplify the mechanism for the qualifying stages. However, the link to an open-source library very useful for controlling stepper motors 
@@ -56,7 +56,7 @@ is supplied in this document under the actuator section as well.
 
 ## Ball mechanism used in qualifying stages
 
-![alt text](mechanical/2018/BallGun_SRC/BallGunPrototype.jpg )
+![alt text](mechanical/2018/BallGun_SRC/Separation.png )
 
 This is the system that we used during qualifying stages which only makes use of a mobile plate and rounded edges on the sides and corners
 to guide the balls collected. The mobile plate was controlled by dynamixel and the corresponding code and application can be found under the 
