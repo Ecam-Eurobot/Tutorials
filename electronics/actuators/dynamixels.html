@@ -136,22 +136,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="electronics/actuators/dynamixels.html#introduction" id="introduction"><h1>Introduction</h1></a>
-<p>Les dynamixels sont des servomoteurs ayant un angle de fonctionnement de 300° répartis sur des valeurs allant de 0 à 1023.</p>
+                        <a class="header" href="electronics/actuators/dynamixels.html#description" id="description"><h1>Description</h1></a>
+<p>Dynamixels are servomotors with a working angle of 300° dispatched on values 0 to 1023.</p>
 <p><img src="electronics/actuators/Dynamixels_SRC/AngleFonctionnement.png" alt="alt text" /></p>
-<p>Ils ont aussi la particularité de pouvoir être utilisés en tant que moteur DC. Ils ont un très bon couple moteur ce qui les rend efficaces pour un grand nombre d’applications. Dans nos robots, nous les avons utilisés pour leurs actions à réaliser pendant la compétition, à savoir :</p>
+<p>They also have the particularity of beeing able to be used as DC motor. They have a very good motor torque what makes them efficient for a big number of applications. In our robots, we used them for the tasks the robots had to realise during the competition as :</p>
 <ul>
-<li>Trier des balles de différentes couleurs</li>
-<li>Déployer un bras servant à pousser un objet roulant</li>
-<li>Déployer une plateforme sur plusieurs étages afin de libérer des blocs cubiques</li>
-<li>Retenir ou non les blocs de chaque étage</li>
-<li>Actionner un engrenage servant à déplacer des blocs cubiques</li>
+<li>Sort balls of different colors</li>
+<li>Deploy an arm to push an object on wheels</li>
+<li>Deploy a platform on multiple floors to liberate cubic blocks</li>
+<li>Maintaining the blocks on every floor or not</li>
+<li>Actionate a gear to move blocks</li>
 </ul>
-<p>Le câblage se fait à l’aide de petits connecteurs 3pins.</p>
+<p>The cabling is made with JST 3 pin connectors from a servomotor to another.</p>
+<p>Here is a link on amazon to order some : https://www.amazon.fr/ensembles-Micro-connecteur-Fiche-150mm/dp/B01DU9OY40/ref=sr_1_2?ie=UTF8&amp;qid=1525997056&amp;sr=8-2&amp;keywords=jst+connecteur+3+pin&amp;dpID=51oVa4jux4L&amp;preST=<em>SY300_QL70</em>&amp;dpSrc=srch</p>
 <p><img src="electronics/actuators/Dynamixels_SRC/PinsConnections.png" alt="alt text" /></p>
-<p>Les dynamixels possèdent 2 emplacement pour ces connecteurs car il est possible de connecter plusieurs servomoteurs en série et de les contrôler avec un adressage. Ces adresses sont représentées par des ID uniques pour chaque dynamixel qu’il est possible de vérifier à l’aide du Dynamixel Wizard du logiciel Roboplus et d’une interface USB2Dynamixel.
-Grâce à ce logiciel, il est également possible de configurer les dynamixels (registres) dont, entre autre, le baudrate du servomoteur ainsi que d’accéder à toute une série d’informations temps réel comme la vitesse, la position, etc.</p>
-<a class="header" href="electronics/actuators/dynamixels.html#spécifications-techniques" id="spécifications-techniques"><h1>Spécifications techniques</h1></a>
+<p>The Dynamixels have 2 locations for these connectors because it is possible to connect several servomotors in series and to control them with an addressing. These adresses are represented by unique ID for every dynamixel and it is possible to check with the software Dynamixel Wizard of Roboplus and a USB2Dynamixel.</p>
+<p><img src="electronics/actuators/Dynamixels_SRC/USB2Dynamixel.png" alt="alt text" /></p>
+<p>Thanks to this software, it is also possible to configurate the dynamixels (registers) like, among others, the baudrate of the servomotor and also to access a serie of informations in real time like the speed, the position, etc.</p>
+<a class="header" href="electronics/actuators/dynamixels.html#specifications" id="specifications"><h1>Specifications</h1></a>
 <ul>
 <li>Weight : 53.5g (AX-12/AX-12+), 54.6g (AX-12A)</li>
 <li>Dimension : 32mm * 50mm * 40mm</li>
@@ -172,78 +174,80 @@ Grâce à ce logiciel, il est également possible de configurer les dynamixels (
 </ul>
 <a class="header" href="electronics/actuators/dynamixels.html#dynamixel-wizard" id="dynamixel-wizard"><h1>Dynamixel Wizard</h1></a>
 <ul>
-<li>Télécharger le logiciel RoboPlus sur le site www.robotis.com en allant dans Support&gt;Download&gt;Software&gt;Roboplus</li>
+<li>Download and install the software &quot;Roboplus&quot; on the website www.robotis.com when going in Support&gt;Download&gt;Software&gt;Roboplus</li>
 </ul>
 <p><img src="electronics/actuators/Dynamixels_SRC/DW_Roboplus.png" alt="alt text" /></p>
 <ul>
-<li>Lancer le logiciel et cliquer sur Dynamixel Wizard</li>
+<li>Launch the software and clic on Dynamixel Wizard</li>
 </ul>
 <p><img src="electronics/actuators/Dynamixels_SRC/DW_DynamixelWizard.png" alt="alt text" /></p>
 <ul>
-<li>Insérer l’interface USB2Dynamixel dans un port USB de l’ordinateur</li>
-<li>Brancher le connecteur 3 pins dans l’interface USB2Dynamixel (coté TTL) et dans le dynamixel à vérifier ou configurer</li>
-<li>Sélectionner « TTL » à l’aide du switch sur l’interface USB2Dynamixel</li>
-<li>Alimenter le dynamixel séparément dans sa plage de tension de fonctionnement (9-12V, recommandé 11,1V) à l’aide du 2eme port du dynamixel</li>
+<li>Insert the USB2Dynamixel in the USB port of the computer</li>
+<li>Connect the 3 pins JST connector in the USB2Dynamixel (TTL side) ansd the dynamixel to verifie or configure</li>
+<li>Select « TTL » with the switch on the USB2Dynamixel</li>
+<li>Supply the dynamixel separately in its working voltage (9-12V, recommanded 11,1V) with the second port of the dynamixel</li>
 </ul>
 <p><img src="electronics/actuators/Dynamixels_SRC/DW_USB2Dynamixel.png" alt="alt text" /></p>
 <ul>
-<li>Sélectionner le port de votre ordinateur auquel est branché l’USB2Dynamixel</li>
+<li>Select the port of your computer where the USB2Dynamixel is connected</li>
 </ul>
 <p><img src="electronics/actuators/Dynamixels_SRC/DW_Port.png" alt="alt text" /></p>
 <ul>
-<li>Cliquer ensuite sur « Ouvrir le port »</li>
+<li>Clic on &quot;Open Port&quot;</li>
 </ul>
 <p><img src="electronics/actuators/Dynamixels_SRC/DW_OuvrirLePort.png" alt="alt text" /></p>
 <ul>
-<li>Faire une recherche basique du dynamixel afin de trouver son ID</li>
+<li>Make a basic research of the dynamixel to find its ID</li>
 </ul>
 <ul>
 <li>
-<p>Il est également possible de faire des recherches plus avancées à d’autre baudrate dans le cas ou la recherche basique n’est pas concluante</p>
+<p>It is also possible to make advanced research on other baudrates in case of the basic research is not working</p>
 </li>
 <li>
-<p>Une fois le dynamixel trouvé, le sélectionner à gauche de la fenêtre.</p>
+<p>Once the dynamixel found, selct it on the left side of the window</p>
 </li>
 <li>
-<p>Le détail des informations du dynamixel s’affiche</p>
+<p>The details of the informations of the dynamixel appears</p>
 </li>
 <li>
-<p>Dans ce détail, il est possible de modifier la configuration du dynamixel comme par exemple son ID, sa vitesse de communication (baudrate), sa vitesse de fonctionnement, etc, ou encore de le contrôler en temps réel.</p>
+<p>in these details, it is possible to modify the configuration of the dynamixel like its ID, its communication speed (baudrate), its working speed, etc, or also to control it in real time.</p>
 </li>
 </ul>
-<a class="header" href="electronics/actuators/dynamixels.html#exemples-dutilisation" id="exemples-dutilisation"><h1>Exemples d’utilisation</h1></a>
-<p>Pour pouvoir utiliser les dynamixels, il est nécessaire au préalable de télécharger la librairie « AX_12A_servo_library » se trouvant sur github
-Il faudra ensuite l’extraire et la déplacer dans Documents/Arduino/libraries.</p>
-<p>Cette librairie possède 4 exemples d’utilisation du dynamixels :</p>
+<a class="header" href="electronics/actuators/dynamixels.html#examples-of-use" id="examples-of-use"><h1>Examples of use</h1></a>
+<p>To use the dynamixels, it is necessary to download first the library &quot;AX_12A_servo_library&quot; that you can find on the github of eurobot here : https://github.com/Ecam-Eurobot/Tutorials/tree/master/src/electronics/actuators/Dynamixels_SRC</p>
+<p>You'll have to extract it and place it in Documents/Arduino/libraries.</p>
+<p>To configure the dynamixels, we'll use the Arduino software app.</p>
+<p>This library possess 4 exemples of use of the dynamixel :</p>
 <ul>
-<li>Blink : exemple de contrôle de la led rouge se trouvant à l’arrière du dynamixel</li>
-<li>Move : exemple de contrôle du dynamixel en mode servomoteur en lui attribuant des positions</li>
-<li>EndlessTurn : utilisation du dynamixel en mode moteur DC (ou wheel mode)</li>
-<li>ReadRegister : sert à afficher le contenu des registres du dynamixel</li>
+<li>Blink : example of control of the red led you can find in the back of every dynamixel</li>
+<li>Move : example of control of the dynamixel in servomotor mode by giving it a position</li>
+<li>EndlessTurn : example of use in DC motor mode (or wheel mode)</li>
+<li>ReadRegister : usefull to dispaly the contents of the registers of the dynamixel</li>
 </ul>
-<p>Ces exemples se trouvent dans Fichier&gt;Exemples&gt;AX-12A.</p>
-<p>Après avoir sélectionner un des exemples, il faut inclure la librairie AX-12A sans déclarer un chemin spécifique car la librairie se trouve dans le dossier « libraries » du dossier « Arduino ».</p>
+<p>These examples are located in Fichier&gt;Exemples&gt;AX-12A on the Arduino app on your computer.</p>
+<p>After selecting one of the examples, you have to include the library AX-12A without declaring a specific path because the library is located in the fold &quot;libraries&quot; of the fold &quot;Arduino&quot;.</p>
 <p><img src="electronics/actuators/Dynamixels_SRC/Exemples_Include.png" alt="alt text" /></p>
-<p>Ensuite il suffit de configurer 3 lignes dans le code qui répondront aux besoins et à la configuration du dynamixel branché :</p>
-<p>#define DirectionPin  (10u)
+<p>After that you have to configure 3 lines in the code that respond to the needs of the configuration of the connected dynamixel you want to configure :</p>
+<pre><code>#define DirectionPin  (10u)
 #define BaudRate      (1000000ul)
-#define ID            (1u)</p>
-<p>DirectionPin sert à indiquer le sens de communication du dynamixel, 10u étant l’écriture dans les registres il n’est pas nécessaire de modifier sa valeur.</p>
-<p>BaudRate définit la vitesse de communication utilisée (et configurée préalablement à l’aide du Dynamixel Wizard).</p>
-<p>ID représente l’ID du dynamixel préalablement vérifiée ou configurée.</p>
-<a class="header" href="electronics/actuators/dynamixels.html#références" id="références"><h1>Références</h1></a>
+#define ID            (1u)
+</code></pre>
+<p>&quot;DirectionPin&quot; is used to indicate the communication direction of the dynamixel. 10u is for writing in the registers so you don't have to change the value.</p>
+<p>&quot;BaudRate&quot; defines the communication speed used ( and configurate before with the Dynamixel Wizard)</p>
+<p>&quot;ID&quot; represents the ID of the dynamixel that you checked or configured before for the addressing.</p>
+<a class="header" href="electronics/actuators/dynamixels.html#references" id="references"><h1>References</h1></a>
 <ul>
 <li>
-<p>e-manual détaillé de l’ensemble des gammes de dynamixel le AX-12A qui nous interesse ici : http://support.robotis.com/en/</p>
+<p>e-manual : http://support.robotis.com/en/</p>
 </li>
 <li>
-<p>vidéo youtube reprenant différentes étapes de l’utilasation du Dynamixel Wizard : https://www.youtube.com/watch?v=YJ9b68hx5Qc&amp;version=3&amp;hl=ko_KR</p>
+<p>youtube vidéo for all the steps of the use of the Dynamixel Wizard : https://www.youtube.com/watch?v=YJ9b68hx5Qc&amp;version=3&amp;hl=ko_KR</p>
 </li>
 <li>
-<p>site internet du fabricant : http://en.robotis.com</p>
+<p>website of the manufacturer : http://en.robotis.com</p>
 </li>
 <li>
-<p>récupération de la librairie AX-12A : https://github.com/ThingType/AX-12A-servo-library</p>
+<p>AX-12A library : https://github.com/ThingType/AX-12A-servo-library</p>
 </li>
 </ul>
 

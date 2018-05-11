@@ -136,7 +136,24 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <a class="header" href="electronics/actuators/actuators.html#introduction" id="introduction"><h1>Introduction</h1></a>
+<p>Dynamixels are servomotors with a working angle of 300° dispatched on values 0 to 1023.</p>
+<p><img src="electronics/actuators/Dynamixels_SRC/AngleFonctionnement.png" alt="alt text" /></p>
+<p>They also have the particularity of beeing able to be used as DC motor. They have a very good motor torque what makes them efficient for a big number of applications. In our robots, we used them for the tasks the robots had to realise during the competition as :</p>
+<ul>
+<li>Sort balls of different colors</li>
+<li>Deploy an arm to push an object on wheels</li>
+<li>Deploy a platform on multiple floors to liberate cubic blocks</li>
+<li>Maintaining the blocks on every floor or not</li>
+<li>Actionate a gear to move blocks</li>
+</ul>
+<p>The cabling is made with JST 3 pin connectors from a servomotor to another.</p>
+<p>Here is a link on amazon to order some : https://www.amazon.fr/ensembles-Micro-connecteur-Fiche-150mm/dp/B01DU9OY40/ref=sr_1_2?ie=UTF8&amp;qid=1525997056&amp;sr=8-2&amp;keywords=jst+connecteur+3+pin&amp;dpID=51oVa4jux4L&amp;preST=<em>SY300_QL70</em>&amp;dpSrc=srch</p>
+<p><img src="electronics/actuators/Dynamixels_SRC/PinsConnections.png" alt="alt text" /></p>
+<p>The Dynamixels have 2 locations for these connectors because it is possible to connect several servomotors in series and to control them with an addressing. These adresses are represented by unique ID for every dynamixel and it is possible to check with the software Dynamixel Wizard of Roboplus and a USB2Dynamixel.</p>
+<p><img src="electronics/actuators/Dynamixels_SRC/USB2Dynamixel.png" alt="alt text" /></p>
+<p>Thanks to this software, it is also possible to configurate the dynamixels (registers) like, among others, the baudrate of the servomotor and also to access a serie of informations in real time like the speed, the position, etc.</p>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
