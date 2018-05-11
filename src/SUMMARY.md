@@ -17,6 +17,7 @@
         - [Dynamixels](electronics/actuators/dynamixels.md)
     - [Sensors](electronics/sensors/sensors.md)
         - [Sonar](electronics/sensors/sonar.md)
+        - [Color Sensor](electronics/sensors/coloursensor.md)
     - [PCB Design](electronics/pcb/1_PCB_Design.md)
         - [Start board](electronics/pcb/2_Starting_Board.md)
         - [Motor board](electronics/pcb/3_Motor_Board.md)
