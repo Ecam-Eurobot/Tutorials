@@ -1,0 +1,295 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Packages - Ecam Eurobot</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="../../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li><a href="organization/organization.html"><strong aria-hidden="true">1.</strong> Organization</a></li><li><ol class="section"><li><a href="organization/github.html"><strong aria-hidden="true">1.1.</strong> GitHub</a></li><li><ol class="section"><li><a href="organization/gh-admin.html"><strong aria-hidden="true">1.1.1.</strong> Administration</a></li></ol></li><li><a href="organization/mdbook.html"><strong aria-hidden="true">1.2.</strong> mdBook</a></li></ol></li><li><a href="mechanical/mechanical.html"><strong aria-hidden="true">2.</strong> Mechanical</a></li><li><ol class="section"><li><a href="mechanical/fusion.html"><strong aria-hidden="true">2.1.</strong> 3D modeling with Fusion360</a></li><li><a href="mechanical/3d-print.html"><strong aria-hidden="true">2.2.</strong> 3D printing</a></li><li><a href="mechanical/mecanum.html"><strong aria-hidden="true">2.3.</strong> Mecanum wheels</a></li><li><a href="mechanical/2018/2018.html"><strong aria-hidden="true">2.4.</strong> 2018 specifics</a></li><li><ol class="section"><li><a href="mechanical/2018/bigRobot.html"><strong aria-hidden="true">2.4.1.</strong> Block mechanism</a></li><li><a href="mechanical/2018/balls.html"><strong aria-hidden="true">2.4.2.</strong> Ball mechanism</a></li></ol></li></ol></li><li><a href="electronics/electronics.html"><strong aria-hidden="true">3.</strong> Electronics</a></li><li><ol class="section"><li><a href="electronics/actuators/actuators.html"><strong aria-hidden="true">3.1.</strong> Actuators</a></li><li><ol class="section"><li><a href="electronics/actuators/dynamixels.html"><strong aria-hidden="true">3.1.1.</strong> Dynamixels</a></li></ol></li><li><a href="electronics/sensors/sensors.html"><strong aria-hidden="true">3.2.</strong> Sensors</a></li><li><ol class="section"><li><a href="electronics/sensors/sonar.html"><strong aria-hidden="true">3.2.1.</strong> Sonar</a></li></ol></li><li><a href="electronics/pcb/1_PCB_Design.html"><strong aria-hidden="true">3.3.</strong> PCB Design</a></li><li><ol class="section"><li><a href="electronics/pcb/2_Starting_Board.html"><strong aria-hidden="true">3.3.1.</strong> Start board</a></li><li><a href="electronics/pcb/3_Motor_Board.html"><strong aria-hidden="true">3.3.2.</strong> Motor board</a></li><li><a href="electronics/pcb/4_Com_Shield.html"><strong aria-hidden="true">3.3.3.</strong> Communication shield</a></li><li><a href="electronics/pcb/PowerSpply.html"><strong aria-hidden="true">3.3.4.</strong> Power supply board</a></li><li><a href="electronics/pcb/5_Appendix.html"><strong aria-hidden="true">3.3.5.</strong> Appendix</a></li></ol></li><li><a href="electronics/fpga.html"><strong aria-hidden="true">3.4.</strong> FPGA</a></li><li><a href="electronics/communication/communication.html"><strong aria-hidden="true">3.5.</strong> Communication</a></li><li><ol class="section"><li><a href="electronics/communication/i2c.html"><strong aria-hidden="true">3.5.1.</strong> I2C</a></li><li><a href="electronics/communication/spi.html"><strong aria-hidden="true">3.5.2.</strong> SPI</a></li><li><a href="electronics/communication/can.html"><strong aria-hidden="true">3.5.3.</strong> CAN</a></li></ol></li></ol></li><li><a href="software/software.html"><strong aria-hidden="true">4.</strong> Software</a></li><li><ol class="section"><li><a href="software/ros/ros.html"><strong aria-hidden="true">4.1.</strong> ROS</a></li><li><ol class="section"><li><a href="software/ros/install.html"><strong aria-hidden="true">4.1.1.</strong> Install</a></li><li><a href="software/ros/basics/basics.html"><strong aria-hidden="true">4.1.2.</strong> Basic concepts</a></li><li><ol class="section"><li><a href="software/ros/basics/workspace.html"><strong aria-hidden="true">4.1.2.1.</strong> Workspace setup</a></li><li><a href="software/ros/basics/packages.html"><strong aria-hidden="true">4.1.2.2.</strong> Packages</a></li><li><a href="software/ros/basics/pub.html"><strong aria-hidden="true">4.1.2.3.</strong> Publisher</a></li><li><a href="software/ros/basics/sub.html"><strong aria-hidden="true">4.1.2.4.</strong> Subscriber</a></li><li><a href="software/ros/basics/example.html"><strong aria-hidden="true">4.1.2.5.</strong> Example</a></li><li><a href="software/ros/basics/launch.html"><strong aria-hidden="true">4.1.2.6.</strong> Launchfiles</a></li><li><a href="software/ros/basics/params.html"><strong aria-hidden="true">4.1.2.7.</strong> ROS parameters</a></li></ol></li><li><a href="software/ros/rosserial.html"><strong aria-hidden="true">4.1.3.</strong> ROS and Arduino</a></li><li><ol class="section"><li><a href="software/ros/arduino/publisher.html"><strong aria-hidden="true">4.1.3.1.</strong> Publisher</a></li><li><a href="software/ros/arduino/subscriber.html"><strong aria-hidden="true">4.1.3.2.</strong> Subscriber</a></li></ol></li><li><a href="software/ros/advanced/advanced.html"><strong aria-hidden="true">4.1.4.</strong> Advanced concepts</a></li><li><ol class="section"><li><a href="software/ros/advanced/custom-msgs.html"><strong aria-hidden="true">4.1.4.1.</strong> Custom messages</a></li><li><a href="software/ros/advanced/model.html"><strong aria-hidden="true">4.1.4.2.</strong> Robot model</a></li><li><a href="software/ros/advanced/rviz.html"><strong aria-hidden="true">4.1.4.3.</strong> Rviz</a></li></ol></li><li><a href="software/ros/packages/packages.html"><strong aria-hidden="true">4.1.5.</strong> Useful packages</a></li><li><ol class="section"><li><a href="software/ros/packages/map.html"><strong aria-hidden="true">4.1.5.1.</strong> Map Server</a></li><li><a href="software/ros/packages/nav.html"><strong aria-hidden="true">4.1.5.2.</strong> Navigation stack</a></li></ol></li></ol></li><li><a href="software/image-processing.html"><strong aria-hidden="true">4.2.</strong> Image processing</a></li></ol></li><li><a href="robots/robots.html"><strong aria-hidden="true">5.</strong> Robots</a></li><li><ol class="section"><li><a href="robots/structure.html"><strong aria-hidden="true">5.1.</strong> Structure of folder</a></li><li><a href="robots/2018.html"><strong aria-hidden="true">5.2.</strong> 2018</a></li><li><ol class="section"><li><a href="robots/minus/minus.html"><strong aria-hidden="true">5.2.1.</strong> Minus (big robot)</a></li><li><ol class="section"><li><a href="robots/minus/architecture.html"><strong aria-hidden="true">5.2.1.1.</strong> Architecture</a></li><li><a href="robots/minus/packages.html" class="active"><strong aria-hidden="true">5.2.1.2.</strong> Packages</a></li><li><a href="robots/minus/howto.html"><strong aria-hidden="true">5.2.1.3.</strong> How to run the robot</a></li></ol></li></ol></li></ol></li><li><a href="graphic/graphic_chart.html">Appendix A: Graphic chart</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Ecam Eurobot</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="robots/minus/packages.html#packages" id="packages"><h1>Packages</h1></a>
+<a class="header" href="robots/minus/packages.html#differential-drive" id="differential-drive"><h2>Differential-drive</h2></a>
+<p>Having no time to implement ourselves, a library to manage the differential navigation, we look for an existing library compatible with ROS.</p>
+<p>This package provides some basic tools for interfacing a differential-drive robot with the ROS navigation stack.</p>
+<p><img src="http://wiki.ros.org/differential_drive?action=AttachFile&amp;do=get&amp;target=differential_drive_overview.png" alt="Schema" /></p>
+<p>The library therefore needed only 2 input information, the return of the encoders of the left wheel (<code>lwheel</code>) and right (<code>rwheel</code>).
+At the exit, we received the speeds of the 2 wheels, <code>lmotor</code> and <code>rmotor</code>.</p>
+<a class="header" href="robots/minus/packages.html#setting-up-the-differential-drive-package-pid-controller" id="setting-up-the-differential-drive-package-pid-controller"><h4>Setting up the differential-drive package PID controller</h4></a>
+<p>The configuration of the package is done via a launchfile containing all the necessary parameters such as <code>Kp</code>, <code>Ki</code>, <code>Kd</code>, etc.</p>
+<p>This configuration is in the file
+<code>ros_packages/differential_driver/launch/minus.launch</code></p>
+<pre><code class="language-xml">&lt;launch&gt;
+  &lt;rosparam param=&quot;ticks_meter&quot;&gt;16400&lt;/rosparam&gt;	
+  &lt;node pkg=&quot;differential_drive&quot; type=&quot;diff_tf.py&quot; name=&quot;diff_tf&quot;&gt;
+      &lt;rosparam param=&quot;base_width&quot;&gt;0.353&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_min&quot;&gt;-1000000&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_max&quot;&gt;1000000&lt;/rosparam&gt;
+  &lt;/node&gt;
+  &lt;node pkg=&quot;differential_drive&quot; type=&quot;pid_velocity&quot; name=&quot;lpid_velocity&quot;&gt;
+      &lt;remap from=&quot;wheel&quot; to=&quot;lwheel&quot;/&gt;
+      &lt;remap from=&quot;motor_cmd&quot; to=&quot;lmotor_cmd&quot;/&gt;
+      &lt;remap from=&quot;wheel_vtarget&quot; to=&quot;lwheel_vtarget&quot;/&gt;
+      &lt;remap from=&quot;wheel_vel&quot; to=&quot;lwheel_vel&quot;/&gt;
+      &lt;rosparam param=&quot;Kp&quot;&gt;25&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;Ki&quot;&gt;10&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;Kd&quot;&gt;0&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;out_min&quot;&gt;-254&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;out_max&quot;&gt;254&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;rate&quot;&gt;20&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;timeout_ticks&quot;&gt;10&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;rolling_pts&quot;&gt;5&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_min&quot;&gt;-1000000&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_max&quot;&gt;1000000&lt;/rosparam&gt;
+  &lt;/node&gt;
+  &lt;node pkg=&quot;differential_drive&quot; type=&quot;pid_velocity&quot; name=&quot;rpid_velocity&quot;&gt;
+      &lt;remap from=&quot;wheel&quot; to=&quot;rwheel&quot;/&gt;
+      &lt;remap from=&quot;motor_cmd&quot; to=&quot;rmotor_cmd&quot;/&gt;
+      &lt;remap from=&quot;wheel_vtarget&quot; to=&quot;rwheel_vtarget&quot;/&gt;
+      &lt;remap from=&quot;wheel_vel&quot; to=&quot;rwheel_vel&quot;/&gt;
+      &lt;rosparam param=&quot;Kp&quot;&gt;25&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;Ki&quot;&gt;10&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;Kd&quot;&gt;0&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;out_min&quot;&gt;-254&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;out_max&quot;&gt;254&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;rate&quot;&gt;20&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;timeout_ticks&quot;&gt;10&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;rolling_pts&quot;&gt;5&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_min&quot;&gt;-1000000&lt;/rosparam&gt;
+      &lt;rosparam param=&quot;encoder_max&quot;&gt;1000000&lt;/rosparam&gt;
+  &lt;/node&gt;
+
+  &lt;node pkg=&quot;differential_drive&quot; type=&quot;twist_to_motors.py&quot; name=&quot;twist_to_motors&quot; output=&quot;screen&quot;&gt;
+    &lt;remap from=&quot;twist&quot; to=&quot;cmd_vel&quot;/&gt;
+    &lt;rosparam param=&quot;base_width&quot;&gt;0.353&lt;/rosparam&gt;
+    &lt;rosparam param=&quot;rate&quot;&gt;20&lt;/rosparam&gt;
+  &lt;/node&gt;
+&lt;/launch&gt;
+</code></pre>
+<p>This launch file assumes your robot:</p>
+<ul>
+<li>
+<p>Takes commands for the wheel power on <code>/lmotor_cmd</code> and <code>/rmotor_cmd</code></p>
+</li>
+<li>
+<p>Publishes the wheel encoder on <code>/lwheel</code> and <code>/rwheel</code></p>
+</li>
+<li>
+<p>The base_width parameter should be set to the wheel spacing of your robot.</p>
+</li>
+</ul>
+<p>If this is not the case, you can change the mapping in the launch file.</p>
+<p>As long as you meet these conditions, and the PID values are sane for your robot, you should be able to drive the robot.</p>
+<blockquote>
+<p>For more information about what is a <a href="software/ros/basics/launch.html">launchfile</a>.
+A method for optimizing the PID parameters and calibrating the tick per meter is avalaible <a href="http://wiki.ros.org/differential_drive/tutorials/setup">there</a>.</p>
+</blockquote>
+<a class="header" href="robots/minus/packages.html#sensors" id="sensors"><h2>Sensors</h2></a>
+<p>This package allows us to manage the obstacle detection thanks to the data sent by the ultrasonic sensors connected to the arduino and the action to be performed.</p>
+<p>The arduino publishes on various topics (<code>ultrasound_x</code>), the data it receives from the sensors.</p>
+<p>The package reads the values and depending on the position of the robot (<code>move_base / feedback</code>) and the values sends a stop message on a topic (<code>obstacle / stop</code>).</p>
+<blockquote>
+<p>For more information about what is a <a href="software/ros/basics/pub.html">publisher</a>, a <a href="software/ros/basics/sub.html">subscriber</a> and <a href="software/ros/arduino/publisher.html">arduino with ros</a>.</p>
+</blockquote>
+<a class="header" href="robots/minus/packages.html#strategy" id="strategy"><h2>Strategy</h2></a>
+<p>In this package, we declare the strategy used by each robot in parameter files.</p>
+<ul>
+<li><strong>initial.yaml</strong>: contains the position of the robots at the beginning of the game based on whether we are the red or green team.</li>
+<li><strong>game.yaml</strong>: Contains game-specific information such as the duration of a game.</li>
+<li><strong>minus/cortex_actions.yaml</strong>: contains the different actions that the robot must perform.</li>
+</ul>
+<blockquote>
+<p>For more information about what is a <a href="software/ros/basics/params.html">parameter file</a>.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="robots/minus/architecture.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="robots/minus/howto.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="robots/minus/architecture.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="robots/minus/howto.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
