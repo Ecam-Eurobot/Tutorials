@@ -42,8 +42,8 @@
     - [Image processing](software/image-processing.md)
 
 - [Robots](robots/robots.md)
-    - [Structure of folder](robots/structure.md)
     - [2018](robots/2018.md)
+        - [Structure of folder](robots/structure.md)
         - [Minus (big robot)](robots/minus/minus.md)
             - [Architecture](robots/minus/architecture.md)
             - [Packages](robots/minus/packages.md)
