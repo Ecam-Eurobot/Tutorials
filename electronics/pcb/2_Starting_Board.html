@@ -293,7 +293,7 @@ while not rospy.is_shutdown():
     pass
 </code></pre>
 <p>Below, you have the circuit to implement  between the board and the raspberry running ROS</p>
-<p><a href="electronics/pcb/pictures/Start_F.JPG">Start PCB Front</a></p>
+<p><a href="electronics/pcb/pictures/Start_F.jpg">Start PCB Front</a></p>
 <ul>
 <li>The two couples of black and red wires are the 5V</li>
 <li>The white wire is connected to the pin 12 on the raspberry and send startup interrupt information</li>
@@ -306,10 +306,10 @@ with an echo on this topic) and the modification of the switch place sets the te
 sequence. It was not used in 2018 due to a lack of time but they are already on the PCB for a future robot.</p>
 <p>Finally, in the real implementation on ROS, the pin configuration is placed in a .yaml file gathering all information required about raspberry pinout.
 Then, the code used to get pin number is</p>
-<pre><code class="language-yaml">rospy.get_param(&quot;/path/name&quot;)
+<pre><code class="language-python">rospy.get_param(&quot;/path/name&quot;)
 </code></pre>
-<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/differential_driver/ros_packages/strategy/src/startup_conf.py">Github link for code</a>
---- <a href="https://">OneDrive link for Altium project</a> ---</p>
+<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/differential_driver/ros_packages/strategy/src/startup_conf.py">Github link for code</a></p>
+<p>--- <a href="https://">OneDrive link for Altium project</a></p>
 
                     </main>
 

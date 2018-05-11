@@ -1474,7 +1474,7 @@ while not rospy.is_shutdown():
     pass
 </code></pre>
 <p>Below, you have the circuit to implement  between the board and the raspberry running ROS</p>
-<p><a href="electronics/pcb/pictures/Start_F.JPG">Start PCB Front</a></p>
+<p><a href="electronics/pcb/pictures/Start_F.jpg">Start PCB Front</a></p>
 <ul>
 <li>The two couples of black and red wires are the 5V</li>
 <li>The white wire is connected to the pin 12 on the raspberry and send startup interrupt information</li>
@@ -1487,10 +1487,10 @@ with an echo on this topic) and the modification of the switch place sets the te
 sequence. It was not used in 2018 due to a lack of time but they are already on the PCB for a future robot.</p>
 <p>Finally, in the real implementation on ROS, the pin configuration is placed in a .yaml file gathering all information required about raspberry pinout.
 Then, the code used to get pin number is</p>
-<pre><code class="language-yaml">rospy.get_param(&quot;/path/name&quot;)
+<pre><code class="language-python">rospy.get_param(&quot;/path/name&quot;)
 </code></pre>
-<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/differential_driver/ros_packages/strategy/src/startup_conf.py">Github link for code</a>
---- <a href="https://">OneDrive link for Altium project</a> ---</p>
+<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/differential_driver/ros_packages/strategy/src/startup_conf.py">Github link for code</a></p>
+<p>--- <a href="https://">OneDrive link for Altium project</a></p>
 <blockquote>
 <p><em>last updated on May 11, 2018</em></p>
 </blockquote>
@@ -1703,8 +1703,8 @@ void receiveEvent(int howMany) {
 <p>If you understood the tutorial with arduino UNO and want to use the ATmega328, you just have to use PCB with connection show below and implement the
 code exposed above on the ATmega328. This mocrocontroller is programmed with the ISP Programmer explains in the relative section.</p>
 <p>--- PIC OF THE CIRCUIT --- Motor board + H Bridge + MOTOR - DRAW CONNECTION --- After robot's deconstruction</p>
-<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/tree/arduino-pid/arduino">Github link for code</a>
---- <a href="https://">OneDrive link for Altium project</a> ---</p>
+<p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/tree/arduino-pid/arduino">Github link for code</a></p>
+<p>--- <a href="https://">OneDrive link for Altium project</a></p>
 <a class="header" href="print.html#arduino-communication-shield---spi-broker" id="arduino-communication-shield---spi-broker"><h2>Arduino Communication Shield - SPI Broker</h2></a>
 <blockquote>
 <p><em>last updated on May 11, 2018</em></p>
@@ -1714,9 +1714,9 @@ arduino UNO and this arduino handle the communication with the four individual m
 simply all SPI bus connections. The only role of the PCB is deleting redundancy in the SPI bus connections and consequently facilitating the SPI bus
 execution. As the PCB is really simple, it implements a bus SPI connection, it requires no explanation.</p>
 <p>The utility of this PCB concerns SPI and Ros Serial, you will find more explanation about these subjects in the related section.</p>
-<p><a href="electronics/pcb/pictures/Broker_F.JPG">Broker Front View</a></p>
-<p><a href="electronics/pcb/pictures/Broker_T.JPG">Broker Top View</a></p>
-<p>--- <a href="https://">OneDrive link for Altium project</a> --</p>
+<p><a href="electronics/pcb/pictures/Broker_F.jpg">Broker Front View</a></p>
+<p><a href="electronics/pcb/pictures/Broker_T.jpg">Broker Top View</a></p>
+<p>--- <a href="https://">OneDrive link for Altium project</a></p>
 <a class="header" href="print.html#if-we-had-to-redo-it" id="if-we-had-to-redo-it"><h2>If we had to redo it</h2></a>
 <blockquote>
 <p><em>last updated on May 11, 2018</em></p>
@@ -1734,8 +1734,8 @@ have a proper and reliable board. Moreover, try to reach this step as soon as po
 reliable enough. Opposite to the JST, disconnection is too easy. We really  advise against its use. They were the source of a lot of problems. About the SPI connector (10 pins shrouded header) it was not strong enough. The contact
 failure brought a lot of problems in the communication between ROS  serial and ATmega.</p>
 <p>In the two situations, we advise against the use of these two types of connector, there are a lot of alternative solutions.</p>
-<p><img src="electronics/pcb/pictures/JST_Connector.JPG" alt="JST connector" /></p>
-<p><img src="electronics/pcb/pictures/10Pins_shroudedHeaders.JPG" alt="10 pins shrouded headers" /></p>
+<p><img src="electronics/pcb/pictures/JST_Connector.jpg" alt="JST connector" /></p>
+<p><img src="electronics/pcb/pictures/10Pins_shroudedHeaders.jpg" alt="10 pins shrouded headers" /></p>
 <a class="header" href="print.html#fpga" id="fpga"><h1>FPGA</h1></a>
 <a class="header" href="print.html#a1-introduction" id="a1-introduction"><h2>1 INTRODUCTION</h2></a>
 <p>The protocol that we will use is called Serial Peripheral Interface (SPI). It is a synchronous full-duplex serial interface and is commonly used to communicate with on-board peripherals such as EEPROM, FLASH memory, A/D converters, temperature sensors, or in our case a Field Programmable Gate Array (FPGA).
