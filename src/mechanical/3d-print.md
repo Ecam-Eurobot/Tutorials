@@ -57,7 +57,8 @@ A general advice is to read as many reviews as possible and to try to choses a p
 
 The Anet company for example is very popular brand that sells versions of open source printers.
 The are close to the cheapest you can find, but have very decent quality and high liability.
-Hereby lots of people have one and you can find tones of parts on [Thingiverse AnetA8](https://www.thingiverse.com/search/page:1?q=Anet+A8&sa=&dwh=525af4b8e015a6f) to upgrade their models.
+Hereby lots of people have one and you can find tones of parts on
+[Thingiverse AnetA8](https://www.thingiverse.com/search/page:1?q=Anet+A8&sa=&dwh=525af4b8e015a6f) to upgrade their models.
 
 Other companies like FLSUN sale some of the same open source models (prusa i3) a like more expensive but are less reliable and upgrade parts are pretty difficult to find.
 
