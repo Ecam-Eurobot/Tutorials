@@ -1,4 +1,7 @@
-# FPGA 
+# FPGA
+
+
+## A. FPGA ##
  
  ## 1.FPGA: What is it? ##
 **Field Programmable Gate Array** - Programmable Gate System These are programmable (or rather reconfigurable) integrated circuits
@@ -8,7 +11,7 @@ Either to simulate a circuit to validate it before silicon etching
 Either to implement a complete system, System on Chip (SoC)
 By using dynamic reconfiguration, this system can become adaptive as needed (acceleration of selected features).
 
-### 1.1. Introduction:### (oussema )
+### 1.1. Introduction:### 
 FPGAs consist of a matrix of programmable logic blocks surrounded by programmable output input blocks. The whole is connected by a programmable interconnection network.
 FPGAs are distinct from other programmable circuit families while offering the highest level of logical integration.
 
@@ -19,7 +22,7 @@ In column.
 Seas of doors.
 Hierarchical PLDs.
 
-![z](img/electronics/fpga/Image9.img)
+ ![z](img/electronics/fpga/image9.png)
   ### 1.2.FPGA structure  ###                  
   
  The specifications of an FPGA often include the number of configurable logic blocks, the number of logic blocks of frozen functions such as multipliers and the size of the memory resources such as the embedded RAM block. An FPGA integrated circuit is composed of several other elements, but these are typically the most important when it comes to choosing and comparing FPGAs for a specific application.
@@ -27,7 +30,7 @@ Hierarchical PLDs.
 Configurable logic blocks (CLBs) are the basic logical unit of an FPGA. Sometimes called "slices" or "logical cells", logical blocks consist of two parts: flip-flops and correspondence tables (LUTs). The way flip-flops and LUT lookup tables are assembled differs depending on the types of FPGAs, so it's important to understand their features.  
 
 
-  ![z](img/electronics/fpga/Image10.img) 
+  ![z](img/electronics/fpga/image10.png)
   
   
                                              
@@ -39,7 +42,7 @@ One of the very interesting things about FPGAs is that while you are designing t
 
  FPGA continues to dominate as the evolution of high-level tools allows engineers and scientists to enjoy the benefits of reprogrammable circuits, regardless of their level of experience. For more information on using FPGAs in different industries and applications    
 
-## SPI ## 
+## B.SPI ## 
  
 ## 1 INTRODUCTION ## 
 The protocol that we will use is called Serial Peripheral Interface (SPI). It is a synchronous full-duplex serial interface and is commonly used to communicate with on-board peripherals such as EEPROM, FLASH memory, A/D converters, temperature sensors, or in our case a Field Programmable Gate Array (FPGA).
