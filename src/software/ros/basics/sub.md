@@ -14,7 +14,7 @@ sudo chmod +x listener.py
 ```
 
 ### Add the following code
-```
+```python
 import rospy
 from std_msgs.msg import String
 

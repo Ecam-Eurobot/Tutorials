@@ -57,8 +57,8 @@ rosparam set /motors/front/left 6.0
 It is often the case that your nodes will have to access the parameter server during start up to retrieve configuration information, or set a parameter value. This can be done quite easily in Python, to set a parameter use:
 
 ```python
-rospy.param_set(/motors/front/left, 6.0)
-rospy.param_get(/motors/front/left)
+rospy.set_param(/motors/front/left, 6.0)
+rospy.get_param(/motors/front/left)
 ```
 
 
@@ -68,3 +68,34 @@ The final source where you may need to access the parameter server is from a lau
 ```yaml
 <param name="/motors/front/left" value="6.0"/>
 ```
+
+## Parameters files
+
+We can also create a file containing all the parameters of the project. The file is a yaml file.
+
+```yaml
+start:
+    cortex:
+        green:
+            position:
+                x: 0.1
+                y: -0.50
+                orientation: 0
+        red:
+            position:
+                x: 2.90
+                y: -0.50
+                orientation: 0
+    minus:
+        green:
+            position:
+                x: 0.5
+                y: -0.85
+                orientation: 0.0
+        red:
+            position:
+                x: 2.3
+                y: -0.9
+                orientation: 3.14159
+```
+The parameters will be accessible via a dictionary in python.

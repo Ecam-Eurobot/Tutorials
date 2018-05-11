@@ -1,18 +1,15 @@
 # Introduction
-ROS or Robot Operating Systems is an open source framework designed for designing robots.
-ROS is commonly installed upon a Linux operating system.
-There are different ROS versions:
-* Lunar (Latest)
-* Kinetic (LTS)
-* Jade
-* Indigo
-* ...
 
-The ROS distribution we're using for Eurobot is the 'Kinetic' versions.
+This book contains learning ressources and tutorials about many of the technologies 
+we used for our participation(s) in the Eurobot contests.
 
-What's great about ROS, it's that there is an ever growing community that is sharing their code & projects of robotic machines. This is great because there are many build-in/downloadable libraries ready to use and the end user doesn't need to reinvent the wheel for classic robotic manipulations, like for example:
-* Drivers to read/write to sensors
-* Robotic algorithms (navigation, interpret sensor data, object manipulation)
-* ...
+The [Eurobot contest](http://www.eurobot.org/) is an international amateur robotics contest.
+The objective is to build an autonomous robot that needs to accomplish a given set of tasks, earning you points.
 
-In this section we will go over the basic concepts of ROS, the actual installation and the realisation of a project from scratch.
+Through this book, we hope to be able to transfer the knowledge and experience we have acquired during our participation to 
+the team that will participate next year. Our hope is that over the years, this ressource will grow with each participation
+to become a huge source of information for anyone that wants to participate in the contest.
+
+# 2018
+
+![Participants of 2018](img/2018.jpg)

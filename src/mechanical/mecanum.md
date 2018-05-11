@@ -7,7 +7,7 @@ When four mecanum wheels are used together, we can achieve a net resulting direc
 
 
 ## Assembly
-### Wheel adapter;
+### Wheel adapter
 To mount the wheels onto the motors, we need to use an adapter.
 Due to an error in our order, we didn't receive the correct adapters and the ones we received didn't fit on the wheels.
 

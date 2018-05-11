@@ -15,7 +15,7 @@ sudo chmod +x talker.py
 ```
 
 ### Add the following code
-```
+```python
 import rospy
 from std_msgs.msg import String
 

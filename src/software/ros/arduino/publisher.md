@@ -2,7 +2,7 @@
 
 To use ROS in an Arduino script you first have to include some libraries :
 
-```
+```cpp
 #include <ros.h>
 #include <std_msgs/Type.h>
 ```
@@ -10,17 +10,17 @@ To use ROS in an Arduino script you first have to include some libraries :
 You have to replace «Type» with the type of the std message you are using. Here are the different types of std_msgs : <http://wiki.ros.org/std_msgs>.
 
 You can also use different kind of messages. For instance the ultrasound sensors use :
-```
+```cpp
 #include <sensor_msgs/Range.h>
 ```
 
 Then you have to start a ROS node (takes care of serial port communications, allows to create publishers and subscribers) with this line :
-```
+```cpp
 ros::NodeHandle nh;
 ```
 
 You can now create a message object that you will later fill with data and this is the message you will finally publish :
-```
+```cpp
 std_msgs::String msg;
 ```
 
@@ -29,24 +29,24 @@ where msg is the name of the object. And of course you can choose the type of th
 
 Then you have to choose if you want to create a publisher, a subscriber or even both.
 
-To create a publisher
-```
+To create a publisher :
+```cpp
 ros::Publisher chatter("chatter", &msg);
 ```
 
 This tells that we are going to be publishing a message of the type of the msg variable (with std_msgs::String type) on the topic «chatter». This lets the master tell any nodes listening on «chatter» that we are going to publish data on that topic.
 
 You can now add lines in the void setup() of the Arduino script. You first initialize the node :
-```
+```cpp
 nh.initNode()
 ```
 Next, the following call connects to the master to publicize that the node will be publishing messages on the given topic :
-```
+```cpp
 nh.advertise(chatter);
 ```
 
 So finally this is what the void setup() in your Arduino code should look like :
-```
+```cpp
 void setup()
 {
    nh.initNode();
@@ -54,13 +54,13 @@ void setup()
 }
 ```
 To fill the message object with the data you just have to do this :
-```
-msg.data = hello
+```cpp
+msg.data = hello;
 ```
 where hello is the data you put in your message and hello must have the same type as the msg variable.
 
 You can then publish you message on the topic. To do so you can either publish it once or continually in the void loop() of your Arduino code like this :
-```
+```cpp
 
 void loop()
 {
@@ -68,10 +68,13 @@ void loop()
 }
 ```
 
-Finally you have to add a last line of code in the loop to will call all the callbacks waiting to be called at that point in time.
+Finally you have to add a last line of code in the loop that will call all the callbacks waiting to be called at that point in time :
+```cpp
+nh.spinOnce();
+```
 
 Now that you know how each part of the code works you can test a «Hello World» example available on the wiki.ros.org website <http://wiki.ros.org/rosserial_arduino/Tutorials/Hello%20World> :
-```
+```cpp
 /*
  * rosserial Publisher Example
  * Prints "hello world!"
@@ -103,7 +106,7 @@ void loop()
   delay(1000);
 }
 ```
-You have to upload this code on the Arduino board before connecting it to the Raspberry starting the test on ROS.
+You have to upload this code on the Arduino board before connecting it to the Raspberry and before starting the test on ROS.
 
 
 # Test on a Raspberry #
