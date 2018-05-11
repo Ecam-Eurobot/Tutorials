@@ -1,6 +1,6 @@
 # Architecture
 
-![Architecture](/img/robots/architecture.png)
+![Architecture](img/robots/architecture.PNG)
 
 There is a raspberry master who talks to the arduinos via the serial port thanks to the `rosserial` library.
 
