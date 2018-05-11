@@ -135,7 +135,7 @@ We calibrated these positions using the angle diagrams supplied in the data shee
 
 ## Schematic block Diagram
 
-![alt text](mechanical/2018/BallGun_SRC/SchemaBlock.png )
+![alt text](mechanical/2018/BallGun_SRC/schemaBlock.png )
 
 The communication between the ROS board (Rasberry pi with ROS installed) and the Arduino Uno board that controls the tasks of the Cortex robot takes place over
 a USB serial communication better known as ROSserial. The concepts behind ROSserial concept are explored in detail in the section Software of this document. I
