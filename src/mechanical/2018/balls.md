@@ -42,7 +42,7 @@ As you can see here we have the entry point and the colour sensor. How the colou
 
 ## The mobile plate
 
-![alt text](mechanical/2018/BallGun_SRC/purifier.png )
+![alt text](mechanical/2018/BallGun_SRC/Purifier.png )
 
 Control of the mobile plate was done with a dynamixel AX-12A. 
 
