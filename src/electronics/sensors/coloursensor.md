@@ -19,17 +19,20 @@ More information on this colour sensor can be found here
 ## Assembly
 
 ### On the Flora:
-
+```
 3.3v -> 3v (red wire)
 GND -> GND (black wire)
 SDA -> SDA (white wire) 
 SCL -> SCL (green wire)
+```
 
 ### On the Arduino:
+```
 Connect SCL    to analog 5
 Connect SDA    to analog 4
 Connect VDD    to 3.3V DC
 Connect GROUND to common ground
+```
 
 ## The library
 To start working with this sensor it is advised to start by downloading the Arduino library from the github link provided in the references and install
@@ -111,7 +114,7 @@ void loop() {
 After creating and setting up the colour sensor, we need to first set the upper and lower RGB ranges of the goal colour we want to detect. As we know,
 we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours 
 are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:
-```
+```cpp
   uint16_t clear, red, green, blue;
   uint16_t upperrangeG[3] = {100, 153, 71};
   uint16_t lowerrangeG[3] = {50, 104, 52};
@@ -120,7 +123,7 @@ are not detected instead of our goal colour. Here is the definition of the range
 ```
 
 Then we need to calculate the RGB colours between 0 and 255:
-```
+```cpp
   // Figure out some basic hex code for visualization
   uint32_t sum = clear;
   float r, g, b;
@@ -136,7 +139,7 @@ Then we need to calculate the RGB colours between 0 and 255:
 This program prints the RGB values of all colours detected by the sensor but will print "Green" or "Orange" if the colour detected is found within
 the specified range limits.
 
-```
+```cpp
  if((r < upperrangeG[0] && g < upperrangeG[1] && b < upperrangeG[2]) || (r > lowerrangeG[0] && g > lowerrangeG[1] && b > lowerrangeG[2])){
     delay(50);
     Serial.print("Green");
