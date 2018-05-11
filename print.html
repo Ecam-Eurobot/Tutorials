@@ -1436,6 +1436,12 @@ First the master sends this command, and ignores the value returned,then the mas
 <p>The protocol leaves some room for improvement. It can be made more efficient by implementing continuous commands. Here the master issues a <em>read</em> or <em>write register start</em> command, but keeps sending sets of 4-bytes until it has enough. Along similar lines one could implement commands to access attached memory.</p>
 <a class="header" href="print.html#a7-messages-exchange-with-arduino-as-master" id="a7-messages-exchange-with-arduino-as-master"><h2>7. MESSAGES EXCHANGE WITH ARDUINO AS MASTER</h2></a>
 <p>Again, we’ll use the support library for the serial peripheral interface. The code shown below was tested on a 3.3 Volt Arduino UNO R3 connected to FPGA implementation.</p>
+<a class="header" href="print.html#this-section-aims-to-show-how-different-communication-techniques-have-been-implemented" id="this-section-aims-to-show-how-different-communication-techniques-have-been-implemented"><h2>This section aims to show how different communication techniques have been implemented</h2></a>
+<a class="header" href="print.html#i2c" id="i2c"><h1>I2C</h1></a>
+<blockquote>
+<p><em>last updated on May 10, 2018</em></p>
+</blockquote>
+<p>The 2017 team had some problems with this bus of data. After some tests, we decided not to use the I2C as a our communication system. Maybe next year ...</p>
 <a class="header" href="print.html#serial-peripheral-interface-spi" id="serial-peripheral-interface-spi"><h1>Serial Peripheral Interface (SPI)</h1></a>
 <blockquote>
 <p><em>last updated on May 10, 2018</em></p>
@@ -1586,9 +1592,33 @@ switch (mySPI.command) {
 }
 </code></pre>
 <a class="header" href="print.html#troubleshooting" id="troubleshooting"><h3>Troubleshooting</h3></a>
+<blockquote>
+<p>Patched but not fixed</p>
+</blockquote>
 <a class="header" href="print.html#a1-problem-between-serial-port-rosserial-and-spi-bus" id="a1-problem-between-serial-port-rosserial-and-spi-bus"><h5>1. Problem between serial port (ROSSERIAL) and SPI bus</h5></a>
+<p>There is a competition between Rosserial and the SPI since both use the serial bus. when one ROS sends a data via the serial port, the communication SPI is interrupted.</p>
+<p>Patch : simply initialize the SPI communication before each data transfer</p>
+<pre><code class="language-c">void message_to_FR( const std_msgs::Float32 &amp; toggle_msg){
+    x.val = toggle_msg.data;
+    connFR.initialize();
+    connFR.writeData(0x10, 0x04, x.b);
+}
+</code></pre>
 <a class="header" href="print.html#a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously" id="a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously"><h5>2. sometimes the slave update the value of a register with the value received previously</h5></a>
+<p>we observed that sometimes the received data are updated with a delay of ONE communication. The problem is that if the time between two communications is long, there will be latency before the update in the registry.</p>
+<p>Patch : The data is sent by ROS every 50ms even if it is not changed (see on <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/ros_packages/mecanum/src/motor_sim.py">motor_sim.py</a>)</p>
 <a class="header" href="print.html#a3-changing-the-values-of-a-register-when-reading-another-register" id="a3-changing-the-values-of-a-register-when-reading-another-register"><h5>3. Changing the values of a register when reading another register</h5></a>
+<p>When we want to read the return of a slave encoder we send a series of null bytes after the address byte to receive the value. But these null values are misinterpreted and the engine speed drops to zero. Probably from a coding error.</p>
+<p>Patch : We send velocity value instead of null bytes. (just using during the Eurobot sprint)</p>
+<a class="header" href="print.html#just-for-curious" id="just-for-curious"><h1>Just for curious.</h1></a>
+<p><a href="https://github.com/Sellto/SPIandROS_HelloWord">https://github.com/Sellto/SPIandROS_HelloWord</a></p>
+<p>Three simples scripts to train you with ours SPI objects and with or without rosserial communication.</p>
+<p>Decription of the situation :</p>
+<ul>
+<li>The two slaves has a LED connected to pin 4 whose state is modifiable by a SPI register.</li>
+<li>The master is connected to ROS which controls the flashing speed of each led.</li>
+</ul>
+<p>Video-Tuto : ASAP</p>
 <a class="header" href="print.html#references-1" id="references-1"><h1>References</h1></a>
 <p><a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus">https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus</a></p>
 <a class="header" href="print.html#why-using-canbus-on-the-robots-and-how-to-implement-it" id="why-using-canbus-on-the-robots-and-how-to-implement-it"><h1>Why using CANBus on the robots and how to implement it</h1></a>

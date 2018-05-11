@@ -286,9 +286,33 @@ switch (mySPI.command) {
 }
 </code></pre>
 <a class="header" href="electronics/communication/spi.html#troubleshooting" id="troubleshooting"><h3>Troubleshooting</h3></a>
+<blockquote>
+<p>Patched but not fixed</p>
+</blockquote>
 <a class="header" href="electronics/communication/spi.html#a1-problem-between-serial-port-rosserial-and-spi-bus" id="a1-problem-between-serial-port-rosserial-and-spi-bus"><h5>1. Problem between serial port (ROSSERIAL) and SPI bus</h5></a>
+<p>There is a competition between Rosserial and the SPI since both use the serial bus. when one ROS sends a data via the serial port, the communication SPI is interrupted.</p>
+<p>Patch : simply initialize the SPI communication before each data transfer</p>
+<pre><code class="language-c">void message_to_FR( const std_msgs::Float32 &amp; toggle_msg){
+    x.val = toggle_msg.data;
+    connFR.initialize();
+    connFR.writeData(0x10, 0x04, x.b);
+}
+</code></pre>
 <a class="header" href="electronics/communication/spi.html#a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously" id="a2-sometimes-the-slave-update-the-value-of-a-register-with-the-value-received-previously"><h5>2. sometimes the slave update the value of a register with the value received previously</h5></a>
+<p>we observed that sometimes the received data are updated with a delay of ONE communication. The problem is that if the time between two communications is long, there will be latency before the update in the registry.</p>
+<p>Patch : The data is sent by ROS every 50ms even if it is not changed (see on <a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/master/ros_packages/mecanum/src/motor_sim.py">motor_sim.py</a>)</p>
 <a class="header" href="electronics/communication/spi.html#a3-changing-the-values-of-a-register-when-reading-another-register" id="a3-changing-the-values-of-a-register-when-reading-another-register"><h5>3. Changing the values of a register when reading another register</h5></a>
+<p>When we want to read the return of a slave encoder we send a series of null bytes after the address byte to receive the value. But these null values are misinterpreted and the engine speed drops to zero. Probably from a coding error.</p>
+<p>Patch : We send velocity value instead of null bytes. (just using during the Eurobot sprint)</p>
+<a class="header" href="electronics/communication/spi.html#just-for-curious" id="just-for-curious"><h1>Just for curious.</h1></a>
+<p><a href="https://github.com/Sellto/SPIandROS_HelloWord">https://github.com/Sellto/SPIandROS_HelloWord</a></p>
+<p>Three simples scripts to train you with ours SPI objects and with or without rosserial communication.</p>
+<p>Decription of the situation :</p>
+<ul>
+<li>The two slaves has a LED connected to pin 4 whose state is modifiable by a SPI register.</li>
+<li>The master is connected to ROS which controls the flashing speed of each led.</li>
+</ul>
+<p>Video-Tuto : ASAP</p>
 <a class="header" href="electronics/communication/spi.html#references" id="references"><h1>References</h1></a>
 <p><a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus">https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus</a></p>
 
