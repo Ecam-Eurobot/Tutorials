@@ -105,7 +105,7 @@ There are tons of different parameters that will influence the quality of your p
 It would be out of the topic to list them all but we encourage you to read the following document to calibrate your printer as good as possible.
 
 - [Cura's parameters for Anet A6](mechanical/References/A6_Parameters_Cura.pdf)
-- [Print Quality Troobleshooting Guide Anet](mechanical/References/Print_Quality_Troobleshooting_Guide-Anet.pdf)
+- [Print Quality Troubleshooting Guide Anet](mechanical/References/Print_Quality_Troubleshooting_Guide-Anet.pdf)
 - [Warpping problems](http://www.primante3d.com/curling-29082016/)
 
 
