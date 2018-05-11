@@ -433,10 +433,6 @@ To properly implement this code, you will need a ROS board and an Arduino board.
 * 1, 2 or 3 to the topic "ballseparator_ctrl" to position dynamixel
 * 0-255 to set the duty cycle of the PWM signal at pin 9 of the Arduino.
 
-#Stepper Motor Control
-As described earlier, the "pusher" of the ball separation mechanism was planned to work with a stepper motor. We found the following library incredibly useful for driving
-stepper motors:
-
 
 # References
 
