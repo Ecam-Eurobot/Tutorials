@@ -142,16 +142,11 @@
 </blockquote>
 <a class="header" href="software/image-processing.html#getting-started" id="getting-started"><h2>Getting started</h2></a>
 <a class="header" href="software/image-processing.html#image-treatment-module" id="image-treatment-module"><h3>Image treatment module</h3></a>
-<a class="header" href="software/image-processing.html#aim" id="aim"><h4>Aim</h4></a>
+<a class="header" href="software/image-processing.html#summary" id="summary"><h4>Summary</h4></a>
 <p>First and foremost, we must connect to GoPro wifi to take a picture of the color combination. Here, we have chosen a GoPro as a camera because it has an acceptable quality (780 pixel-HD) and it has also a Wi-Fi module for the remote control.</p>
 <p>Once the photo has been taken, the camera automatically switches off and we connect to the robot by wifi (a Raspberry connected with the same Wi-Fi for future image treatment).</p>
 <p>During this treatment, we use the OpenCV free graphics library.</p>
-<p>We have drawn three frames on the picture (one for each cube to detect) to delimit the test portion.</p>
-<p>The board analyzes all pixels within each frame:</p>
-<ol>
-<li>It looks whether the color detected is in the range color defined for every color (each color range is defined with one high and one low BGR value)</li>
-<li>After that, it returns a value: more the value is great, more the color lies within the range. The program adds up the values and the final value thus obtained determines the color within the range of colors determined initially.</li>
-</ol>
+<p>We have drawn three frames on the picture (one for each cube to detect) to delimit the test portion. The board analyzes all pixels within each frame to obtain the color.</p>
 <p>However, we have implemented in our program the different possible combinations to save time. Indeed, we only required two colors to deduce the final combination.</p>
 <p>As a matter of conclusion, we send combination to the robot by ROS.</p>
 <p><img src="img/software/image-processing/image1.png" alt="z" /></p>
@@ -175,36 +170,86 @@
 <p>Install ROS (see <a href="ros/install.md">install</a>)</p>
 </li>
 <li>
-<p>Import this repo from github</p>
+<p>Download this repo from <a href="https://github.com/Ecam-Eurobot/Tutorials/archive/master.zip">github</a>, unzip Tutorials-master.zip to open the main folder.</p>
 </li>
 <li>
-<p>Go to &quot;codes&quot; folder:</p>
+<p>Drag the folder in the terminal, you'll see a url. Then run this command :</p>
+<pre><code>cd &quot;url&quot;
+</code></pre>
+</li>
+<li>
+<p>Run this code above to go to &quot;codes&quot; folder:</p>
 <pre><code>cd src/codes/software/image-processing/tests
 </code></pre>
 </li>
 <li>
-<p>Connect the GoPro or your webcam to the Raspberry</p>
-</li>
-<li>
-<p>For testing the camera, go to &quot;test camera&quot; folder :</p>
-<pre><code>cd test_camera
-</code></pre>
-<ul>
-<li>For GoPro:</li>
-</ul>
-<pre><code>python3 go_pro_test.py
-</code></pre>
-<p><strong><em>Don't forget to connect the GoPro WiFi to the raspberry Pi !</em></strong></p>
-<ul>
-<li>For the webcam:</li>
-</ul>
-<pre><code>python webcam_test.py
-</code></pre>
+<p>Connect the GoPro (WiFi) or your webcam (USB port) to the Raspberry</p>
 </li>
 </ol>
 </li>
 </ul>
-<p><strong>Scripts</strong></p>
+<a class="header" href="software/image-processing.html#checking-camera" id="checking-camera"><h3>Checking camera</h3></a>
+<p>Check your camera is working. Type the following command line into your prompt and press enter :</p>
+<ol>
+<li>Go to &quot;test camera&quot; folder :</li>
+</ol>
+<pre><code>cd src/codes/software/image-processing/tests/test_camera
+</code></pre>
+<p><strong>Checking GoPro</strong></p>
+<p>We use a library called &quot;goprocam&quot; that contains all functions to control GoPro</p>
+<ul>
+<li>
+<p>Run this command to test GoPro in your terminal</p>
+<pre><code>python3 go_pro_test.py
+</code></pre>
+<p><strong><em>Make sure your Raspberry is on the same WiFi network as GoPro !</em></strong></p>
+</li>
+</ul>
+<p>The code :</p>
+<pre><code>#go_pro_test.py
+
+from goprocam import GoProCamera
+from goprocam import constants
+
+# Connect to GoPro
+gpCam = GoProCamera.GoPro()
+
+# Take a photo and save it in the current folder 
+gpCam.downloadLastMedia(gpCam.take_photo(0))
+</code></pre>
+<p><strong>Checking webcam</strong></p>
+<p>If you don't have a GoPro, you can also use a webcam. Type the following command line into your prompt and press enter :</p>
+<p>We use here &quot;OpenCV&quot; library to display and save images from the webcam</p>
+<ul>
+<li>
+<p>Run this command to check the webcam</p>
+<pre><code>python webcam_test.py
+</code></pre>
+</li>
+</ul>
+<p>The code :</p>
+<pre><code># webcam_test.py
+
+import cv2 
+
+# Create an object called camera and connect the first camera to the computer
+camera = cv2.VideoCapture(0)
+
+# Take a photo and save it in the current folder 
+return_value, image = camera.read()
+cv2.imwrite('opencv'+'.png', image)
+</code></pre>
+<p><strong>Result</strong> :
+<img src="img/software/image-processing/image5.png" alt="z" /></p>
+<a class="header" href="software/image-processing.html#scripts" id="scripts"><h2>Scripts</h2></a>
+<p>After checking the camera, we must run a script to automate the color detection and the WiFi switching (if you use a GoPro).<br />
+This script makes three actions :</p>
+<ol>
+<li>To switch WiFi to connect to GoPro to obtain a picture</li>
+<li>To send the picture to the Raspberry to start the image processing</li>
+<li>To give a color combination</li>
+</ol>
+<p>Type the following command line into your prompt and press enter to check the settings and run the script</p>
 <ul>
 <li>Go to color_detection folder :</li>
 </ul>
@@ -216,14 +261,14 @@
 <pre><code>nano GP_combination.sh 
 </code></pre>
 <ul>
-<li>Change <strong><em>line3</em></strong> with the name of your GoPro WiFi :</li>
+<li>Change the name with your GoPro WiFi :</li>
 </ul>
 <pre><code>nmcli c up &quot;your GoPro wifi&quot;
 </code></pre>
 <ul>
-<li>Change <strong><em>line6</em></strong> with the name of robot WiFi</li>
+<li>Change the name with your robot WiFi</li>
 </ul>
-<pre><code>nmcli c up &quot;your wifi robot&quot;
+<pre><code>nmcli c up &quot;your wifi robot&quot;  
 </code></pre>
 <p>save it (<strong><em>ctrl+x</em></strong>)</p>
 <ul>
@@ -231,49 +276,116 @@
 </ul>
 <pre><code>bash GP_combination.sh 
 </code></pre>
-<p>If you use the webcam :</p>
+<p>You'll see 3 colors frames on the picture and the final combination color on the terminal)
+<img src="img/software/image-processing/image6.png" alt="z" /></p>
+<p>The code :</p>
+<pre><code>#GP_Combination.sh
+
+#!/usr/bin/expect
+
+#switch to &quot;GoPro wifi and connect to the GoPro&quot; 
+
+nmcli c up &quot;armen&quot; 
+sleep 10
+
+#Take photo with GoPro
+python3 GP_takePhoto.py
+
+#Switch to &quot;robot wifi to connect to minus(robots)
+
+nmcli c up &quot;Airport Express Lenaerts&quot; 
+
+#To obtain the color combination 
+python2 color_detection.py
+</code></pre>
+<p>If you prefer using the webcam instead of GoPro</p>
 <pre><code>bash WB_combination.sh 
 </code></pre>
-<p>You'll see 3 colors frames on the picture and the final combination color on the terminal)</p>
-<a class="header" href="software/image-processing.html#adjust-position-of-a-frame" id="adjust-position-of-a-frame"><h5>Adjust position of a frame</h5></a>
-<ul>
-<li>Maintain your cursor where you want to place a side of the frame.</li>
-<li>Take note of the position.</li>
-<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>)</li>
-<li>Change the position in the code :</li>
-</ul>
-<pre><code>nano color_detection.py
+<p>The code :</p>
+<pre><code>#WB_combination.sh 
+
+#!/usr/bin/expect
+
+python2 WB_takePhoto.py
+
+python2 color_detection.py
 </code></pre>
-<p><img src="img/software/image-processing/image2.png" alt="before" />
-Note : xmin is the left side of the square, xmax is the right side of the square, ymin is the top side of the square and ymax is the bottom side of the square.</p>
+<p><strong>Result</strong> :
+The result is the same for GoPro and webcam.</p>
+<p>You'll see 3 colors frames on the picture and the final combination color on the terminal as shown in the image below</p>
+<p><img src="img/software/image-processing/image6.png" alt="z" /></p>
+<a class="header" href="software/image-processing.html#image-processing---color_detectionpy" id="image-processing---color_detectionpy"><h2>Image processing - color_detection.py</h2></a>
+<p>After taking a picture with the camera or the GoPro, we must process it to generate the color combination :
+The program creates three frames, one for each cube and analyzes all pixels within each frame:</p>
+<ol>
+<li>It looks whether the color detected is in the range color defined for every color (each color range is defined with one high and one low BGR value)</li>
+<li>After that, it returns a value: more the value is great, more the color lies within the range. The program adds up the values and the final value thus obtained determines the color within the range of colors determined initially.</li>
+</ol>
+<p><strong>Adjusting the position of a frame</strong></p>
+<p>We must adjust the position of frames to target the part of the image we want to process :<br />
+Each position is represented by a matrice. The first value (pixel) is linked with red frame, the second value (pixel) with yellow frame and the last value (pixel) with white frame.</p>
+<p><img src="img/software/image-processing/image2.png" alt="before" /></p>
+<p><em>positionName = [red frame value, yellow frame value, white frame value]</em></p>
+<p>Here is the different positions for each frame:</p>
 <ul>
-<li>Restart for another side of the frame and save the file (<strong><em>ctrl+x</em></strong>)</li>
+<li><strong>xmin</strong> is the left side of the frame</li>
+<li><strong>xmax</strong> is the right side par of the frame</li>
+<li><strong>ymin</strong> is the top side of the frame</li>
+<li><strong>ymax</strong> is the bottom side of the frame</li>
 </ul>
+<p><strong>Procedure</strong> :</p>
+<ol>
+<li>Maintain your cursor where you want to place a side of the frame</li>
+<li>Take note of the position (pixel)</li>
+<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>) and run this command to change a side of a frame in the following code(color_detection.py) :</li>
+</ol>
+<pre><code>nano color_detection.py 
+</code></pre>
+<ol start="4">
+<li>Restart for another side of the frame then save the file (<strong><em>ctrl+x</em></strong>)</li>
+</ol>
+<p><strong><em>Result</em></strong> :</p>
 <p><img src="img/software/image-processing/image3.png" alt="after" /></p>
-<a class="header" href="software/image-processing.html#adjust-range-color" id="adjust-range-color"><h5>Adjust range color</h5></a>
-<ul>
+<p><strong>Adjusting the range color</strong></p>
+<p>We must adjust the color range (RBG) to define each color. Therefore, the programme will be able to identify differents colors in each frame in function of these RGB values. We represente  each color range by a matrix :</p>
+<p><em>color_range = [blue value, green value, red value]</em></p>
+<p>As a reminder, an RGB color value is specified with RGB (red, green, blue).
+Each parameter (red, green, and blue) defines the intensity of the color as an integer between 0 and 255.
+For example, rgb(0, 0, 255) is rendered as blue, because the blue parameter is set to its highest value (255) and the others are set to 0.</p>
+<p><strong>Procedure</strong> :</p>
+<ol>
 <li>Maintain your cursor in the center of the cube</li>
 <li>Take note of the RGB color</li>
-<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>)</li>
-<li>Change the color range in the code (color_detection.py) and save the file (<strong><em>ctrl+x</em></strong>)
-<img src="img/software/image-processing/image4.png" alt="z" /></li>
-</ul>
-<a class="header" href="software/image-processing.html#ros" id="ros"><h5>ROS</h5></a>
+<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>) and change the color range in the code (color_detection.py)</li>
+</ol>
+<pre><code>nano color_detection.py 
+</code></pre>
+<ol start="4">
+<li>Restart for another cube then save the file (<strong><em>ctrl+x</em></strong>)</li>
+</ol>
+<p><strong><em>Result</em></strong> :</p>
+<p><img src="img/software/image-processing/image4.png" alt="z" /></p>
+<p><strong>Automation</strong></p>
+<p>We have also implemented in our program the different possible combinations to save time. Indeed, we only required two colors to deduce the final combination.</p>
+<a class="header" href="software/image-processing.html#application-with-ros" id="application-with-ros"><h2>Application with ROS</h2></a>
 <p>You use <strong><em>ROS</em></strong> to send the color combination to another robot module :</p>
-<ul>
+<ol>
+<li>Create a package &quot;image-processing&quot; and create a launch files&quot; test.launch&quot; (more details <a href="ros/install.md">here</a>)</li>
+<li>Drag the code &quot;image-analyze.py&quot;(codes/software/image-processing) to catkin_ws/src/&quot;image-processing&quot;</li>
 <li>Open terminal and launch ROS :</li>
-</ul>
+</ol>
 <pre><code>. ~/eurobot_ws/devel/setup.bash
 roslaunch image-processing test.launch 
 </code></pre>
 <ul>
-<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>) and display messages published to a topic :</li>
+<li>Open a new tab (<strong><em>ctrl+shift+t</em></strong>) to display messages published to a topic :</li>
 </ul>
 <pre><code>rostopic echo /color_seq 
 </code></pre>
-<p><strong><em>Don't forget to change frames positions and color ranges !</em></strong></p>
+<p><img src="img/software/image-processing/image7.png" alt="z" /></p>
+<p><strong><em>Don't forget to change frames positions and color ranges ! (see section below)</em></strong></p>
 <a class="header" href="software/image-processing.html#flashlight-module" id="flashlight-module"><h3>Flashlight module</h3></a>
-<a class="header" href="software/image-processing.html#aim-1" id="aim-1"><h4>Aim</h4></a>
+<a class="header" href="software/image-processing.html#aim" id="aim"><h4>Aim</h4></a>
 <p>We added a LED flashlight above the camera because light is an important factor and can bias our previous calculations. Therefore, the constant level of light thus created enables us to maintain our settings. This flashlight is turned off immediately after the camera has taken the photo, so as not to disrupt other teams or distract the audience.</p>
 <a class="header" href="software/image-processing.html#bill-of-materials-1" id="bill-of-materials-1"><h4>Bill of materials:</h4></a>
 <ul>
@@ -289,6 +401,7 @@ roslaunch image-processing test.launch
 </ul>
 <pre><code>python flashlight.py
 </code></pre>
+<p>You'll blink the flashlight</p>
 
                     </main>
 
