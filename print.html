@@ -698,6 +698,16 @@ If we look from the top view, the rollers should all point to the center of the 
     \end{bmatrix}
 \]
 <a class="header" href="print.html#a2018-specifics" id="a2018-specifics"><h1>2018 Specifics</h1></a>
+<p>In 2018, the two big mechanical tasks were:</p>
+<ol>
+<li><strong>Collect cubes</strong> that are distributed at specific locations on the playing field. The collected blocks then need to be stacked
+to create a tower. For each story (level), a bigger amount of points were given. Additionally, if the tower contained
+the 3 cube séquence, revealed at the beginning of the match, additionnal points were earned.</li>
+<li><strong>Collect foam ping-pong balls</strong> from the dispensers. The robot first has to open the lock so that the balls can fall out
+of the dispenser. Then the robot had to sort the balls and, depending on their color, either shoot them into a &quot;tower&quot;
+or put them in another recipient.</li>
+</ol>
+<p><img src="img/mechanical/2018/table.jpg" alt="Playing field" /></p>
 <a class="header" href="print.html#the-big-robot-specifications" id="the-big-robot-specifications"><h1>The big robot specifications</h1></a>
 <p><img src="mechanical/2018/bigrobot_render.PNG" alt="alt text" /></p>
 <a class="header" href="print.html#fusion-360" id="fusion-360"><h2>Fusion 360</h2></a>
@@ -846,6 +856,16 @@ void loop() {
 <p>And finaly, we designed a small piece that maintain the straight ramp from below and that you can adjust.</p>
 <p><img src="mechanical/2018/BallGun_SRC/PieceAdjust.png" alt="alt text" /></p>
 <p>After that, all we had to do is to install the gun in the robot and make some tests to determine the best power to give as a PWM to the motor to throw the balls from the distance chosen in the tank and to incorporate the code of the ball gun in the main code of the robot.</p>
+<a class="header" href="print.html#electronics" id="electronics"><h1>Electronics</h1></a>
+<p>In the next chapters, we will describe all everything related to the electronics of the robots.
+Including:</p>
+<ul>
+<li>Technologies we used</li>
+<li>Printed circuit boards we designed</li>
+<li>How to use particular sensors</li>
+<li>How to use particular actuators</li>
+<li>...</li>
+</ul>
 <a class="header" href="print.html#introduction-1" id="introduction-1"><h1>Introduction</h1></a>
 <p>Dynamixels are servomotors with a working angle of 300° dispatched on values 0 to 1023.</p>
 <p><img src="electronics/actuators/Dynamixels_SRC/AngleFonctionnement.png" alt="alt text" /></p>
@@ -1682,6 +1702,15 @@ CAN.init_Filt(1, 0, 0x05);
 <li>CANBus implementation with Arduino, <a href="http://www.prometec.net/wp-content/uploads/2015/07/Controller-Area-Network-Prototyping-With-Arduino-Wilfried-Voss.pdf">http://www.prometec.net/wp-content/uploads/2015/07/Controller-Area-Network-Prototyping-With-Arduino-Wilfried-Voss.pdf</a></li>
 <li>Well documented on Wikipedia, https://en.wikipedia.org/wiki/CAN_bus</li>
 </ul>
+<a class="header" href="print.html#software" id="software"><h1>Software</h1></a>
+<p>The software is an important part of the Robot. It is often the one that is the most challenging
+as to few people work on it. In this part, we are going to introduce you to the software stack of
+our robots. We will present the different technologies we used and try to explain many of the concepts
+related to them.</p>
+<p>In 2018, we build the robots around <strong><a href="http://www.ros.org/">ROS</a></strong>, which is a robotics framework facilitating
+software development for robotics. ROS is not easy to start with, but once you get the hang of it, it
+greatly improves your productivity. In the <a href="software/ros/ros.html">ROS</a> chapters, we will try to distill the most important
+information in order to get you started quickly.</p>
 <a class="header" href="print.html#ros" id="ros"><h1>ROS</h1></a>
 <p>ROS or Robot Operating Systems is an open source framework designed for designing robots.
 ROS is commonly installed upon a Linux operating system.
@@ -2440,6 +2469,10 @@ void loop()
 <pre><code>rostopic pub toggle_led std_msgs/Empty --once
 </code></pre>
 <p>where toggle_led is the topic you are publishing on, std_msgs/Empty is the type of the message and we use «—once» to publish this message only once.</p>
+<a class="header" href="print.html#advanced-concepts" id="advanced-concepts"><h1>Advanced concepts</h1></a>
+<a class="header" href="print.html#custom-messages" id="custom-messages"><h1>Custom messages</h1></a>
+<a class="header" href="print.html#robot-model" id="robot-model"><h1>Robot model</h1></a>
+<a class="header" href="print.html#visualization-using-rviz" id="visualization-using-rviz"><h1>Visualization using RVIZ</h1></a>
 <a class="header" href="print.html#useful-packages" id="useful-packages"><h1>Useful packages</h1></a>
 <a class="header" href="print.html#map-server" id="map-server"><h1>Map Server</h1></a>
 <a class="header" href="print.html#navigation-stack" id="navigation-stack"><h1>Navigation stack</h1></a>
