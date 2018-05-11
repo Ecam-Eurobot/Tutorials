@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Color Sensor - Ecam Eurobot</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="../../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li><a href="organization/organization.html"><strong aria-hidden="true">1.</strong> Organization</a></li><li><ol class="section"><li><a href="organization/github.html"><strong aria-hidden="true">1.1.</strong> GitHub</a></li><li><ol class="section"><li><a href="organization/gh-admin.html"><strong aria-hidden="true">1.1.1.</strong> Administration</a></li></ol></li><li><a href="organization/mdbook.html"><strong aria-hidden="true">1.2.</strong> mdBook</a></li></ol></li><li><a href="mechanical/mechanical.html"><strong aria-hidden="true">2.</strong> Mechanical</a></li><li><ol class="section"><li><a href="mechanical/fusion.html"><strong aria-hidden="true">2.1.</strong> 3D modeling with Fusion360</a></li><li><a href="mechanical/3d-print.html"><strong aria-hidden="true">2.2.</strong> 3D printing</a></li><li><a href="mechanical/mecanum.html"><strong aria-hidden="true">2.3.</strong> Mecanum wheels</a></li><li><a href="mechanical/2018/2018.html"><strong aria-hidden="true">2.4.</strong> 2018 specifics</a></li><li><ol class="section"><li><a href="mechanical/2018/bigRobot.html"><strong aria-hidden="true">2.4.1.</strong> Block mechanism</a></li><li><a href="mechanical/2018/balls.html"><strong aria-hidden="true">2.4.2.</strong> Ball mechanism</a></li></ol></li></ol></li><li><a href="electronics/electronics.html"><strong aria-hidden="true">3.</strong> Electronics</a></li><li><ol class="section"><li><a href="electronics/actuators/actuators.html"><strong aria-hidden="true">3.1.</strong> Actuators</a></li><li><ol class="section"><li><a href="electronics/actuators/dynamixels.html"><strong aria-hidden="true">3.1.1.</strong> Dynamixels</a></li></ol></li><li><a href="electronics/sensors/sensors.html"><strong aria-hidden="true">3.2.</strong> Sensors</a></li><li><ol class="section"><li><a href="electronics/sensors/sonar.html"><strong aria-hidden="true">3.2.1.</strong> Sonar</a></li><li><a href="electronics/sensors/coloursensor.html" class="active"><strong aria-hidden="true">3.2.2.</strong> Color Sensor</a></li></ol></li><li><a href="electronics/pcb/1_PCB_Design.html"><strong aria-hidden="true">3.3.</strong> PCB Design</a></li><li><ol class="section"><li><a href="electronics/pcb/2_Starting_Board.html"><strong aria-hidden="true">3.3.1.</strong> Start board</a></li><li><a href="electronics/pcb/3_Motor_Board.html"><strong aria-hidden="true">3.3.2.</strong> Motor board</a></li><li><a href="electronics/pcb/4_Com_Shield.html"><strong aria-hidden="true">3.3.3.</strong> Communication shield</a></li><li><a href="electronics/pcb/PowerSpply.html"><strong aria-hidden="true">3.3.4.</strong> Power supply board</a></li><li><a href="electronics/pcb/5_Appendix.html"><strong aria-hidden="true">3.3.5.</strong> Appendix</a></li></ol></li><li><a href="electronics/fpga.html"><strong aria-hidden="true">3.4.</strong> FPGA</a></li><li><a href="electronics/communication/communication.html"><strong aria-hidden="true">3.5.</strong> Communication</a></li><li><ol class="section"><li><a href="electronics/communication/i2c.html"><strong aria-hidden="true">3.5.1.</strong> I2C</a></li><li><a href="electronics/communication/spi.html"><strong aria-hidden="true">3.5.2.</strong> SPI</a></li><li><a href="electronics/communication/can.html"><strong aria-hidden="true">3.5.3.</strong> CAN</a></li></ol></li></ol></li><li><a href="software/software.html"><strong aria-hidden="true">4.</strong> Software</a></li><li><ol class="section"><li><a href="software/ros/ros.html"><strong aria-hidden="true">4.1.</strong> ROS</a></li><li><ol class="section"><li><a href="software/ros/install.html"><strong aria-hidden="true">4.1.1.</strong> Install</a></li><li><a href="software/ros/basics/basics.html"><strong aria-hidden="true">4.1.2.</strong> Basic concepts</a></li><li><ol class="section"><li><a href="software/ros/basics/workspace.html"><strong aria-hidden="true">4.1.2.1.</strong> Workspace setup</a></li><li><a href="software/ros/basics/packages.html"><strong aria-hidden="true">4.1.2.2.</strong> Packages</a></li><li><a href="software/ros/basics/pub.html"><strong aria-hidden="true">4.1.2.3.</strong> Publisher</a></li><li><a href="software/ros/basics/sub.html"><strong aria-hidden="true">4.1.2.4.</strong> Subscriber</a></li><li><a href="software/ros/basics/example.html"><strong aria-hidden="true">4.1.2.5.</strong> Example</a></li><li><a href="software/ros/basics/launch.html"><strong aria-hidden="true">4.1.2.6.</strong> Launchfiles</a></li><li><a href="software/ros/basics/params.html"><strong aria-hidden="true">4.1.2.7.</strong> ROS parameters</a></li></ol></li><li><a href="software/ros/rosserial.html"><strong aria-hidden="true">4.1.3.</strong> ROS and Arduino</a></li><li><ol class="section"><li><a href="software/ros/arduino/publisher.html"><strong aria-hidden="true">4.1.3.1.</strong> Publisher</a></li><li><a href="software/ros/arduino/subscriber.html"><strong aria-hidden="true">4.1.3.2.</strong> Subscriber</a></li></ol></li><li><a href="software/ros/advanced/advanced.html"><strong aria-hidden="true">4.1.4.</strong> Advanced concepts</a></li><li><ol class="section"><li><a href="software/ros/advanced/custom-msgs.html"><strong aria-hidden="true">4.1.4.1.</strong> Custom messages</a></li><li><a href="software/ros/advanced/model.html"><strong aria-hidden="true">4.1.4.2.</strong> Robot model</a></li><li><a href="software/ros/advanced/rviz.html"><strong aria-hidden="true">4.1.4.3.</strong> Rviz</a></li></ol></li><li><a href="software/ros/packages/packages.html"><strong aria-hidden="true">4.1.5.</strong> Useful packages</a></li><li><ol class="section"><li><a href="software/ros/packages/map.html"><strong aria-hidden="true">4.1.5.1.</strong> Map Server</a></li><li><a href="software/ros/packages/nav.html"><strong aria-hidden="true">4.1.5.2.</strong> Navigation stack</a></li></ol></li></ol></li><li><a href="software/image-processing.html"><strong aria-hidden="true">4.2.</strong> Image processing</a></li></ol></li><li><a href="robots/robots.html"><strong aria-hidden="true">5.</strong> Robots</a></li><li><ol class="section"><li><a href="robots/structure.html"><strong aria-hidden="true">5.1.</strong> Structure of folder</a></li><li><a href="robots/2018.html"><strong aria-hidden="true">5.2.</strong> 2018</a></li><li><ol class="section"><li><a href="robots/minus/minus.html"><strong aria-hidden="true">5.2.1.</strong> Minus (big robot)</a></li><li><ol class="section"><li><a href="robots/minus/architecture.html"><strong aria-hidden="true">5.2.1.1.</strong> Architecture</a></li><li><a href="robots/minus/packages.html"><strong aria-hidden="true">5.2.1.2.</strong> Packages</a></li><li><a href="robots/minus/howto.html"><strong aria-hidden="true">5.2.1.3.</strong> How to run the robot</a></li></ol></li></ol></li></ol></li><li><a href="graphic/graphic_chart.html">Appendix A: Graphic chart</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Ecam Eurobot</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="electronics/sensors/coloursensor.html#the-colour-sensor" id="the-colour-sensor"><h1>The colour Sensor</h1></a>
+<p>There are a wide range of colour sensors currently available today. After studying various sensors that are currently on the market we
+decided to use the RGB Colour Sensor with IR filter and White LED from Adafruit mostly because of its size, cross-platform support (including python code https://learn.adafruit.com/adafruit-color-sensors/circuitpython-code)
+and the fact that it communicates with I2C, the communication bus we had planned on using initially. Eventually we bought the even smaller version, the Flora Colour Sensor with White Illumination LED,
+both of them use the same integrated circuit, the Adafruit TCS34725.</p>
+<p>On board circuitry includes:</p>
+<ul>
+<li>3.3V regulator so you can power the breakout with 3-5VDC safely and level shifting for the I2C pins so they can be used with 3.3V or 5V logic</li>
+<li>neutral 4150°K temperature LED with a MOSFET driver on board to illuminate what you're trying to sense.</li>
+<li>An IR blocking filter, localized to the color sensing photodiodes, minimizes the IR spectral component of the incoming light and allows colour measurements to be made more
+accurately</li>
+</ul>
+<p><img src="electronics/sensors/ColorSensor/Flora.png" alt="alt text" /></p>
+<p>More information on this colour sensor can be found here</p>
+<a class="header" href="electronics/sensors/coloursensor.html#assembly" id="assembly"><h2>Assembly</h2></a>
+<a class="header" href="electronics/sensors/coloursensor.html#on-the-flora" id="on-the-flora"><h3>On the Flora:</h3></a>
+<p>3.3v -&gt; 3v (red wire)
+GND -&gt; GND (black wire)
+SDA -&gt; SDA (white wire)
+SCL -&gt; SCL (green wire)</p>
+<a class="header" href="electronics/sensors/coloursensor.html#on-the-arduino" id="on-the-arduino"><h3>On the Arduino:</h3></a>
+<p>Connect SCL    to analog 5
+Connect SDA    to analog 4
+Connect VDD    to 3.3V DC
+Connect GROUND to common ground</p>
+<a class="header" href="electronics/sensors/coloursensor.html#the-library" id="the-library"><h2>The library</h2></a>
+<p>To start working with this sensor it is advised to start by downloading the Arduino library from the github link provided in the references and install
+it into the library folder of your Arduino IDE. Hint: the right Arduino folder is usually found in My Documents. The library is an object-orientated library
+that allows to create a colour sensor object and access all  its capabilities through its methods.</p>
+<a class="header" href="electronics/sensors/coloursensor.html#the-code" id="the-code"><h2>The Code</h2></a>
+<p>After installing the library, the best thing to do is start with the examples already provided by the library. I started with and tweaked the mostly the
+Colorview code because it allows to give us values between 0 and 255 for the different RGB colours (not 100% accurate but accurate enough) of the
+object being detected. here's an example:</p>
+<pre><code class="language-cpp">#include &lt;Wire.h&gt;                  //include Wire.h to be able to communicate through I2C on Arduino board
+#include &quot;Adafruit_TCS34725.h&quot;     //Colour sensor library
+
+//Create colour sensor object declaration, to see effects of different integration time and gain
+//settings, check the datatsheet of the Adafruit TCS34725.  
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println(&quot;Color View Test!&quot;);
+
+  //Start-up colour sensor
+  if (tcs.begin()) {
+    Serial.println(&quot;Found sensor&quot;);
+  } else {
+    Serial.println(&quot;No TCS34725 found ... check your connections&quot;);
+    while (1); // halt!
+  }
+}
+
+
+void loop() {
+
+  uint16_t clear, red, green, blue;
+  uint16_t upperrangeG[3] = {100, 153, 71};
+  uint16_t lowerrangeG[3] = {50, 104, 52};
+  uint16_t upperrangeO[3] = {216,75,44};
+  uint16_t lowerrangeO[3] = {155, 60, 32};  
+
+  //Collect raw data from integrated circuit using interrupts
+  tcs.setInterrupt(false);      // turn on LED
+
+  delay(60);  // takes 50ms to read 
+  
+  tcs.getRawData(&amp;red, &amp;green, &amp;blue, &amp;clear);
+  tcs.setInterrupt(true);  // turn off LED
+
+  // Figure out some basic hex code for visualization
+  uint32_t sum = clear;
+  float r, g, b;
+  r = red; 
+  r /= sum;
+  g = green; 
+  g /= sum;
+  b = blue; 
+  b /= sum;
+  r *= 256; g *= 256; b *= 256;
+  Serial.print(&quot;\t&quot;);
+  
+  Serial.print((int)r, HEX); Serial.print((int)g, HEX); Serial.print((int)b, HEX);
+  Serial.println();
+
+  Serial.print((int)r ); Serial.print(&quot; &quot;); Serial.print((int)g);Serial.print(&quot; &quot;);  Serial.println((int)b );
+
+  if((r &lt; upperrangeG[0] &amp;&amp; g &lt; upperrangeG[1] &amp;&amp; b &lt; upperrangeG[2]) || (r &gt; lowerrangeG[0] &amp;&amp; g &gt; lowerrangeG[1] &amp;&amp; b &gt; lowerrangeG[2])){
+    delay(50);
+    Serial.print(&quot;Green&quot;);
+  }
+  if((r &lt; upperrangeO[0] &amp;&amp; g &lt; upperrangeO[1] &amp;&amp; b &lt; upperrangeO[2]) || (r &gt; lowerrangeO[0] &amp;&amp; g &gt; lowerrangeO[1] &amp;&amp; b &gt; lowerrangeO[2])){
+    delay(50);
+    Serial.print(&quot;Orange&quot;);
+  }
+}
+</code></pre>
+<a class="header" href="electronics/sensors/coloursensor.html#how-it-works" id="how-it-works"><h2>How it works</h2></a>
+<p>After creating and setting up the colour sensor, we need to first set the upper and lower RGB ranges of the goal colour we want to detect. As we know,
+we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours
+are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:</p>
+<pre><code>  uint16_t clear, red, green, blue;
+  uint16_t upperrangeG[3] = {100, 153, 71};
+  uint16_t lowerrangeG[3] = {50, 104, 52};
+  uint16_t upperrangeO[3] = {216,75,44};
+  uint16_t lowerrangeO[3] = {155, 60, 32};  
+</code></pre>
+<p>Then we need to calculate the RGB colours between 0 and 255:</p>
+<pre><code>  // Figure out some basic hex code for visualization
+  uint32_t sum = clear;
+  float r, g, b;
+  r = red; 
+  r /= sum;
+  g = green; 
+  g /= sum;
+  b = blue; 
+  b /= sum;
+  r *= 256; g *= 256; b *= 256;
+</code></pre>
+<p>This program prints the RGB values of all colours detected by the sensor but will print &quot;Green&quot; or &quot;Orange&quot; if the colour detected is found within
+the specified range limits.</p>
+<pre><code> if((r &lt; upperrangeG[0] &amp;&amp; g &lt; upperrangeG[1] &amp;&amp; b &lt; upperrangeG[2]) || (r &gt; lowerrangeG[0] &amp;&amp; g &gt; lowerrangeG[1] &amp;&amp; b &gt; lowerrangeG[2])){
+    delay(50);
+    Serial.print(&quot;Green&quot;);
+  }
+</code></pre>
+<a class="header" href="electronics/sensors/coloursensor.html#references" id="references"><h1>References</h1></a>
+<ul>
+<li>Commercial page: https://www.adafruit.com/product/1356</li>
+<li>Online tutorial: https://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use</li>
+<li>Library: https://github.com/adafruit/Adafruit_TCS34725</li>
+<li>Datasheet: https://cdn-shop.adafruit.com/datasheets/TCS34725.pdf</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="electronics/sensors/sonar.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="electronics/pcb/1_PCB_Design.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="electronics/sensors/sonar.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="electronics/pcb/1_PCB_Design.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
