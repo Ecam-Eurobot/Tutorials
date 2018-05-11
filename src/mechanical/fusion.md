@@ -10,6 +10,9 @@ He's a master in the use of Fusion360 and has very well made videos about every 
 [Fusion 360 Tutorial for Absolute Beginners— Part 2](https://www.youtube.com/watch?v=HXRMzJWo0-Q) and
 [Fusion 360 Tutorial for Absolute Beginners— Part 3](https://www.youtube.com/watch?v=zS8dYA_Iluc&t=614s).  
 
+With all these tools in hands we were able to design our robot: **[Cortex](https://a360.co/2wyML2Z)**.
+![img](img/mechanical/fusion/Cortex_1.PNG)
+
 ## Fusion360 environment
 The first window you get when opening Fusion360 should be this.
 
