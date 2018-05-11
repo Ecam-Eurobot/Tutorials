@@ -3476,7 +3476,7 @@ void loop()
 <a class="header" href="print.html#map-server" id="map-server"><h1>Map Server</h1></a>
 <a class="header" href="print.html#navigation-stack" id="navigation-stack"><h1>Navigation stack</h1></a>
 <a class="header" href="print.html#mecanum-wheels-1" id="mecanum-wheels-1"><h1>Mecanum wheels</h1></a>
-<p>We introduced the <a href="mechanical/mecanum.md">mecanum wheels</a> in the mechanical part.
+<p>We introduced the <a href="mechanical/mecanum.html">mecanum wheels</a> in the mechanical part.
 In this chapter we will review a ROS node we made to control the mecanum wheels.</p>
 <a class="header" href="print.html#ros-twist" id="ros-twist"><h1>ROS Twist</h1></a>
 <p>In the ROS navigations stack, all movements are indicated by <a href="http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html">Twist</a> messages.
@@ -3493,7 +3493,7 @@ following function:</p>
     back_left = (x + y - rot * WHEEL_GEOMETRY) / WHEEL_RADIUS
     back_right = (x - y + rot * WHEEL_GEOMETRY) / WHEEL_RADIUS
 </code></pre>
-<p>We used the inverse kinematic equations presented in the <a href="mechanical/mecanum.md">mecanum wheels</a> chapter to convert global base velocity
+<p>We used the inverse kinematic equations presented in the <a href="mechanical/mecanum.html">mecanum wheels</a> chapter to convert global base velocity
 into individual angular velocities.</p>
 <a class="header" href="print.html#ros-node" id="ros-node"><h2>ROS node</h2></a>
 <p>Now that we have a function to transform the twist message, let's setup the node to subscribe to Twist messages and publish individual
