@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Administration - Ecam Eurobot</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <base href="../">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="_FontAwesome/css/font-awesome.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+    </head>
+    <body class="light">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li><a href="organization/organization.html"><strong aria-hidden="true">1.</strong> Organization</a></li><li><ol class="section"><li><a href="organization/github.html"><strong aria-hidden="true">1.1.</strong> GitHub</a></li><li><ol class="section"><li><a href="organization/gh-admin.html" class="active"><strong aria-hidden="true">1.1.1.</strong> Administration</a></li></ol></li><li><a href="organization/mdbook.html"><strong aria-hidden="true">1.2.</strong> mdBook</a></li></ol></li><li><a href="mechanical/mechanical.html"><strong aria-hidden="true">2.</strong> Mechanical</a></li><li><ol class="section"><li><a href="mechanical/fusion.html"><strong aria-hidden="true">2.1.</strong> 3D modeling with Fusion360</a></li><li><a href="mechanical/3d-print.html"><strong aria-hidden="true">2.2.</strong> 3D printing</a></li><li><a href="mechanical/mecanum.html"><strong aria-hidden="true">2.3.</strong> Mecanum wheels</a></li><li><a href="mechanical/2018/2018.html"><strong aria-hidden="true">2.4.</strong> 2018 specifics</a></li><li><ol class="section"><li><a href="mechanical/2018/bigRobot.html"><strong aria-hidden="true">2.4.1.</strong> Block mechanism</a></li><li><a href="mechanical/2018/balls.html"><strong aria-hidden="true">2.4.2.</strong> Ball mechanism</a></li></ol></li></ol></li><li><a href="electronics/electronics.html"><strong aria-hidden="true">3.</strong> Electronics</a></li><li><ol class="section"><li><a href="electronics/actuators/actuators.html"><strong aria-hidden="true">3.1.</strong> Actuators</a></li><li><ol class="section"><li><a href="electronics/actuators/dynamixels.html"><strong aria-hidden="true">3.1.1.</strong> Dynamixels</a></li></ol></li><li><a href="electronics/sensors/sensors.html"><strong aria-hidden="true">3.2.</strong> Sensors</a></li><li><ol class="section"><li><a href="electronics/sensors/sonar.html"><strong aria-hidden="true">3.2.1.</strong> Sonar</a></li></ol></li><li><a href="electronics/pcb.html"><strong aria-hidden="true">3.3.</strong> PCB Design</a></li><li><a href="electronics/fpga.html"><strong aria-hidden="true">3.4.</strong> FPGA</a></li><li><a href="electronics/communication/communication.html"><strong aria-hidden="true">3.5.</strong> Communication</a></li><li><ol class="section"><li><a href="electronics/communication/i2c.html"><strong aria-hidden="true">3.5.1.</strong> I2C</a></li><li><a href="electronics/communication/spi.html"><strong aria-hidden="true">3.5.2.</strong> SPI</a></li><li><a href="electronics/communication/can.html"><strong aria-hidden="true">3.5.3.</strong> CAN</a></li></ol></li></ol></li><li><a href="software/software.html"><strong aria-hidden="true">4.</strong> Software</a></li><li><ol class="section"><li><a href="software/ros/ros.html"><strong aria-hidden="true">4.1.</strong> ROS</a></li><li><ol class="section"><li><a href="software/ros/install.html"><strong aria-hidden="true">4.1.1.</strong> Install</a></li><li><a href="software/ros/basics/basics.html"><strong aria-hidden="true">4.1.2.</strong> Basic concepts</a></li><li><ol class="section"><li><a href="software/ros/basics/workspace.html"><strong aria-hidden="true">4.1.2.1.</strong> Workspace setup</a></li><li><a href="software/ros/basics/packages.html"><strong aria-hidden="true">4.1.2.2.</strong> Packages</a></li><li><a href="software/ros/basics/pub.html"><strong aria-hidden="true">4.1.2.3.</strong> Publisher</a></li><li><a href="software/ros/basics/sub.html"><strong aria-hidden="true">4.1.2.4.</strong> Subscriber</a></li><li><a href="software/ros/basics/example.html"><strong aria-hidden="true">4.1.2.5.</strong> Example</a></li><li><a href="software/ros/basics/launch.html"><strong aria-hidden="true">4.1.2.6.</strong> Launchfiles</a></li><li><a href="software/ros/basics/params.html"><strong aria-hidden="true">4.1.2.7.</strong> ROS parameters</a></li></ol></li><li><a href="software/ros/rosserial.html"><strong aria-hidden="true">4.1.3.</strong> ROS and Arduino</a></li><li><ol class="section"><li><a href="software/ros/arduino/publisher.html"><strong aria-hidden="true">4.1.3.1.</strong> Publisher</a></li><li><a href="software/ros/arduino/subscriber.html"><strong aria-hidden="true">4.1.3.2.</strong> Subscriber</a></li></ol></li><li><a href="software/ros/advanced/advanced.html"><strong aria-hidden="true">4.1.4.</strong> Advanced concepts</a></li><li><ol class="section"><li><a href="software/ros/advanced/custom-msgs.html"><strong aria-hidden="true">4.1.4.1.</strong> Custom messages</a></li><li><a href="software/ros/advanced/model.html"><strong aria-hidden="true">4.1.4.2.</strong> Robot model</a></li><li><a href="software/ros/advanced/rviz.html"><strong aria-hidden="true">4.1.4.3.</strong> Rviz</a></li></ol></li><li><a href="software/ros/packages/packages.html"><strong aria-hidden="true">4.1.5.</strong> Useful packages</a></li><li><ol class="section"><li><a href="software/ros/packages/map.html"><strong aria-hidden="true">4.1.5.1.</strong> Map Server</a></li><li><a href="software/ros/packages/nav.html"><strong aria-hidden="true">4.1.5.2.</strong> Navigation stack</a></li></ol></li></ol></li><li><a href="software/image-processing.html"><strong aria-hidden="true">4.2.</strong> Image processing</a></li></ol></li><li><a href="graphic/graphic_chart.html">Appendix A: Graphic chart</a></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Ecam Eurobot</h1> 
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="organization/gh-admin.html#administration" id="administration"><h1>Administration</h1></a>
+<p>To add new members to the organization and configure their permissions, we need an
+administrator. Each year an administrator is designed who preferably has experience with
+Git and GitHub in order to help his peers and resolve any Git problems they may face.</p>
+<blockquote>
+<p>This chapter is destined for the person who administrates the GitHub organization</p>
+</blockquote>
+<p>The administrators for past years were:</p>
+<ul>
+<li><strong>2018</strong> <a href="https://github.com/azerupi">@azerupi</a> (Mathieu David)</li>
+<li><strong>2017</strong> <a href="https://github.com/charlesvdv">@charlesvdv</a> (Charles Vandevoorde)</li>
+</ul>
+<p>You can contact them (most recent first preferably) if you are the chosen administrator for your team.
+They will add you with the correct privileges.</p>
+<a class="header" href="organization/gh-admin.html#creating-a-new-repository" id="creating-a-new-repository"><h2>Creating a new repository</h2></a>
+<p>As administrator, your task is to setup GitHub and the repositories so that everyone can work on the
+project. The first thing you want to do is create a new repository for your year.</p>
+<p>We do however recommend to base it off off the repository from previous year instead of starting from scratch.
+As administrator, head over to the <a href="https://github.com/Ecam-Eurobot">organization's page</a> to create a new repository.</p>
+<p><img src="img/organization/org.png" alt="org" /></p>
+<p>Fill in the name with <code>Eurobot-xxxx</code> where <code>xxxx</code> represents the year. You can add a description if you want. Leave all
+the rest blank because we are going to push the code of previous year in the newly created repository.</p>
+<p><img src="img/organization/new-repo.png" alt="new repository" /></p>
+<p>You will land on the following page</p>
+<p><img src="img/organization/new-repo2.png" alt="new repository created" /></p>
+<p>Let's push the repository from last year into the newly created repository.
+On the command line, clone last years repository. In this case, I will clone <a href="https://github.com/Ecam-Eurobot/Eurobot-2018">Eurobot-2018</a></p>
+<pre><code>git clone https://github.com/Ecam-Eurobot/Eurobot-2018.git
+cd Eurobot-2018
+</code></pre>
+<p>Now you need to add the newly created repository as a remote. And verify that it was added correctly.</p>
+<pre><code>git remote add next-year https://github.com/Ecam-Eurobot/Eurobot-2019.git
+git remote -v
+</code></pre>
+<p>Push the repository into the newly created repository</p>
+<pre><code>git push -u next-year master
+</code></pre>
+<p>If we refresh the GitHub page for the newly created repository, we can see something similar to below.
+We can see (in the top left) that we are in the new repository and if we look at the <code>README</code> at the
+bottom we can see that it contains the files from previous year. We can now start to work in the new
+repository without affecting the old one.</p>
+<p><img src="img/organization/new-repo3.png" alt="Repository pushed" /></p>
+<blockquote>
+<p><strong>Note:</strong><br />
+Now that the new repository is created, you can remove your local clone of the repository from last year.
+You will not need it anymore.</p>
+</blockquote>
+<a class="header" href="organization/gh-admin.html#adding-teams" id="adding-teams"><h2>Adding teams</h2></a>
+<p>Now that the repository is created, you need to add two <strong>teams</strong> to the Eurobot organization:</p>
+<ul>
+<li><strong>Eurobot &lt;year&gt;</strong>: this team will contain all the members participating this year. We will give this team the privileges to push to any branch <strong>except the master branch</strong>.</li>
+<li><strong>Eurobot &lt;year&gt; Reviewers</strong>: this team will be given more privileges. They will be able to review and accept <a href="https://help.github.com/articles/about-pull-requests/">pull requests</a>
+to the master branch.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong><br />
+The master branch should <strong>always</strong> be kept in a working state, this is the golden rule! As administrator, with help from the reviewers, it is your duty to make sure
+that this rule is followed by everyone. The normal development process should be the following:</p>
+<ol>
+<li>For any new development a new branch is created by the member that develops it</li>
+<li>He implements the new feature / behavior</li>
+<li>When done, he creates a pull request against the master branch</li>
+<li>At least one reviewer reads the changes, makes sure that the code meets the quality guidelines and aproves the changes</li>
+<li>Only then can the code be merged into the master branch.</li>
+</ol>
+<p>Resist the urge of merging code that hasn't been reviewed.</p>
+</blockquote>
+<p>To create a new team, go to the GitHub organization: <a href="https://github.com/Ecam-Eurobot">Ecam-Eurobot</a> and go to the &quot;teams&quot; tab.</p>
+<p><img src="img/organization/new-team-1.png" alt="teams" /></p>
+<p>Then click the <strong>&quot;New team&quot;</strong> button, fill in the name as mentioned above and then click <strong>&quot;Create the team&quot;</strong>.</p>
+<a class="header" href="organization/gh-admin.html#give-them-correct-permissions" id="give-them-correct-permissions"><h3>Give them correct permissions</h3></a>
+<p>Now that the teams are created, we need to give them the correct permissions. Go to the newly created repository, under <strong>&quot;Settings&quot;</strong>
+go to the <strong>&quot;Collaborators &amp; Teams&quot;</strong> section.</p>
+<p><img src="img/organization/new-team-2.png" alt="teams" /></p>
+<p>Then add the teams you created with the <strong>write</strong> permissions, like below.</p>
+<p><img src="img/organization/permissions-1.png" alt="permissions" /></p>
+<p>Now go to the <strong>&quot;Branches&quot;</strong> section and add the master branch as a protected branch.</p>
+<p><img src="img/organization/permissions-2.png" alt="protected branch" /></p>
+<p>And configure the protections like in the image below:</p>
+<p><img src="img/organization/permissions-3.png" alt="protected branch" /></p>
+<p>This will prevent anyone from commiting to the master branch directly <strong>except</strong> the administrator and the reviewers, who need push access to accept pull requests.
+Don't abuse these privileges, it is always better to have your code reviewed by others, even if you are a badass programmer!</p>
+<a class="header" href="organization/gh-admin.html#invite-members" id="invite-members"><h2>Invite members</h2></a>
+<p>Now that everything is setup, we still need to invite the people who will be participating with you this year and assign them to the correct teams.
+To do this, go to the organization's page again under the <strong>&quot;People&quot;</strong> tab and click on <strong>&quot;Invite member&quot;</strong>.</p>
+<p><img src="img/organization/members-1.png" alt="members" /></p>
+<p>Type in their GitHub user name and invite them. In the invitation, you can already assign them to the correct teams.</p>
+<p><img src="img/organization/members-2.png" alt="members" /></p>
+<p>Once the invitation has been sent, the invited user can accept the invitation by visiting the
+organization's page: <a href="https://github.com/Ecam-Eurobot">https://github.com/Ecam-Eurobot</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="organization/github.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="organization/mdbook.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="organization/github.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="organization/mdbook.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+        
+        <script src="searchindex.js" type="text/javascript" charset="utf-8"></script>
+        
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+    </body>
+</html>
