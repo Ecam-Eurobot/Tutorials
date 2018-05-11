@@ -1,6 +1,6 @@
 # Mecanum wheels
 
-We introduced the [mecanum wheels](mechanical/mecanum.md) in the mechanical part.
+We introduced the [mecanum wheels](mechanical/mecanum.html) in the mechanical part.
 In this chapter we will review a ROS node we made to control the mecanum wheels.
 
 # ROS Twist
@@ -24,7 +24,7 @@ def convert(move):
     back_right = (x - y + rot * WHEEL_GEOMETRY) / WHEEL_RADIUS
 ```
 
-We used the inverse kinematic equations presented in the [mecanum wheels](mechanical/mecanum.md) chapter to convert global base velocity
+We used the inverse kinematic equations presented in the [mecanum wheels](mechanical/mecanum.html) chapter to convert global base velocity
 into individual angular velocities.
 
 ## ROS node
