@@ -140,35 +140,26 @@
 <p><em>last updated on May 11, 2018</em></p>
 </blockquote>
 <a class="header" href="electronics/pcb/3_Motor_Board.html#motor-board" id="motor-board"><h2>Motor Board</h2></a>
-<p>The goal of this board is to bring individual intelligence for every motor used on our robots. It allows to associate a microcontroller (ATmega328)
-with each motor. This main component is used for two aspects : regulation and communication.</p>
+<p>The goal of this board is to bring individual intelligence for every motor used on our robots. It allows to associate a microcontroller (ATmega328) with each motor. This main component is used for two aspects : regulation and communication.</p>
 <a class="header" href="electronics/pcb/3_Motor_Board.html#regulation" id="regulation"><h3>Regulation</h3></a>
-<p>For the smaller robot, the operating system send speed consign to the four motors. Consequently, the goal for the motor is reaching this speed in a
-minimum of time and after conserving this value. The regulator implemented in the microcontrollers is Proportional Integral Derivative regulators.
-It's parameters allow to influence the way to consign reaching for the motor. Thanks to it, each motor, individually can follow the ROS order with a
-maximum of precision.</p>
+<p>For the smaller robot, the operating system send speed consign to the four motors. Consequently, the goal for the motor is reaching this speed in a minimum of time and after conserving this value. The regulator implemented in the microcontrollers is Proportional Integral Derivative regulators. It's parameters allow to influence the way to consign reaching for the motor. Thanks to it, each motor, individually can follow the ROS order with a maximum of precision.</p>
 <p>PID's parameters were found with experimentation and all sources used for implementation are in the code file.</p>
 <a class="header" href="electronics/pcb/3_Motor_Board.html#communication" id="communication"><h3>Communication</h3></a>
 <p>As said in the previous part, this is the operating system ROS the main brain of the robot. Consequently, this brain has to communicate with its slave.
 The communication protocol used on our robots is SPI. It induces that a bus has to be built between all motor and ROS. Effectively, a broker gathers
 the signal for the motor but in any case each motor has to be linked to the bus. A role of the board is this connection via a SPI connector.</p>
 <a class="header" href="electronics/pcb/3_Motor_Board.html#getting-started" id="getting-started"><h3>Getting Started</h3></a>
-<p>To simplify the tutorial, we will use an arduino UNO AU LIEU DU ATmega328 microcontroller. The reason why we use a ATmega328 alone is the size of the
-system. The microcontroller and its oscillator are sufficient for our application and take less place on the robot. However, in this tutorial, we will
-use the arduino UNO to slightly simplify manipulation.</p>
-<p>Regarding the regulation, the following code implements the PID regulator. Its parameters were found after experimentation. It depends of the motor and the
-load. We simply adjusted the parameters until the motor behaviour was the expected one. (mr. Marchand knows the methodology ;) )</p>
+<p>To simplify the tutorial, we will use an arduino UNO instead of ATmega328 microcontroller. For the robot, the reason why we use a ATmega328 alone is the size of the system. The microcontroller and its oscillator are sufficient for our application and take less place on the robot. However, in this tutorial, we will use the arduino UNO to slightly simplify manipulation.</p>
+<p>Regarding the regulation, the following code implements the PID regulator. Its parameters were found after experimentation. It depends on the motor and the load. We simply adjusted the parameters until the motor behaviour was the expected one. (mr. Marchand knows the methodology ;) )</p>
 <p>The blocks of the system are described below :</p>
 <ul>
 <li>Encoder</li>
 </ul>
-<p>The encoder sends the rotation information to the controller. In our code, we used the <em>Encoder.h</em> library to handle it. At this moment, we have the
-velocity of the wheel in rad/s.</p>
+<p>The encoder sends the rotation information to the controller. In our code, we used the <em>Encoder.h</em> library to handle it. At this moment, we have the velocity of the wheel in rad/s.</p>
 <ul>
 <li>Motor control</li>
 </ul>
-<p>The H bridge is used for power two motors at the same. One the left side of the board there are all control pins (PWM and DIR for the two motors)
-and power supply of command (5V). On the other side of the board, you have the motor output and the motor power supply (24V).</p>
+<p>The H bridge is used for power two motors at the same. One the left side of the board there are all control pins (PWM and DIR for the two motors) and power supply of command (5V). On the other side of the board, you have the motor output and the motor power supply (24V).</p>
 <pre><code class="language-cpp">#includes &lt;Wire.h&gt;
 #includes &lt;PID_v1.h&gt;
 #includes &lt;ecamlib.h&gt;
@@ -258,16 +249,11 @@ void isrt(){
 <ul>
 <li>Controller</li>
 </ul>
-<p>Motor are controlled by the arduino with PWM signals. The implemented PID regulator computes the necessary duty cycle to send for reaching the target
-velocity function of its parameters.</p>
+<p>Motor are controlled by the arduino with PWM signals. The implemented PID regulator computes the necessary duty cycle to send for reaching the target velocity function of its parameters.</p>
 <p>The following complete circuit is shown below</p>
 <p>--- PIC OF THE CIRCUIT --- UNO + H Bridge + MOTOR - DRAW CONNECTION --- After robot's deconstruction</p>
-<p>The implemented PID regulator computes to reach the target velocity<br />
-So at this moment, you have an arduino UNO controlling motor in velocity thanks to a PID regulation. All regulation is visible in the Serial Window of
-the Arduino software.</p>
-<p>Now the next step is to give the control of the motor velocity to ROS core on the raspberry. For that, we implemented a SPI connection with ROS. These
-concepts are explained in the ROS serial section. On the motor side, a function is added on the main code on the arduino UNO to receive data from master
-and set value of PID (proportional gain, integrative gain, derivative gain and velocity setpoints.</p>
+<p>The implemented PID regulator computes to reach the target velocity. So at this moment, you have an arduino UNO controlling motor in velocity thanks to a PID regulation. All regulation is visible in the Serial Window of the Arduino software.</p>
+<p>Now the next step is to give the control of the motor velocity to ROS core on the raspberry. For that, we implemented a SPI connection with ROS. These concepts are explained in the ROS serial section. On the motor side, a function is added on the main code on the arduino UNO to receive data from master and set value of PID (proportional gain, integrative gain, derivative gain and velocity setpoints.</p>
 <pre><code class="language-cpp">// function that executes whenever data is received from the master
 // this function is registered as an event, see setup()
 void receiveEvent(int howMany) {
@@ -345,8 +331,7 @@ void receiveEvent(int howMany) {
 }
 </code></pre>
 <a class="header" href="electronics/pcb/3_Motor_Board.html#upload-protocol-for-atmega-328" id="upload-protocol-for-atmega-328"><h3>Upload protocol for ATmega 328</h3></a>
-<p>If you understood the tutorial with arduino UNO and want to use the ATmega328, you just have to use PCB with connection show below and implement the
-code exposed above on the ATmega328. This mocrocontroller is programmed with the ISP Programmer explains in the relative section.</p>
+<p>If you understood the tutorial with arduino UNO and want to use the ATmega328, you just have to use PCB with connection show below and implement the code exposed above on the ATmega328. This mocrocontroller is programmed with the ISP Programmer explains in the relative section.</p>
 <p>--- PIC OF THE CIRCUIT --- Motor board + H Bridge + MOTOR - DRAW CONNECTION --- After robot's deconstruction</p>
 <p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/tree/arduino-pid/arduino">Github link for code</a></p>
 <p>--- <a href="https://">OneDrive link for Altium project</a></p>
