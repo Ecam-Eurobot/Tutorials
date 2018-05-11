@@ -49,6 +49,7 @@
         - [Useful packages](software/ros/packages/packages.md)
             - [Map Server](software/ros/packages/map.md)
             - [Navigation stack](software/ros/packages/nav.md)
+    - [Mecanum wheels](software/mecanum/mecanum.md)
     - [Image processing](software/image-processing.md)
 
 - [Robots](robots/robots.md)
