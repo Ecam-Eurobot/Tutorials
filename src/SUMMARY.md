@@ -14,6 +14,7 @@
         - [Dynamixels](electronics/actuators/dynamixels.md)
     - [Sensors](electronics/sensors/sensors.md)
         - [Sonar](electronics/sensors/sonar.md)
+        - [Color Sensor](electronics/sensors/coloursensor.md)
     - [PCB Design](electronics/pcb.md)
     - [FPGA](electronics/fpga.md)
     - [Communication](electronics/communication/communication.md)
