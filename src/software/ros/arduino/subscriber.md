@@ -99,7 +99,7 @@ on another window :
 ```
 ls /dev/tty*
 ```
-you should first execute this previous command and only then plug the Arduino in the Raspberry usb port to see which port has been added to the list displayed on the terminal and thus know which one is the Arduino board.
+you should first execute this previous command and only then plug the Arduino in the Raspberry usb port and execute this command again to see which port has been added to the list displayed on the terminal and thus know which one is the Arduino board.
 
 The first time you use the usb port the Arduino is connected to, you have to give permissions to use that port. To do so, you have to type :
 
