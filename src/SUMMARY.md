@@ -30,6 +30,7 @@
         - [SPI](electronics/communication/spi.md)
         - [CAN](electronics/communication/can.md)
 - [Software](software/software.md)
+    - [Docker](software/docker.md)
     - [ROS](software/ros/ros.md)
         - [Install](software/ros/install.md)
         - [Basic concepts](software/ros/basics/basics.md)
