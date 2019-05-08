@@ -133,3 +133,6 @@ Or in matrix form:
     \omega_{rr}
     \end{bmatrix}
 \]
+
+## Code
+For an implementation of the mecanum wheels in the code, refer to chapter: [Mecanum wheels in software](software/mecanum/mecanum.html)
