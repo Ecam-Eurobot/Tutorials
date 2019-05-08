@@ -237,7 +237,8 @@ void loop() {
 </code></pre>
 <a class="header" href="electronics/sensors/coloursensor.html#how-it-works" id="how-it-works"><h2>How it works</h2></a>
 <p>After creating and setting up the colour sensor, we need to first set the upper and lower RGB ranges of the goal colour we want to detect. As we know,
-we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:</p>
+we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours
+are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:</p>
 <pre><code class="language-cpp">  uint16_t clear, red, green, blue;
   uint16_t upperrangeG[3] = {100, 153, 71};
   uint16_t lowerrangeG[3] = {50, 104, 52};
