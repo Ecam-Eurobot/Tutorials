@@ -108,9 +108,36 @@ It would be out of the topic to list them all but we encourage you to read the f
 - [Print Quality Troubleshooting Guide Anet](mechanical/References/Print_Quality_Troubleshooting_Guide-Anet.pdf)
 - [Warpping problems](http://www.primante3d.com/curling-29082016/)
 
+# 4. Some tips before printing
 
+The Ultimaker 2+ is the printer that we are using for our 3D model.
+Before using the printer, there are some points to check :
+1.	The filament
+ -	Is it a PLA ?
+ -	Is it a 2.85 mm width ?
+ -	Isn’t it stuck ?
+ -	Is it in the right position?
+ 
+ ![img](img/printer/filament.jpg)
+
+
+2.	The build plate
+ - Placement, adjust it accordingly (follow the instructions on the printer)
+ - They may have some adherence issues, the trick is to use glue on the plate
+
+When you lunch the printing, always wait for the 1 layer before leaving, it may have some adjustment error or filament can be stuck.
+## Troubleshooting
+If the filament is stuck, it doesn't come out, stop the printing.  
+It may happen because :
+- The filament is stuck and it can't feed the printer
+- The nozzle is clogged
+
+If the nozzle is clogged try the [Atomic solution](https://www.youtube.com/watch?v=04T8zdgyh3E)
+
+Else try https://ultimaker.com/en/resources/11704-extrusion-problems
 
 --------------------------------------
 ## Contributors
 - Puissant Baeyens Victor, 12098, [MisterTarock](https://github.com/MisterTarock)
 - De Decker William, 14130, [WilliamHdd](https://github.com/WilliamHdd)
+- Ping Tian-sen 16333
