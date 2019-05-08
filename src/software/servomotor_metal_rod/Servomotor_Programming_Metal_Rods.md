@@ -5,11 +5,11 @@ date : 03/05/2019
 ## Metal rods
 
 ### What's a servomotor ?
-<em>" It's a motor capable of maintaining an opposition to a static force and
+_" It's a motor capable of maintaining an opposition to a static force and
 whose position is continuously checked and corrected according to the measurement. "
- Wikipedia </em>  
-<em>" The position is defined with an angle travel limit of 180 degrees, but also
- available in continuous rotation. " Wikipedia </em>  
+ Wikipedia _  
+_" The position is defined with an angle travel limit of 180 degrees, but also
+ available in continuous rotation. " Wikipedia _  
  It have an angle generally ranging from 0 to 180 °.
 
 ### How to connect it?
