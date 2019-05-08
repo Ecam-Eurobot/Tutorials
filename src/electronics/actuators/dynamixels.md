@@ -118,7 +118,7 @@ After that you have to configure 3 lines in the code that respond to the needs o
 
 # Application with ROSserial
 
-As explained in the chapter "The Cortex Robot", one dynamixel was used to control the separation of coloured balls (one colour representing 
+As explained in the section "Ball Mechanism", one dynamixel was used to control the separation of coloured balls (one colour representing 
 dirty water and the other clean water). This dynamixel has three main positions:
 
 * Initial_pos_purifier (blocked or closed) position
@@ -138,7 +138,7 @@ We calibrated these positions using the angle diagrams supplied in the data shee
 ![alt text](mechanical/2018/BallGun_SRC/SchemaBloc.png )
 
 The communication between the ROS board (Rasberry pi with ROS installed) and the Arduino Uno board that controls the tasks of the Cortex robot takes place over
-a USB serial communication better known as ROSserial. The concepts behind ROSserial concept are explored in detail in the section Software of this document. I
+a USB serial communication better known as ROSserial. The concepts behind ROSserial are explored in detail in the chapter "Software" of this document. I
 personally recommend reading that section to better understand the code presented here.
 
 The three main actions of the Arduino board are:
@@ -148,14 +148,14 @@ The three main actions of the Arduino board are:
 * Drive DC motor to shoot clean balls into home tank.
 
 These actions are activated and controlled fully by the ROS board. That is, if the ROS board wants to push the bee, the Arduino board must be ready to receive
-the message, activate the right actuators/actions in order to push the bee.
+the message and activate the right actuators in order to push the bee.
 
 ! Attention: It is imperative to program the dynamixels to the right baudrate first! This can be done using the USB2Dynamixel and Dynamixel Wizard software as
 explained earlier. We had problems controlling the dynamixels via the ROS board at the default baudrate of 1000000 BPS. The communication speed that worked best
 was the default baudrate used by ROS on the Raspberry pi, 57600 BPS. After setting the dynamixel in the wizard, all you have to do is change the baudrate 
 in the code from 1000000ul to 57600ul. (Note: 1000000ul works fine when controlling the dynamixels with only the Arduino board, hmm). 
 
-! Attention: These dynamixels use UART to communicate, if you use the Arduino Uno which only has one on board UART module then you will nt be able to use 
+! Attention: These dynamixels use UART to communicate, if you use the Arduino Uno which only has one on board UART module then you will not be able to use 
 the serial monitor at the same time! DO NOT PUT SERIAL.BEGIN IN SETUP when you want to work with the dynamixels on an Arduino Uno. The best case would be to use a board
 with more than one UART module, allowing you to control the dynamixels independent of the serial monitor.
 
@@ -331,8 +331,8 @@ void shake(void)
 }
 ```
 
-Note: ROS library packages are bulky and can get very big, adding more #includes or libraries to your code will add mean more global variables to your overall 
-project. Make sure that your board, Uno, Nano etc. can support has enough memory space) for the large amount of global variables. I invite you to compile this
+Note: ROS library packages are bulky and can get very big, adding more #includes or libraries to your code will mean more global variables to your overall 
+project. Make sure that your board, Uno, Nano etc. has enough memory space) for the large amount of global variables. I invite you to compile this
 code and load it on an Arduino board. Check the memory details after loading, you will see that we're already almost at the limit ! 
 Think about this for the future.
 
@@ -348,7 +348,7 @@ To control the position of the "bee dynamixel" we only need a true or false sign
 The choice is yours. 
 
 Note: We had difficulties working with the std_msgs: Int8 and String when programming with the dynamixels so we settled with Int16 and Bool.
-```
+```cpp
 #include <ros.h>              //ROS packages
 #include <std_msgs/Bool.h>     //ROS std messages needed for com
 #include <std_msgs/Int16.h>
@@ -356,8 +356,8 @@ Note: We had difficulties working with the std_msgs: Int8 and String when progra
 ```
 
 ### Declarations and pin definitions
-Declare as many variables as possible through the #define method in order to save global variable space on the Arduino Uno for example: 
-```
+Declare as many variables as possible through the #define method in order to save global variable space on the Arduino Uno, for example: 
+```cpp
 //Gun pin definitions
 #define i1            5
 #define i2            4
@@ -368,7 +368,7 @@ int servo_speed = 500;      //speed for ax-12a movement
 ```
 
 Don't forget to create the ROS node!
-```
+```cpp
 //Start ROS handle.
 ros::NodeHandle nh;    //Create a ROS node
 ```
@@ -376,16 +376,16 @@ ros::NodeHandle nh;    //Create a ROS node
 ### Create callback function
 
 The Arduino board is seen as a node by the ROS board. In order to receive commands from it we need to subscribe to a topic to see what the ROS board has sent us.
-This is how we create a topic and callback function:
-```
+This is how we create a topic and a callback function:
+```cpp
 //For ROS, the name of the topic is gun_control and the ROS board can send 
 //messages only of type Int16. The name of the function in Arduino that needs 
 //to be called every time we receive a message is shootGun
-ros::Subscriber<std_msgs::Int16> gun_ctrl("gun_control", &shootGun);   
+ros::Subscriber<std_msgs::Int16> gun_ctrl("gun_control, &shootGun);   
 ``` 
 
-Now we need to implement shootGun:
-```
+Now we need to implement the call back function, for example the callback function for the water_purification topic:
+```cpp
 void moveValve(const std_msgs::Int16 & pos_msg){
   
   valve_pos = pos_msg.data;   //Get data sent from ROS
@@ -403,7 +403,7 @@ void moveValve(const std_msgs::Int16 & pos_msg){
 
 ### Set-up
 We need to setup the dynamixel, subscribe to the our topics and we need to initialise the ROS node we created.
-``` 
+```cpp 
   //Start-up
   ax12a.begin(BaudRate, DirectionPin, &Serial);
   //Remove endless rotation
@@ -421,8 +421,8 @@ We need to setup the dynamixel, subscribe to the our topics and we need to initi
 ```
 
 ### loop
-Keep it simple.
-```
+Keep it simple. Do not over load the loop. We want to nh.spinOnce to to be called as often as possible without interruption.
+```cpp
 nh.spinOnce();    //Checks topics that we subscribed to and calls callback function if ROS board has published something correctly. 
 ```
 

@@ -25,6 +25,7 @@ GND -> GND (black wire)
 SDA -> SDA (white wire) 
 SCL -> SCL (green wire)
 ```
+
 ### On the Arduino:
 ```
 Connect SCL    to analog 5
@@ -111,7 +112,8 @@ void loop() {
 
 ## How it works
 After creating and setting up the colour sensor, we need to first set the upper and lower RGB ranges of the goal colour we want to detect. As we know,
-we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:
+we don't have the best accuracy with colours sensors but we can try to isolate the colours we want through trial and error and make sure other colours 
+are not detected instead of our goal colour. Here is the definition of the ranges for orange and green detection:
 ```cpp
   uint16_t clear, red, green, blue;
   uint16_t upperrangeG[3] = {100, 153, 71};
