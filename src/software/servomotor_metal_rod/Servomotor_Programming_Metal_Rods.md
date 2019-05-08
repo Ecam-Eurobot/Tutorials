@@ -1,19 +1,19 @@
-@author Emine Tas <br/>
-@date 03/05/2019
+author : Emine Tas  
+date : 03/05/2019
 
 # Servomotor programming
 ## Metal rods
 
 ### What's a servomotor ?
-<em>" It's a motor capable of maintaining an opposition to a static force and
+*" It's a motor capable of maintaining an opposition to a static force and
 whose position is continuously checked and corrected according to the measurement. "
- Wikipedia </em> <br/>
-<em>" The position is defined with an angle travel limit of 180 degrees, but also
- available in continuous rotation. " Wikipedia </em><br/>
+ Wikipedia *  
+*" The position is defined with an angle travel limit of 180 degrees, but also
+ available in continuous rotation. " Wikipedia *  
  It have an angle generally ranging from 0 to 180 °.
 
 ### How to connect it?
-It's composed of 3 cables : red, brown and orange. <br/>
+It's composed of 3 cables : red, brown and orange.   
 * Red for + (5V)
 * Brown for - (ground)
 * Orange for signal
@@ -21,7 +21,7 @@ It's composed of 3 cables : red, brown and orange. <br/>
 
 ### What is his purpose in this project ?
 Simply rotate continuously from right to left or from left to right depending on
-the position of the robot in the field. <br/>
+the position of the robot in the field.  
 
 
 ```C

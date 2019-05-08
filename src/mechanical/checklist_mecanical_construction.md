@@ -1,5 +1,5 @@
-@author Elise Raxon & Emine Tas <br/>
-@date 07/05/2019
+author : Elise Raxon & Emine Tas  
+date : 07/05/2019
 
 # Checklist for mecanical construction
 ## Here are the elements to consider when designing the robot mechanically
