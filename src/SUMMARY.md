@@ -61,5 +61,6 @@
             - [Architecture](robots/minus/architecture.md)
             - [Packages](robots/minus/packages.md)
             - [How to run the robot](robots/minus/howto.md)
+    - [2019](robots/2019.md)
 
 [Appendix A: Graphic chart](graphic/graphic_chart.md)
