@@ -94,14 +94,24 @@ roscore
 ```
 
 on another window : 
-```
-rosrun rosserial_python serial_node.py /dev/ttyUSB0 
-```
-/dev/ttyUSB0 is the usb port the Arduino is connected to so you’ll have to change the «USB0». You can find the name of the port tty* in the Arduino IDE or you can find it in the terminal by typing :
+
+/dev/ttyXXXX is the usb port the Arduino is connected to and you’ll have to find the exact name in order to replace the XXXX by the name of the port (examples : ttyUSB0, ttyACM0, ttyACM1, ...). You can find the name of the port ttyXXXX in the Arduino IDE or you can find it in the terminal by typing :
 ```
 ls /dev/tty*
 ```
-when you plug the Arduino in the Raspberry usb port, you can execute this previous command to see which port has been added and thus know which one is the Arduino board.
+you should first execute this previous command and only then plug the Arduino in the Raspberry usb port and execute this command again to see which port has been added to the list displayed on the terminal and thus know which one is the Arduino board.
+
+The first time you use the usb port the Arduino is connected to, you have to give permissions to use that port. To do so, you have to type :
+
+```
+sudo chmod 666 /dev/ttyXXXX
+```
+
+Now that you know the port you are using and you have permissions, you can type this :
+
+```
+rosrun rosserial_python serial_node.py /dev/ttyXXXX
+```
 
 Finally, in order to send a single message to the Arduino, you can publish on a specific topic by typing on another terminal window :
 ```
