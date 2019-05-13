@@ -8,6 +8,7 @@
 - [Mechanical](mechanical/mechanical.md)
     - [3D modeling with Fusion360](mechanical/fusion.md)
     - [3D printing](mechanical/3d-print.md)
+    - [Fusion360 Good practices](mechanical/practices.md)
     - [Mecanum wheels](mechanical/mecanum.md)
     - [Vacuum prehention](mechanical/vacuum.md)
     - [2018 specifics](mechanical/2018/2018.md)
