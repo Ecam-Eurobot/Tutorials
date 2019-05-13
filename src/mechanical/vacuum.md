@@ -13,6 +13,13 @@ The material is from Festo (we can have good price for student projetcs)
 
 ![Schematic](img/mechanical/vacuum/Schematic_Festo.png)
 
+Other prehention systems were use to take the pucks of the 2019 contests: like shovel.
+
 ## Pros
 
+* mechanism is easy to take flat surface
+
 ## Cons
+
+* the pump use lot of power
+* the pump and the valve take lot of space
