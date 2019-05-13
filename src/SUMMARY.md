@@ -68,5 +68,6 @@
             - [Code](robots/2019/soja/code.md)
                 - [Arduino/motors.ino](robots/2019/soja/code/motors.md)
                 - [rpi/odom.cpp](robots/2019/soja/code/odom.md)
+                - [rpi/move.py](robots/2019/soja/code/move.md)
 
 [Appendix A: Graphic chart](graphic/graphic_chart.md)
