@@ -1550,6 +1550,11 @@ void loop() {
 <p>Link to the code on Ecam Eurobot Github :</p>
 <p><a href="https://github.com/Ecam-Eurobot/Eurobot-2018/blob/ultrasound/arduino/sonar_simple_test_no_ROS.ino">https://github.com/Ecam-Eurobot/Eurobot-2018/blob/ultrasound/arduino/sonar_simple_test_no_ROS.ino</a></p>
 <p>Go check in ROS and Arduino chapter for combining Sensor, Arduino and ROS</p>
+<a class="header" href="print.html#reflexion" id="reflexion"><h1>Reflexion</h1></a>
+<p>This kind of sensor need that the signal leaves the <em>Trigger</em> head and go back to the <em>Echo</em> head.</p>
+<p>If the signal leaves the <em>Trigger</em> head and doesn't come back to the <em>Echo</em> head then the sensor decide that there is nothing.</p>
+<p>So when there is an obstacle in front of the sensor this obstacle must be in front of the 2 head of the sensor else for the sensor there is no obstacle.</p>
+<p>Before putting the sensor on the robot think about this, is it best to put the sensor horizontally or vertically?</p>
 <a class="header" href="print.html#the-colour-sensor" id="the-colour-sensor"><h1>The colour Sensor</h1></a>
 <p>There are a wide range of colour sensors currently available today. After studying various sensors that are currently on the market we
 decided to use the RGB Colour Sensor with IR filter and White LED from Adafruit mostly because of its size, cross-platform support (including python code https://learn.adafruit.com/adafruit-color-sensors/circuitpython-code)
