@@ -1695,8 +1695,18 @@ the specified range limits.</p>
 It gives a travel distance in x-axis and y-axis. It can't see rotation.</p>
 <a class="header" href="print.html#application" id="application"><h1>Application</h1></a>
 <p>If the mouse is connect in a Linux os, we can read the values in <code>dev/input/mice</code>.</p>
+<pre><code class="language-python">import struct
+
+with open(&quot;/dev/input/mice&quot;,&quot;rb&quot;) as fd:
+    while True:
+        # unpack data to have x and y
+        y,x = struct.unpack(&quot;xbb&quot;,fd.read(3))
+
+</code></pre>
 <p>The distance given is not a distance in cm, we need to use a multiplication parameter
 to have the distance in cm.</p>
+<p>We test the it on the 2019 eurobot.
+You can find the files with ROS in the little_robot branch of Eurobot-2019, <code>little_robot/ROS_packages/R&amp;D/mouse/src</code>.</p>
 <a class="header" href="print.html#pros-1" id="pros-1"><h2>Pros</h2></a>
 <ul>
 <li>Distance traveled compute on the field.</li>
