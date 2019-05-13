@@ -64,7 +64,8 @@
             - [Packages](robots/2018/minus/packages.md)
             - [How to run the robot](robots/2018/minus/howto.md)
     - [2019](robots/2019.md)
-        - [Code](robots/2019/code.md)
-            - [motors.ino](robots/2019/soja/code/motors.md)
+        - [Soja](robots/2019/soja.md)
+            - [Code](robots/2019/soja/code.md)
+                - [motors.ino](robots/2019/soja/code/motors.md)
 
 [Appendix A: Graphic chart](graphic/graphic_chart.md)
