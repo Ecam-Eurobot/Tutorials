@@ -70,6 +70,7 @@
                 - [rpi/odom.cpp](robots/2019/soja/code/odom.md)
                 - [rpi/move.py](robots/2019/soja/code/move.md)
                 - [rpi/ultrasound.py](robots/2019/soja/code/ultrasound_rpi.md)
+            - [Encoders](robots/2019/soja/Encoders.md)    
             - [Improvements](robots/2019/soja/improvements.md)
 
 [Appendix A: Graphic chart](graphic/graphic_chart.md)
