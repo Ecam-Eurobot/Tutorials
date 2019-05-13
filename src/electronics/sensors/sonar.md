@@ -89,4 +89,14 @@ Link to the code on Ecam Eurobot Github :
 
 <https://github.com/Ecam-Eurobot/Eurobot-2018/blob/ultrasound/arduino/sonar_simple_test_no_ROS.ino>
 
-Go check in ROS and Arduino chapter for combining Sensor, Arduino and ROS 
+Go check in ROS and Arduino chapter for combining Sensor, Arduino and ROS
+
+# Reflexion
+
+This kind of sensor need that the signal leaves the _Trigger_ head and go back to the _Echo_ head.
+
+If the signal leaves the _Trigger_ head and doesn't come back to the _Echo_ head then the sensor decide that there is nothing.
+
+So when there is an obstacle in front of the sensor this obstacle must be in front of the 2 head of the sensor else for the sensor there is no obstacle.
+
+Before putting the sensor on the robot think about this, is it best to put the sensor horizontally or vertically?  
