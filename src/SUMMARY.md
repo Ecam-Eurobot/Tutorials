@@ -43,6 +43,7 @@
             - [Example](software/ros/basics/example.md)
             - [Launchfiles](software/ros/basics/launch.md)
             - [ROS parameters](software/ros/basics/params.md)
+            - [Good Practices](software/ros/basics/practices.md)
         - [ROS and Arduino](software/ros/rosserial.md)
             - [Publisher](software/ros/arduino/publisher.md)
             - [Subscriber](software/ros/arduino/subscriber.md)
