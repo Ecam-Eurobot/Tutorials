@@ -1,4 +1,4 @@
-# Motors
+# arduino/motors.ino
 This section is used to explain the code used on the Arduino that is used to drive the motors of the big robot and provide feedback of its movements to the raspberry pi.
 We think this code could be reused with minimal changes the following years as it solves very basic problems that transcend the competition rules.
 
