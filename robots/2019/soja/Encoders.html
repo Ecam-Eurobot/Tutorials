@@ -138,10 +138,10 @@
                     <main>
                         <a class="header" href="robots/2019/soja/Encoders.html#encoders" id="encoders"><h1>Encoders</h1></a>
 <p>An incremental encoder delivers a certain number of pulses per revolution. The number of pulses is a measure for angular or linear movement. A fixed disc on a shaft is divided into transparent and opaque segments</p>
-<p><img src="imagedoc/Encoder1.png" alt="" /></p>
+<p><img src="imageDoc/Encoder1.png" alt="" /></p>
 <p>Source : https://instrumentationtools.com/encoder-working-principle/</p>
 <p>Most of them have two rows of segments (track A and track B) and a Top Z segment. The two tracks out of phase by 90° indicate the direction of rotation, while the top Z indicates the number of revolutions.</p>
-<p><img src="imagedoc/Encoder2.png" alt="" /></p>
+<p><img src="imageDoc/Encoder2.png" alt="" /></p>
 <p>Their resolution is the maximum number of pulses it sends per turn, it is expressed in tick/tr (in the encoder that we use we have 4000 ticks/tr).</p>
 <a class="header" href="robots/2019/soja/Encoders.html#material" id="material"><h1>Material:</h1></a>
 <p>Model: Baumer ITD 01 B14 Incremental Rotary Encoder</p>
@@ -153,8 +153,7 @@
 <p>White --&gt; GND</p>
 <p>Transparent --&gt; Shield/Housing</p>
 <p>We decided to plug the wire on this way for all the encoders:
-<img src="imagedoc/Encoder3.png" alt="" />
-<img src="imagedoc/Encoder3b.png" alt="" /></p>
+<img src="imageDoc/Encoder3b.png" alt="" /></p>
 <p>To facilitate the wiring, we made a PCB to connect the encoder to the Arduino Mega. Here the pin mapping of the encoders:</p>
 <p>Right Encoder: green (track A) --&gt; pin 2
 yellow (track B) --&gt; pin 3
@@ -163,9 +162,9 @@ yellow (track B) --&gt; pin 18</p>
 <a class="header" href="robots/2019/soja/Encoders.html#shield" id="shield"><h1>Shield</h1></a>
 <p>On the shield we have two connectors for the encoders, one connector to plug with the H-bridge and one that can be connected to the battery in case the Arduino is not connected by USB cable to the Raspberry.</p>
 <p>We also soldered two LEDs that allow us to verify that the encoders move the code and perform the position calculation.</p>
-<p><img src="imagedoc/Shield1.png" alt="" /></p>
+<p><img src="imageDoc/Shield1.png" alt="" /></p>
 <p>You can see how we connect the shield to the H-bridge.</p>
-<p><img src="imagedoc/HBridge.png" alt="" /></p>
+<p><img src="imageDoc/HBridge.png" alt="" /></p>
 <p>Warning!! This documentation is only for the new version of the PCB not the old one!</p>
 
                     </main>
