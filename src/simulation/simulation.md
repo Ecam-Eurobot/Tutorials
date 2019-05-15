@@ -1,16 +1,17 @@
 # Simulation 
  
- ## 1- Robot model 
+## 1- Robot model 
 Ros give us away to create  the 3D model of a robot or its parts,  to simulate  it , by means of the URDF files.Unified Robot Description Format (URDF) is an XML format that describes a robot,its parts,..
 
-#### Contents :
+### Contents :
 
 - Mostly <link> and <joint> elements
 - <link>s: robot structure
 - <joint>s: connections and motion constraints
+  
 ### Example of URDF file :
 
-```
+```xml
 <robot name="example">
 	<link name="link_1"  />
    	<link name="link_2"  />
@@ -34,27 +35,27 @@ URDF has four limitation you should be aware of it:
 - No standardized way to notify. 
 - Risk of desynchronization. 
 
-##### 2.Only tree structures (no loops)
+#### 2.Only tree structures (no loops)
 
 -	Joint only have single parent and child
 -	Only acyclic, directed graphs (or: trees) 
 -	Real-world impact
 
 
-##### 3.There is no sensor models ```<sensor></sensor> ```
+#### 3.There is no sensor models ```<sensor></sensor> ```
 
--	Sensor meta-data can't be incorporated directly
--	Alternatives exist, but then the data is distributed
--	Diminishes value of URDF
+- Sensor meta-data can't be incorporated directly
+- Alternatives exist, but then the data is distributed
+- Diminishes value of URDF
 
-##### 4.Low reusability of URDFs
+#### 4.Low reusability of URDFs
 
 -	Only a single <robot> tag in URDF
 -	 No support for import of remote files
 -	 Composite scenes have to be merged manually
 -	 No way to compose multiple URDFs
 
-##### So what is the solution ?
+#### So what is the solution ?
 
 The solution of   these problems can be XACRO (short for XML Macros)
 -	Programmatic URDF generation
@@ -65,7 +66,8 @@ The solution of   these problems can be XACRO (short for XML Macros)
 -	Composite robots & scenes easier:
 -	import macro from file
 -	Invoke macro
-##### XACRO - Needs
+
+#### XACRO - Needs
 
 -	XACRO not directly compatible with URDF
 -	Transformation needed with this command:
@@ -75,7 +77,7 @@ $ rosrun xacro xacro /path/to/robot.xacro > robot.urdf
 - Checks for valid XACRO file (but is not identical to check_urdf)
 XACRO example
 
-```
+```xml
 <xacro:macro name="arm" params="parent arm_name">
    <link name="${arm_name}_link_1"  />
    <joint name="${arm_name}_joint_1" type="..">
