@@ -87,7 +87,9 @@ XACRO example
 </xacro:macro>
 ```
 
-To run robot model 2019
+
+## Run robot simulation  model 2019
+
 ```
 roslaunch robot_description display_soja.launch
 ```
