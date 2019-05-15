@@ -2126,6 +2126,38 @@ execution. As the PCB is really simple, it implements a bus SPI connection, it r
 <p><img src="electronics/pcb/pictures/Broker_F.jpg" alt="Broker Front View" /></p>
 <p><img src="electronics/pcb/pictures/Broker_T.jpg" alt="Broker Top View" /></p>
 <p>--- <a href="https://">OneDrive link for Altium project</a></p>
+<a class="header" href="print.html#power-supply-board" id="power-supply-board"><h1>Power supply board</h1></a>
+<p>This PCB is consisted of six pieces of   DC-DC Power Supply Adjustable Step Down Module with an adjustable potentiometer to fix the value of the voltage wanted (24V 12V 9V 5V 3V).</p>
+<p><img src="pictures/MP1584.png" alt="MP1584" /></p>
+<pre><code>Those are Mini MP1584EN DC DC buck converter step-down module with a wide range of:
+• Input voltage: 4.5V to 28V
+• Output voltage: 0.8 V to 20 V
+• Output current: 3 (maximum)
+•  Conversion efficiency: 92% (maximum)
+• Output ripple: less than 30 mV
+• Switching frequency: 1.5 MHz (higher), usually 1 MHz
+• Operating temperature: -45 ℃ to 85 ℃; 
+• Size: 22 mm by 17 mm by 4 mm
+</code></pre>
+<p><img src="pictures/dimensions.png" alt="dimensions" /></p>
+<a class="header" href="print.html#warning" id="warning"><h2>Warning:</h2></a>
+<pre><code>• Do not reverse the positive and negative terminals to avoid possible damage.
+• Do not use a light load (less than 10% power output) or no load
+
+The Purpose of the creation of this board is to realize a better power supply board by:
+• Gathering all those 6 pieces on one board with different output voltage
+</code></pre>
+<p><img src="pictures/6PCB.png" alt="6PCB" />
+• Rearranging their outputs in such a way the + and the – become side by side so it is easier to be plugged by the user. Also creating an USB port output for the Arduino.
+• Adding protection to the Board using fuses at the entrance of each PCB (the fuses must be with different values depending on the value putted on the potentiometer).
+<img src="pictures/protection.png" alt="protection" /></p>
+<a class="header" href="print.html#a3d-pcb" id="a3d-pcb"><h2>3D PCB</h2></a>
+<p><img src="pictures/3D.png" alt="3D" /></p>
+<p>This is the final power supply board with its new outputs including USB port output and its protection:
+<img src="pictures/overview.png" alt="overview" /></p>
+<a class="header" href="print.html#improvement" id="improvement"><h2>IMPROVEMENT</h2></a>
+<pre><code>For better protection to our power supply board we can improve our protection by adding a freewheeling diode to protect the board in case  the battery terminals are inverted.
+</code></pre>
 <a class="header" href="print.html#if-we-had-to-redo-it" id="if-we-had-to-redo-it"><h2>If we had to redo it</h2></a>
 <blockquote>
 <p><em>last updated on May 11, 2018</em></p>
