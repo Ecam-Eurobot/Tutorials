@@ -140,9 +140,9 @@ roslaunch robot_2019 soja.launch  viz:=true
 Ros offers this package to read map and offers it. but how map server works ?
 
 He read image data then  converts color value to ternary occupancy values:
-- free (0)
-- occupied (100)
-- and unknown (-1)
+- Free (0)
+- Occupied (100)
+- Unknown (-1)
 
 map_server is a ROS node that reads a map from disk and offers it via a ROS service.
 The current implementation of the map_server converts color values in the map image data into ternary occupancy values: free (0), occupied (100), and unknown (-1). Future versions of this tool may use the values between 0 and 100 to communicate finer gradations of occupancy.
