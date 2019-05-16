@@ -106,7 +106,7 @@ To create the voltmeter sketch:
  
 And then save the sketch:
 
-3.	On the File menu, click Save As…
+3.On the File menu, click Save As…
 
 This sketch begins by initializing the serial port and declaring a few variables:
 
@@ -320,7 +320,9 @@ https://github.com/helagardabbou/Eurobot-2019/blob/master/project.ino
 This part  explains how to migrate from an Arduino board to a standalone microcontroller on a breadboard. It's similar to this tutorial, but uses an Arduino board to program the ATmega on the breadboard.
 Unless you choose to use the minimal configuration described at the end of this tutorial, you'll need four components (besides the Arduino, ATmega328PU, and breadboard):
 - a 16 MHz crystal,
+
 -a 10k resistor, and
+
 -two 18 to 22 picofarad (ceramic) capacitors.
 # Burning the Bootloader
 
