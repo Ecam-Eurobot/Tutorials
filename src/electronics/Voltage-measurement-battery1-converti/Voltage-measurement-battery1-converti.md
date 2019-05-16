@@ -202,11 +202,11 @@ Connection of  the following pins:
 
 -LCD R/W pin to ground
 
-- LCD VSS pin to ground 
+-LCD VSS pin to ground 
 
--LCDD VCDD pin to 5V
+-LCD VDD pin to 5V
 
-•	Additionally, wire a 10k pot to +5V and GND, with it's wiper (output) to LCD screens VO pin (pin3). A 220 ohm resistor is used to power the backlight of the display, usually on pin 15 and 16 of the LCD connector.
+- Additionally, wire a 10k pot to +5V and GND, with it's wiper (output) to LCD screens VO pin (pin3). A 220 ohm resistor is used to power the backlight of the display, usually on pin 15 and 16 of the LCD connector.
 
 The circuit can be constructed on a breadboard:
 
@@ -221,7 +221,9 @@ I added a buzzer which work as alarm
 When the battery  is  charged to less than 17 V  
 What you will need To complete the tutorial – Hardware :
 For this part you will need to add:
+
 •	Buzzer/piezo speaker
+
 •	100 Ohm resistor
 The circuit :
 
