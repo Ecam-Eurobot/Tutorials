@@ -37,7 +37,7 @@ To create the voltmeter sketch:
 1.	Open the Arduino IDE.
 2.	Paste in the following code:
 
- ![img](electronics/pcb/pictures/Battery_img/60340879_556044004927076_1884299820311511040_n.png)
+ ![img](electronics/pcb/pictures/Battery_img/code1.png)
 
  ![img](electronics/pcb/pictures/Battery_img/img4.png)
 
