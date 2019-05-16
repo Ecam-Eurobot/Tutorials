@@ -182,13 +182,13 @@ The voltmeter presented here is extremely basic and we will see now  considerabl
 To make my voltmeter with my Arduino Uno, I used the LCD display.
 To complete the tutorial, you will need:
 
-•	1x LCD (Liquid Crystal Display)
+•1x LCD (Liquid Crystal Display)
 
-•	1x 10 k ohm potentiometer
+•1x 10 k ohm potentiometer
 
 Connection of  the following pins:
 
-- LCD RS pin to digital pin 12
+-LCD RS pin to digital pin 12
 
 -LCD Enable pin to digital pin 11
 
@@ -206,7 +206,7 @@ Connection of  the following pins:
 
 -LCD VDD pin to 5V
 
-- Additionally, wire a 10k pot to +5V and GND, with it's wiper (output) to LCD screens VO pin (pin3). A 220 ohm resistor is used to power the backlight of the display, usually on pin 15 and 16 of the LCD connector.
+-Additionally, wire a 10k pot to +5V and GND, with it's wiper (output) to LCD screens VO pin (pin3). A 220 ohm resistor is used to power the backlight of the display, usually on pin 15 and 16 of the LCD connector.
 
 The circuit can be constructed on a breadboard:
 
