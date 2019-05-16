@@ -357,7 +357,7 @@ Uploading sketches to an ATmega on a breadboard. Remember to remove the microcon
 Getting Rid of the Arduino Board
 Once you've programmed the ATmega on the breadboard, you can eliminate the Arduino. To do so, you'll need to provide an alternative power supply for the microcontroller.
 
-# Schematic with proteus 8 professional
+# Schematics with proteus 8 professional
  ![alt text](https://github.com/helagardabbou/Eurobot-2019/blob/master/documentation/img/img13.png)
  ![alt text](https://github.com/helagardabbou/Eurobot-2019/blob/master/documentation/img/img14.png)
 
