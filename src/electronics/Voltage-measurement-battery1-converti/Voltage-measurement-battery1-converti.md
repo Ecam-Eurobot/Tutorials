@@ -35,10 +35,15 @@ The circuit and information presented below assume a basic knowledge of digital 
 To complete the tutorial, you will need:
 
 •	An Arduino or Arduino-compatible board with analog inputs.
+
 •	The Arduino IDE (integrated development environment).
+
 •	One 100Ko resistor.
+
 •	One 10Ko resistor.
+
 •	Four wires, in at least two different colors (red and black are recommended).
+
 •	A breadboard (or suitable stripboard and soldering equipment).
 
 In preparation, you should solder crocodile clips to two differently-colored wires, as this will make it easier to attach them to components when measuring voltages.
@@ -100,22 +105,38 @@ To create the voltmeter sketch:
  https://github.com/helagardabbou/Eurobot-2019/blob/master/potentiel.ino
  
 And then save the sketch:
+
 3.	On the File menu, click Save As…
+
 This sketch begins by initializing the serial port and declaring a few variables:
+
 vPow – When powered over a USB cable, it is common for the Arduino’s 5V power supply to be a little less than that ideal.
+
 r1 – the value (in ohms) of the first resistor in the circuit.
+
 r2 – the value (in ohms) of the second resistor in the circuit.
+
 The sketch then sends some basic information to the terminal, and it displays the maximum voltage than can safely be measured by the current circuit.
+
 The Serial Port Monitor in the IDE can be used to view the messages sent by this sketch. However, this is not a particularly advanced monitor, and cannot display the ANSI terminal sequences that are used to provide a friendlier display. Better results can be had by using a terminal package such as Hyperterminal, RealTerm or Putty.
+
 The serial port you need to connect to can be found from the Arduino IDE:
+
 •	On the Tools menu, click Serial Port and look for the item that is ticked.
 The other setting you should use are:
+
 Display: ANSI
+
 Speed: 9600
+
 Parity: None
+
 Data Bits: 8
+
 Stop Bits: 1
+
 Hardware Flow Control: None
+
 Software Flow Control: None
 
 # Building the Circuit
@@ -126,40 +147,67 @@ The circuit can be constructed on a breadboard:
   ![alt text](https://github.com/helagardabbou/Eurobot-2019/blob/master/documentation/img/img5.png)
 
 The analog inputs of an Arduino can measure up to 5V (when using the built-in analog reference voltage). Even when only connecting to a 5V circuit, you should use the resistors to help protect the Arduino from short-circuits or unexpected voltage surges.
+
 Those two resistors form a potential divider that is used to lower the voltage being measured to a level that the Arduino can read. This actually extends the range that can be used. For example, if resistors are used to halve the input voltage then the Arduino can effectively read up to 10V (since 10V will be read as 5V, 5V will be read as 2.5V…). This comes at the expensive of accuracy – the ADCs in the Arduino can read up to 1024 different levels between 0V and 5V. By expanding the range to 10V, those 1024 levels are spread across a wider range and are therefore less able to detect small changes.
+
 You can increase the resistance value of R2, then the maximum voltage that can be read will be decreased; giving a slightly more accurate reading. With R1 at 100Ko and R2 at 10Ko, the input voltage is reduced by a factor of around 11 – allowing the voltmeter to read from 0V–55V.
+
+
 The formula for calculating values in a potential divider is:
+
  ```Vout = (R2 / (R1 + R2)) * Vin```
+
 If the divider for the Arduino voltmeter is functioning correctly then Vout will be a maximum of 5V, and so you can calculate the maximum input voltage to the circuit:
+
 ```Vmax = 5.0 / (R2 / (R1 + R2))```
+
 You can see a variation of this expression used in the setup() routine of the sketch.
+
 Note: If you use different resistors from the ones suggested here, you must be remember to adjust the values of r1 and r2 in the sketch.
+
 When measuring the voltage in the loop() routine, analogRead(0) is used to read the level from analog input 0. The returned value is an integer in the range 0 through 1023, so it must first be adjusted to a range 0 through 5. This is done by multiplying it by the power supply level, and then dividing by 1024.
+
 To transform the 0V–5V value into a reading that reflects the range of values that can be measured by the circuit, the resistors must be taken into account in the same way as was done to calculate the maximum voltage the circuit could measure:
+
 ```v2 = v / (r2 / (r1 + r2))```
+
 With all the calculations completed, the value now represents the actual voltage measured by the circuit, and is sent to the display.
-Enhancing the Voltmeter
+
+# Enhancing the Voltmeter
+
 The voltmeter presented here is extremely basic and we will see now  considerable room for enhancements such as  adding an LCD display, two leds and a  buzzer  that plays the role of an  alarm.
 
 # Adding an LCD display 
 
 To make my voltmeter with my Arduino Uno, I used the LCD display.
 To complete the tutorial, you will need:
+
 •	1x LCD (Liquid Crystal Display)
+
 •	1x 10 k ohm potentiometer
+
 Connection of  the following pins:
+
 - LCD RS pin to digital pin 12
 
 -LCD Enable pin to digital pin 11
+
 -LCD D4 pin to digital pin 5
+
 -LCD D5 pin to digital pin 4
+
 -LCD D6 pin to digital pin 3
+
 -LCD D7 pin to digital pin 2
+
 -LCD R/W pin to ground
+
 - LCD VSS pin to ground 
+
 -LCDD VCDD pin to 5V
 
 •	Additionally, wire a 10k pot to +5V and GND, with it's wiper (output) to LCD screens VO pin (pin3). A 220 ohm resistor is used to power the backlight of the display, usually on pin 15 and 16 of the LCD connector.
+
 The circuit can be constructed on a breadboard:
 
    ![alt text](https://github.com/helagardabbou/Eurobot-2019/blob/master/documentation/img/img6.png)
@@ -277,12 +325,19 @@ Unless you choose to use the minimal configuration described at the end of this 
  ![alt text](https://github.com/helagardabbou/Eurobot-2019/blob/master/documentation/img/img11.png)
  
 If you have a new ATmega328 (or ATmega168), you'll need to burn the bootloader onto it. You can do this using an Arduino board as an in-system program (ISP). If the microcontroller already has the bootloader on it (e.g. because you took it out of an Arduino board or ordered an already-bootloaded ATmega), you can skip this section.
+
 To burn the bootloader, follow these steps:
+
 1.	Upload the ArduinoISP sketch onto your Arduino board. (You'll need to select the board and serial port from the Tools menu that correspond to your board.)
+
 2.	Wire up the Arduino board and microcontroller as shown in the diagram to the right.
+
 3.	Select "Arduino Duemilanove or Nano w/ ATmega328" from the Tools > Board menu. (Or "ATmega328 on a breadboard (8 MHz internal clock)" if using the minimal configuration described below.)
+
 4.	Select "Arduino as ISP" from Tools > Programmer
+
 5.	Run Tools > Burn Bootloader
+
 You should only need to burn the bootloader once. After you've done so, you can remove the jumper wires connected to pins 10, 11, 12, and 13 of the Arduino board.
  #  Be careful when you wire the cables between arduino and l’Atmega.	 
 
