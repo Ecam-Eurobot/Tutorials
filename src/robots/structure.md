@@ -4,10 +4,10 @@ Here is the general structure of our project for Eurobot 2018.
 ```bash
 Eurobot-2018
 │   README.md
-│   LICENSE    
+│   LICENSE
 │   .gitignore
 └───arduino
-│   
+│
 └───documentation
 |
 └───ros_packages
@@ -44,6 +44,3 @@ The different folders:
     * **strategy**: package for the strategies chosen by the 2 robots.
 
 > For more information about what is a [package](software/ros/basics/packages.html) in ROS.
-
-
-

@@ -7,3 +7,5 @@ we organized our workflow for a good cooperation.
 To share code, we use [GitHub](https://github.com/Ecam-Eurobot) and [`git`](https://git-scm.com/),
 we have a shared Fusion360 project to store our 3D models and we have a Google Drive / OneDrive to
 store all other files.
+
+We create an office Teams to share all the non-officials files. So everybody have aces to all the information. It was the centralized drive.

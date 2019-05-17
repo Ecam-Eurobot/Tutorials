@@ -8,6 +8,7 @@ Git and GitHub in order to help his peers and resolve any Git problems they may 
 
 The administrators for past years were:
 
+- **2019** [@Diab0lix](https://github.com/orgs/Ecam-Eurobot/people/Diab0lix) (Thierry Frycia)
 - **2018** [@azerupi](https://github.com/azerupi) (Mathieu David)
 - **2017** [@charlesvdv](https://github.com/charlesvdv) (Charles Vandevoorde)
 
@@ -55,8 +56,8 @@ git push -u next-year master
 ```
 
 If we refresh the GitHub page for the newly created repository, we can see something similar to below.
-We can see (in the top left) that we are in the new repository and if we look at the `README` at the 
-bottom we can see that it contains the files from previous year. We can now start to work in the new 
+We can see (in the top left) that we are in the new repository and if we look at the `README` at the
+bottom we can see that it contains the files from previous year. We can now start to work in the new
 repository without affecting the old one.
 
 ![Repository pushed](img/organization/new-repo3.png)
@@ -74,7 +75,7 @@ Now that the repository is created, you need to add two **teams** to the Eurobot
   to the master branch.
 
 > **Note:**  
-> The master branch should **always** be kept in a working state, this is the golden rule! As administrator, with help from the reviewers, it is your duty to make sure 
+> The master branch should **always** be kept in a working state, this is the golden rule! As administrator, with help from the reviewers, it is your duty to make sure
 > that this rule is followed by everyone. The normal development process should be the following:
 > 1. For any new development a new branch is created by the member that develops it
 > 2. He implements the new feature / behavior
@@ -122,5 +123,5 @@ Type in their GitHub user name and invite them. In the invitation, you can alrea
 
 ![members](img/organization/members-2.png)
 
-Once the invitation has been sent, the invited user can accept the invitation by visiting the 
+Once the invitation has been sent, the invited user can accept the invitation by visiting the
 organization's page: [https://github.com/Ecam-Eurobot](https://github.com/Ecam-Eurobot).
